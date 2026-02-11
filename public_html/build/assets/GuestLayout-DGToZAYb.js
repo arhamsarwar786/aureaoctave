@@ -1,0 +1,1 @@
+import{j as s,Y as t}from"./app-BAO_sF4D.js";import{H as a,F as n}from"./Footer-COonG3cY.js";function m({title:e,children:r}){return s.jsxs(s.Fragment,{children:[s.jsx(t,{title:e}),s.jsxs("div",{className:`${e==="Contact Us"?"bg-[#f5f5f5]":"bg-white"} min-h-screen relative"`,children:[s.jsx(a,{}),s.jsx("main",{children:r}),s.jsx(n,{})]})]})}export{m as G};

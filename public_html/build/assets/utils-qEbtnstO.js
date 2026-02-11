@@ -1,0 +1,1 @@
+const e=r=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD",minimumFractionDigits:2}).format(r),n=r=>{let t="blue";return r==="approved"?t="green":r==="declined"&&(t="red"),t};export{e as f,n as t};

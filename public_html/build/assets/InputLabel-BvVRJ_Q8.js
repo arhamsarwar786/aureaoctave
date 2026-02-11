@@ -1,0 +1,1 @@
+import{j as n}from"./app-BAO_sF4D.js";function r({value:t,className:e="",children:s,...m}){return n.jsx("label",{...m,className:"block font-medium text-sm text-[#666666] "+e,children:t||s})}export{r as I};
