@@ -10,8 +10,8 @@ export default function Guest({ children }) {
         useState(false);
 
     return (
-        <main className="min-h-screen w-full font-inter">
-            <div className="flex w-full justify-between font-inter">
+            <main className="min-h-screen w-full font-inter" style={{ background: '#161B1F' }}>
+            <div className="flex w-full justify-between font-inter ">
                 <section className="flex-1 flex-center size-full max-sm:px-6">
                     <section className="auth-form">{children}</section>
                 </section>

@@ -41,13 +41,13 @@ export default function Login({ status, canResetPassword }) {
 
             <header className="flex flex-col gap-5 md:gap-8">
                 <div className="flex flex-col gap-1 md:gap-3">
-                    <h1 className="text-24 lg:text-[32px] font-semibold text-[#333333]">
+                    <h1 className="text-24 lg:text-[32px] font-semibold text-white">
                         Welcome to Aurea Octave
-                        <p className="text-16 font-normal text-[#666666] mt-1">
+                        <p className="text-16 font-normal text-white mt-1">
                             Don’t have an account?{" "}
                             <Link
                                 href={route("register")}
-                                className="underline text-sm text-gray-900 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                className="underline text-sm text-[#3BF5C4] hover:text-[#6bfbd5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                                 Sign up
                             </Link>
@@ -83,7 +83,7 @@ export default function Login({ status, canResetPassword }) {
                         <InputLabel htmlFor="password" value="Password" />
                         <button
                             onClick={handleVisible}
-                            className="flex items-center space-x-1 text-sm text-[#666]"
+                            className="flex items-center space-x-1 text-sm text-[#3BF5C4]"
                         >
                             {passwordVisible ? (
                                 <>
@@ -111,7 +111,7 @@ export default function Login({ status, canResetPassword }) {
                     <PasswordRule />
                 </div>
 
-                <div className="block mt-6 md:md-8">
+                <div className="block mt-6 md:md-8 ">
                     <label className="flex items-center">
                         <Checkbox
                             name="remember"
@@ -120,14 +120,14 @@ export default function Login({ status, canResetPassword }) {
                                 setData("remember", e.target.checked)
                             }
                         />
-                        <span className="ms-2 text-sm text-gray-600">
+                        <span className="ms-2 text-sm text-gray-200 hover:text-[#3BF5C4]">
                             Remember me
                         </span>
                     </label>
                 </div>
 
                 <div className="mt-6 md:md-8">
-                    <PrimaryButton className="" disabled={processing}>
+                    <PrimaryButton className="bg-[#3BF5C4]" disabled={processing}>
                         Log in
                     </PrimaryButton>
                 </div>
@@ -136,7 +136,7 @@ export default function Login({ status, canResetPassword }) {
                     {canResetPassword && (
                         <Link
                             href={route("password.request")}
-                            className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="underline text-sm text-white hover:text-[#3BF5C4] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             Forgot your password?
                         </Link>

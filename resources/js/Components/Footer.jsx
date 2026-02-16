@@ -99,7 +99,7 @@ const fadeUp = {
 
 const Footer = () => {
     return (
-        <footer className="bg-[#0B0F14] text-[#9CA3AF]">
+        <footer className="bg-[#0B0F14] text-[#9CA3AF]" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {/* Legal Content */}
             <div className="max-w-[1400px] mx-auto px-6 py-20">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-xs leading-relaxed">
@@ -201,7 +201,7 @@ const Footer = () => {
                         transition={{ duration: 0.8 }}
                         className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm"
                     >
-                        <p>© 2025 Aurea Octave. All rights reserved.</p>
+                        <p>© 2026 Aurea Octave. All rights reserved.</p>
 
                         <div className="flex gap-6">
                             <Link

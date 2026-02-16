@@ -119,12 +119,12 @@ export default function Benefits() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1">
+          <div className="flex gap-2 bg-white/5 border border-white/10 rounded-full p-1 w-full md:w-auto">
             {["Benefits", "Why Us"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 text-sm rounded-full transition-all ${
+                className={`px-6 py-2 w-[50%] text-sm rounded-full transition-all ${
                   activeTab === tab
                     ? "bg-[#3BF5C4] text-black shadow-lg"
                     : "text-[#9CA3AF] hover:text-white"

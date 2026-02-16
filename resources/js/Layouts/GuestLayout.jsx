@@ -8,7 +8,7 @@ export default function GuestLayout({ title, children }) {
             <Head title={title} />
             <div
                 className={`${
-                    title === "Contact Us" ? "bg-[#f5f5f5]" : "bg-white"
+                    title === "Contact Us" ? "bg-[#0A0F13]" : "bg-white"
                 } min-h-screen relative"`}
             >
                 <Header />

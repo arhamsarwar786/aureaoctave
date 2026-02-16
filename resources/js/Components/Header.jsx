@@ -230,7 +230,7 @@ const Header = () => {
                                     Docs & FAQs
                                 </Link>
                                 <Link
-                                    href="/about-us/contact-us"
+                                    href="/contact-us"
                                     className="block px-4 py-2 hover:bg-[#3BF5C4]/10"
                                 >
                                     Contact Us
@@ -289,7 +289,7 @@ const Header = () => {
 
             {/* Mobile Menu */}
             {showingNavigationDropdown && (
-                <div className="md:hidden bg-[#0B0F14] px-6 py-4 space-y-3">
+                <div className="md:hidden bg-[#0B0F14] px-6 py-4 space-y-3 text-gray-300">
                     <Link href="/" className="block">Home</Link>
                     <Link href="/services/products" className="block">
                         Tokenized Investment Products
