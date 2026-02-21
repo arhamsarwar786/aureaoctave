@@ -57,13 +57,13 @@ export default function Settings({ auth }) {
                                 <LockIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                                 <p className="text-lg text-white">Change Password</p>
                             </Link>
-                            <Link
+                            {/* <Link
                                 href={"#"}
                                 className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
                             >
                                 <SunDimIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                                 <p className="text-lg text-white">Switch Theme</p>
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,1 @@
+import{j as r}from"./app-C-qCNlJ0.js";import{A as e}from"./AuthenticatedLayout-DWqrkjbq.js";import i from"./AureaAi-B78acO81.js";import"./transition-Dv-2Onhj.js";import"./createLucideIcon-DKP5sVv5.js";import"./index-BQjPaWRj.js";import"./chevron-down-CKnQs9fD.js";function n(t){return r.jsx(e,{user:t.auth.user,title:"Aurea AI",children:r.jsx(i,{})})}export{n as default};

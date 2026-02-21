@@ -1,0 +1,1 @@
+import{j as m}from"./app-C-qCNlJ0.js";function o({value:t,className:e="",children:s,...c}){return m.jsx("label",{...c,className:"block font-medium text-sm text-[#cbcbcb] "+e,children:t||s})}export{o as I};
