@@ -1,3 +1,5 @@
+import React from "react";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import AureaAi from "./AureaAi";
 
 export default function AureaAiPage(props) {
