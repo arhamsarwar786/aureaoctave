@@ -5,7 +5,7 @@ import TextInput from "@/Components/App/TextInput";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 import { Avatar } from "@radix-ui/themes";
-import { UserRoundIcon } from "lucide-react";
+import { UserRoundIcon, CameraIcon } from "lucide-react";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -16,250 +16,202 @@ export default function UpdateProfileInformation({
 
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.name,
-            email: user.email,
-            address: user.name,
-            state: user.name,
-            country: user.name,
-            city: user.name,
-            zip_code: user.name,
+            name: user.name || "",
+            email: user.email || "",
+            phone_number: user.phone_number || "",
+            address: user.address || "",
+            state: user.state || "",
+            country: user.country || "",
+            city: user.city || "",
+            zip_code: user.zip_code || "",
         });
 
     const submit = (e) => {
         e.preventDefault();
-
         patch(route("profile.update"));
     };
 
     return (
-        <section className={className}>
-            <header>
-                <h2 className="text-lg font-medium text-[#1D1D1F] flex items-center gap-2">
-                    <UserRoundIcon /> Account Details
-                </h2>
-            </header>
+        <section className={` ${className}`}>
+            <div className="max-w-4xl mx-auto bg-[#111827] rounded-2xl shadow-xl p-8 space-y-8">
+                {/* Header */}
+                <header className="flex items-center gap-3 text-white mb-6">
+                    <UserRoundIcon className="w-6 h-6 text-[#3AF5C4]" />
+                    <h2 className="text-2xl font-semibold">Account Details</h2>
+                </header>
 
-            <form onSubmit={submit} className="mt-6 space-y-6">
-                <div className="grid sm:grid-cols-2 divide-x-2">
-                    <div className="space-y-4 pr-5 py-5">
-                        <h2 className="text-lg">General Information</h2>
-                        <div className="relative mt-5">
-                            <Avatar
-                                size="5"
-                                src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-                                fallback="A"
-                                radius="full"
-                            />
-                        </div>
-                        <div>
-                            <InputLabel htmlFor="name" value="Name" />
+                <form onSubmit={submit} className="space-y-8 text-white">
+                    <div className="grid sm:grid-cols-2 gap-8 divide-x-2 divide-gray-700">
+                        {/* General Information */}
+                        <div className="space-y-6 pr-5">
+                            <h3 className="text-xl font-semibold text-[#3AF5C4]">
+                                General Information
+                            </h3>
 
-                            <TextInput
-                                id="name"
-                                className="mt-1 block w-full"
-                                value={data.name}
-                                onChange={(e) =>
-                                    setData("name", e.target.value)
-                                }
-                                required
-                                isFocused
-                                autoComplete="name"
-                            />
+                            {/* Avatar */}
+                            <div className="relative w-24 h-24">
+                                <Avatar
+                                    size="24"
+                                    src={user.avatar || ""}
+                                    fallback={user.name?.[0] || "A"}
+                                    radius="full"
+                                    className="border-2 border-[#3AF5C4]"
+                                />
+                                <button
+                                    type="button"
+                                    className="absolute bottom-0 right-0 bg-[#3AF5C4] p-1 rounded-full shadow hover:bg-[#2dd9b0] transition"
+                                >
+                                    <CameraIcon className="w-4 h-4 text-black" />
+                                </button>
+                            </div>
 
-                            <InputError
-                                className="mt-2"
-                                message={errors.name}
-                            />
-                        </div>
-
-                        <div>
-                            <InputLabel htmlFor="email" value="Email" />
-
-                            <TextInput
-                                id="email"
-                                type="email"
-                                className="mt-1 block w-full"
-                                value={data.email}
-                                onChange={(e) =>
-                                    setData("email", e.target.value)
-                                }
-                                required
-                                autoComplete="username"
-                            />
-
-                            <InputError
-                                className="mt-2"
-                                message={errors.email}
-                            />
-                        </div>
-
-                        {mustVerifyEmail && user.email_verified_at === null && (
+                            {/* Name */}
                             <div>
-                                <p className="text-sm mt-2 text-gray-800">
-                                    Your email address is unverified.
+                                <InputLabel htmlFor="name" value="Name" />
+                                <TextInput
+                                    id="name"
+                                    type="text"
+                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    value={data.name}
+                                    onChange={(e) =>
+                                        setData("name", e.target.value)
+                                    }
+                                    required
+                                    isFocused
+                                    autoComplete="name"
+                                />
+                                <InputError
+                                    className="mt-2 text-red-400"
+                                    message={errors.name}
+                                />
+                            </div>
+
+                            {/* Email */}
+                            <div>
+                                <InputLabel htmlFor="email" value="Email" />
+                                <TextInput
+                                    id="email"
+                                    type="email"
+                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    value={data.email}
+                                    onChange={(e) =>
+                                        setData("email", e.target.value)
+                                    }
+                                    required
+                                    autoComplete="username"
+                                />
+                                <InputError
+                                    className="mt-2 text-red-400"
+                                    message={errors.email}
+                                />
+                            </div>
+
+                            {/* Phone */}
+                            <div>
+                                <InputLabel
+                                    htmlFor="phone_number"
+                                    value="Phone Number"
+                                />
+                                <TextInput
+                                    id="phone_number"
+                                    type="tel"
+                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    value={data.phone_number}
+                                    onChange={(e) =>
+                                        setData("phone_number", e.target.value)
+                                    }
+                                    required
+                                />
+                                <InputError
+                                    className="mt-2 text-red-400"
+                                    message={errors.phone_number}
+                                />
+                            </div>
+
+                            {/* Email verification notice */}
+                            {mustVerifyEmail && !user.email_verified_at && (
+                                <div className="bg-yellow-500 text-black p-3 rounded-lg text-sm">
+                                    Your email is unverified.{" "}
                                     <Link
                                         href={route("verification.send")}
                                         method="post"
                                         as="button"
-                                        className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        className="underline font-semibold"
                                     >
-                                        Click here to re-send the verification
-                                        email.
+                                        Resend verification email
                                     </Link>
-                                </p>
+                                </div>
+                            )}
+                        </div>
 
-                                {status === "verification-link-sent" && (
-                                    <div className="mt-2 font-medium text-sm text-green-600">
-                                        A new verification link has been sent to
-                                        your email address.
-                                    </div>
-                                )}
-                            </div>
-                        )}
+                        {/* Address Information */}
+                        <div className="space-y-6 pl-5">
+                            <h3 className="text-xl font-semibold text-[#3AF5C4]">
+                                Address Information
+                            </h3>
 
-                        <div>
-                            <InputLabel
-                                htmlFor="phone_number"
-                                value="Phone Number"
-                            />
-                            <TextInput
-                                id="phone_number"
-                                type="tel"
-                                className="mt-1 block w-full"
-                                value={data.phone_number}
-                                onChange={(e) =>
-                                    setData("phone_number", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.phone_number}
-                            />
+                            {[
+                                { id: "address", label: "Address" },
+                                { id: "state", label: "State / Province" },
+                                { id: "country", label: "Country" },
+                                { id: "city", label: "City" },
+                                { id: "zip_code", label: "Zip Code" },
+                            ].map((field) => (
+                                <div key={field.id}>
+                                    <InputLabel
+                                        htmlFor={field.id}
+                                        value={field.label}
+                                    />
+                                    <TextInput
+                                        id={field.id}
+                                        type="text"
+                                        className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                        value={data[field.id]}
+                                        onChange={(e) =>
+                                            setData(field.id, e.target.value)
+                                        }
+                                        required
+                                    />
+                                    <InputError
+                                        className="mt-2 text-red-400"
+                                        message={errors[field.id]}
+                                    />
+                                </div>
+                            ))}
                         </div>
                     </div>
-                    <div className="space-y-4 pl-5 py-5">
-                        <h2 className="text-lg">Address Information</h2>
-                        <div>
-                            <InputLabel htmlFor="address" value="Address" />
-                            <TextInput
-                                id="address"
-                                className="mt-1 block w-full"
-                                value={data.address}
-                                onChange={(e) =>
-                                    setData("address", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.address}
-                            />
-                        </div>
 
-                        <div>
-                            <InputLabel
-                                htmlFor="state"
-                                value="State / Province"
-                            />
-                            <TextInput
-                                id="state"
-                                type="text"
-                                className="mt-1 block w-full"
-                                value={data.state}
-                                onChange={(e) =>
-                                    setData("state", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.state}
-                            />
-                        </div>
+                    {/* Buttons */}
+                    <div className="space-y-4">
+                        <PrimaryButton
+                            disabled={processing}
+                            className="w-full bg-gradient-to-r from-[#3AF5C4] to-[#1D9D8E] hover:from-[#32eab0] hover:to-[#1b9c88] text-black font-bold rounded-xl py-3 transition"
+                        >
+                            Update
+                        </PrimaryButton>
 
-                        <div>
-                            <InputLabel htmlFor="country" value="Country" />
-                            <TextInput
-                                id="country"
-                                type="text"
-                                className="mt-1 block w-full"
-                                value={data.country}
-                                onChange={(e) =>
-                                    setData("country", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.country}
-                            />
-                        </div>
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out duration-300"
+                            enterFrom="opacity-0"
+                            enterTo="opacity-100"
+                            leave="transition ease-in-out duration-300"
+                            leaveTo="opacity-0"
+                        >
+                            <p className="text-sm text-green-400 text-center">
+                                Profile updated successfully!
+                            </p>
+                        </Transition>
 
-                        <div>
-                            <InputLabel htmlFor="city" value="City" />
-                            <TextInput
-                                id="city"
-                                type="text"
-                                className="mt-1 block w-full"
-                                value={data.city}
-                                onChange={(e) =>
-                                    setData("city", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.city}
-                            />
-                        </div>
-
-                        <div>
-                            <InputLabel htmlFor="zip_code" value="Zip Code" />
-                            <TextInput
-                                id="zip_code"
-                                type="text"
-                                className="mt-1 block w-full"
-                                value={data.zip_code}
-                                onChange={(e) =>
-                                    setData("zip_code", e.target.value)
-                                }
-                                required
-                            />
-                            <InputError
-                                className="mt-2"
-                                message={errors.zip_code}
-                            />
-                        </div>
+                        <Link
+                            href={route("settings")}
+                            className="inline-block w-full text-center py-3 rounded-xl border-2 border-[#3AF5C4] text-[#3AF5C4] font-semibold uppercase hover:bg-[#1F2937] transition"
+                        >
+                            Cancel
+                        </Link>
                     </div>
-                </div>
-                <div className="">
-                    <PrimaryButton
-                        disabled={processing}
-                        className="w-full !bg-[#3B4FE4] !rounded"
-                    >
-                        Update
-                    </PrimaryButton>
-
-                    <Transition
-                        show={recentlySuccessful}
-                        enter="transition ease-in-out"
-                        enterFrom="opacity-0"
-                        leave="transition ease-in-out"
-                        leaveTo="opacity-0"
-                    >
-                        <p className="text-sm text-gray-600">Updated.</p>
-                    </Transition>
-                </div>
-                <div className="">
-                    <Link
-                        href={route("settings")}
-                        className="inline-block w-full items-center px-5 py-4 bg-white rounded font-semibold text-xs text-[#3B4FE4] uppercase text-center tracking-widest transition ease-in-out duration-150 border-2 border-[#3B4FE4]"
-                    >
-                        Cancel
-                    </Link>
-                </div>
-            </form>
+                </form>
+            </div>
         </section>
     );
 }

@@ -48,7 +48,7 @@ const TradingViewTickerTape = () => {
             showSymbolLogo: true,
             isTransparent: false,
             displayMode: "adaptive",
-            colorTheme: "light",
+            colorTheme: "dark",
             locale: "en",
         });
 
@@ -59,7 +59,7 @@ const TradingViewTickerTape = () => {
 
     return (
         <div
-            className="tradingview-widget-container ticker-tap mb-8"
+            className="tradingview-widget-container ticker-tap mb-8 bg-[#0E151D] "
             id="tradingview-ticker-tape-container"
         >
             <div className="tradingview-widget-container__widget"></div>

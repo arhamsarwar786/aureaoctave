@@ -7,14 +7,14 @@ import { Head } from "@inertiajs/react";
 export default function AccountDetails({ auth, mustVerifyEmail, status }) {
     return (
         <AuthenticatedLayout user={auth.user} title={"Account Details"}>
-            <div className="py-12">
+            <div className="">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className="text-center">
-                        <h1 className="font-bold text-2xl">Account Settings</h1>
-                        <p>Update your account information</p>
+                        <h1 className="font-bold text-2xl text-white">Account Settings</h1>
+                        <p className="text-white">Update your account information</p>
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div className=" bg-[#0E151D] shadow sm:rounded-lg">
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}

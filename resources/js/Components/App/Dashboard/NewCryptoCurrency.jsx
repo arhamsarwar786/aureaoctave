@@ -28,19 +28,19 @@ const NewCryptocurrency = () => {
     }, []);
 
     return (
-        <div className="mb-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div className="mb-8 bg-[#0E151D] overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 space-y-5">
                 <header className="w-ful flex gap-5 flex-wrap items-center justify-between">
-                    <h1 className="text-xl font-bold text-black ">
+                    <h1 className="text-xl font-bold text-white ">
                         Newly Cryptocurrency
                     </h1>
-                    <Link className="text-sm text-[#001B42]">See All</Link>
+                    <Link className="text-sm text-[#3AF5C4]">See All</Link>
                 </header>
                 <main className="space-y-5">
                     {newCoins.map((coin, index) => (
                         <div className="flex items-center" key={index}>
                             <div className="flex-1">
-                                <div className="flex space-x-2">
+                                <div className="flex space-x-2 text-white">
                                     <div>
                                         <img
                                             // src={coin.image}
@@ -57,7 +57,7 @@ const NewCryptocurrency = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-5">
+                            <div className="w-5 text-white">
                                 <Link className="">
                                     <ChevronRightIcon />
                                 </Link>

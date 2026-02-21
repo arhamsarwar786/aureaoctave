@@ -15,11 +15,11 @@ export default function Settings({ auth }) {
             <div className="py-12">
                 <div className="max-w-2xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <div className="text-center">
-                        <h1 className="font-bold text-2xl">Account Settings</h1>
-                        <p>Update your account information</p>
+                        <h1 className="font-bold text-2xl text-white">Account Settings</h1>
+                        <p className="text-white">Update your account information</p>
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow rounded-lg space-y-5">
+                    <div className="p-4 sm:p-8 bg-[#0E151D] shadow rounded-lg space-y-5">
                         <div className="flex items-center gap-5">
                             <Avatar
                                 size="5"
@@ -28,10 +28,10 @@ export default function Settings({ auth }) {
                                 radius="full"
                             />
                             <div>
-                                <h1 className="capitalize font-bold text-xl">
+                                <h1 className="capitalize font-bold text-xl text-white">
                                     {user.name}
                                 </h1>
-                                <p className="text-[#00000080]">{user.email}</p>
+                                <p className="text-[#ffffff80]">{user.email}</p>
                             </div>
                         </div>
 
@@ -40,29 +40,29 @@ export default function Settings({ auth }) {
                                 href={route("settings.account-details")}
                                 className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
                             >
-                                <UserRoundIcon className="h-5 w-5 md:h-6 md:w-6" />
-                                <p className="text-lg">Account Details</p>
+                                <UserRoundIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                                <p className="text-lg text-white">Account Details</p>
                             </Link>
                             <Link
                                 href={route("settings.upload-document")}
                                 className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
                             >
-                                <FileTextIcon className="h-5 w-5 md:h-6 md:w-6" />
-                                <p className="text-lg">Upload Documents</p>
+                                <FileTextIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                                <p className="text-lg text-white">Upload Documents</p>
                             </Link>
                             <Link
                                 href={route("settings.change-password")}
                                 className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
                             >
-                                <LockIcon className="h-5 w-5 md:h-6 md:w-6" />
-                                <p className="text-lg">Change Password</p>
+                                <LockIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                                <p className="text-lg text-white">Change Password</p>
                             </Link>
                             <Link
                                 href={"#"}
                                 className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
                             >
-                                <SunDimIcon className="h-5 w-5 md:h-6 md:w-6" />
-                                <p className="text-lg">Switch Theme</p>
+                                <SunDimIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
+                                <p className="text-lg text-white">Switch Theme</p>
                             </Link>
                         </div>
                     </div>

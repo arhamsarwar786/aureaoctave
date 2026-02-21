@@ -4,60 +4,70 @@ import LTC from "@/assets/img/ltc.png";
 import GXS from "@/assets/img/gxs.png";
 import HODL from "@/assets/img/hodl.png";
 import ETC from "@/assets/img/etc.png";
-import React, { useEffect, useRef, memo } from "react";
+import React, { useEffect } from "react";
+
+// ================= Newly Added Section =================
+const newlyAdded = [
+    {
+        name: "Litecoin",
+        img: LTC,
+        date: "Added 2 days ago",
+    },
+    {
+        name: "Ethereum Classic",
+        img: ETC,
+        date: "Added 2 days ago",
+    },
+    {
+        name: "H0dlcoin",
+        img: HODL,
+        date: "Added 2 days ago",
+    },
+    {
+        name: "GXchain",
+        img: GXS,
+        date: "Added 2 days ago",
+    },
+];
+
 const NewlyAddedSection = () => {
-    const newlyAdded = [
-        {
-            name: "Litecoin",
-            img: LTC,
-            date: "Added 2 days ago",
-        },
-        {
-            name: "Euthereum Classic",
-            img: ETC,
-            date: "Added 2 days ago",
-        },
-        {
-            name: "H0dlcoin",
-            img: HODL,
-            date: "Added 2 days ago",
-        },
-        {
-            name: "GXchain",
-            img: GXS,
-            date: "Added 2 days ago",
-        },
-    ];
     return (
-        <div className="mb-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div className="mb-8 bg-[#0E151D] overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 space-y-5">
-                <header className="w-ful flex gap-5 flex-wrap items-center justify-between">
-                    <h1 className="text-xl font-bold text-black ">
-                        Newly Cryptocurrency
+                <header className="w-full flex gap-5 flex-wrap items-center justify-between">
+                    <h1 className="text-xl font-bold text-white">
+                        Newly Added Cryptocurrency
                     </h1>
-                    <Link className="text-sm text-[#001B42]">See All</Link>
+                    <Link
+                        href="/newly-added"
+                        className="text-sm text-[#3AF5C4] hover:underline"
+                    >
+                        See All
+                    </Link>
                 </header>
                 <main className="space-y-5">
                     {newlyAdded.map((newly, index) => (
-                        <div className="flex items-center" key={index}>
-                            <div className="flex-1">
-                                <div className="flex space-x-2">
-                                    <div>
-                                        <img src={newly.img} alt={newly.name} />
-                                    </div>
-                                    <div>
-                                        <h3>{newly.name}</h3>
-                                        <p className="text-[12px]">
-                                            {newly.date}
-                                        </p>
-                                    </div>
+                        <div
+                            className="flex items-center justify-between"
+                            key={index}
+                        >
+                            <div className="flex items-center space-x-2 flex-1">
+                                <img
+                                    src={newly.img}
+                                    alt={newly.name}
+                                    className="w-10 h-10 rounded-full"
+                                    loading="lazy"
+                                />
+                                <div>
+                                    <h3 className="font-medium text-white">{newly.name}</h3>
+                                    <p className="text-[12px] text-white">
+                                        {newly.date}
+                                    </p>
                                 </div>
                             </div>
-                            <div className="w-5">
-                                <Link className="">
-                                    <ChevronRightIcon />
-                                </Link>
-                            </div>
+                            <Link>
+                                <ChevronRightIcon className="w-5 h-5 text-gray-400" />
+                            </Link>
                         </div>
                     ))}
                 </main>
@@ -66,14 +76,24 @@ const NewlyAddedSection = () => {
     );
 };
 
-export default NewlyAddedSection;
-
+// ================= TradingView Widget =================
 export const TradingViewWidget1 = () => {
     useEffect(() => {
+        const container = document.getElementById(
+            "tradingview-widget-container"
+        );
+        if (!container) return;
+
+        // Clear previous content
+        container.innerHTML = "";
+
         const script = document.createElement("script");
+        script.type = "text/javascript";
         script.src =
             "https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js";
         script.async = true;
+
+        // TradingView widget config
         script.innerHTML = JSON.stringify({
             symbols: [
                 ["Apple", "AAPL|1D"],
@@ -108,40 +128,22 @@ export const TradingViewWidget1 = () => {
             maLength: 9,
             lineWidth: 2,
             lineType: 0,
-            dateRanges: [
-                "1d|1",
-                "1m|30",
-                "3m|60",
-                "12m|1D",
-                "60m|1W",
-                "all|1M",
-            ],
+            dateRanges: ["1d|1", "1m|30", "3m|60", "12m|1D", "60m|1W", "all|1M"],
         });
 
-        document
-            .getElementById("tradingview-widget-container")
-            .appendChild(script);
+        container.appendChild(script);
     }, []);
 
     return (
-        <div className="mb-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div className="mb-8 bg-[#0E151D] overflow-hidden shadow-sm sm:rounded-lg">
             <div
-                className="tradingview-widget-container newly-added"
+                className="tradingview-widget-container w-full h-64"
                 id="tradingview-widget-container"
             >
                 <div className="tradingview-widget-container__widget"></div>
-                {/* <div className="tradingview-widget-copyright">
-                <a
-                    href="https://www.tradingview.com/"
-                    rel="noopener nofollow"
-                    target="_blank"
-                >
-                    <span className="blue-text">
-                        Track all markets on TradingView
-                    </span>
-                </a>
-             */}
             </div>
         </div>
     );
 };
+
+export default NewlyAddedSection;

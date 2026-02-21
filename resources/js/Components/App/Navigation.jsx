@@ -15,220 +15,170 @@ const Navigation = ({ user }) => {
 
     const roles = usePage().props.auth.roles;
     return (
-        <nav className="bg-white border-b border-gray-100">
-            <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
-                    <div className="flex">
-                        <div className="shrink-0 flex items-center">
-                            <div>
-                                <h1 className="capitalize p-0 m-0">
-                                    Welcome {user.name}!
-                                </h1>
-                                <p className="p-0 m-0 text-xs">
-                                    to Aurea Octave
-                                </p>
+  <nav className="sticky top-0 z-50 backdrop-blur-xl bg-slate-900/80 border-b border-slate-700 shadow-xl">
+    <div className="w-full mx-auto px-6 lg:px-10">
+        <div className="flex justify-between h-20 items-center">
+
+            {/* Left Section - Welcome */}
+            <div className="flex items-center gap-6">
+                <div className="flex flex-col">
+                    <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">
+                        Welcome back
+                    </span>
+
+                    <h1 className="capitalize text-2xl font-bold text-white leading-tight">
+                        {user.name}
+                    </h1>
+
+                    <span className="text-xs text-slate-400 font-medium">
+                        to{" "}
+                        <span className="bg-[#3AF5C4] bg-clip-text text-transparent font-semibold">
+                            Aurea Octave
+                        </span>
+                    </span>
+                </div>
+            </div>
+
+            {/* Right Section */}
+            <div className="hidden sm:flex items-center gap-6">
+
+                {/* Aurea AI Button */}
+                <Link
+                    href="/aurea-ai"
+                    className="px-5 py-2.5 rounded-xl 
+                    bg-gradient-to-r from-[#3AF5C4] to-cyan-500 
+                    text-black font-semibold shadow-lg 
+                    hover:scale-105 hover:shadow-indigo-500/30 
+                    transition-all duration-300"
+                >
+                    Aurea AI
+                </Link>
+
+                {/* Profile Dropdown */}
+                <Dropdown>
+                    <Dropdown.Trigger>
+                        <button className="flex items-center gap-3 bg-slate-800/70 hover:bg-slate-700 px-3 py-2 rounded-xl transition-all duration-300 border border-slate-700">
+
+                            {/* Avatar */}
+                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#3AF5C4] to-cyan-500 text-white font-bold text-lg shadow-md">
+                                {user.name[0]}
                             </div>
-                        </div>
-                    </div>
 
-                    <div className="hidden sm:flex sm:items-center">
-                        <a
-                            href="https://beta.aureaoctave.com/"
-                            className="font-bold"
-                        >
-                            <span>Aurea AI</span>
-                        </a>
-                    </div>
+                            {/* Name */}
+                            <span className="text-white font-medium hidden md:block">
+                                {user.name}
+                            </span>
 
-                    <div className="hidden sm:flex sm:items-center sm:ms-6">
-                        <div className="ms-3 relative">
-                            <Dropdown>
-                                <Dropdown.Trigger>
-                                    <span className="inline-flex rounded-md">
-                                        <button
-                                            type="button"
-                                            className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
-                                        >
-                                            {/* {user.name} */}
-                                            <div className="footer_name">
-                                                <p className="text-xl font-bold text-gray-700">
-                                                    {user.name[0]}
-                                                </p>
-                                            </div>
-                                            <svg
-                                                className="ms-2 -me-0.5 h-4 w-4"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20"
-                                                fill="currentColor"
-                                            >
-                                                <path
-                                                    fillRule="evenodd"
-                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                    clipRule="evenodd"
-                                                />
-                                            </svg>
-                                        </button>
-                                    </span>
-                                </Dropdown.Trigger>
-
-                                <Dropdown.Content>
-                                    <Dropdown.Link href={route("profile.edit")}>
-                                        Profile
-                                    </Dropdown.Link>
-                                    <Dropdown.Link
-                                        href={route("logout")}
-                                        method="post"
-                                        as="button"
-                                    >
-                                        Log Out
-                                    </Dropdown.Link>
-                                </Dropdown.Content>
-                            </Dropdown>
-                        </div>
-                    </div>
-
-                    <div className="-me-2 flex items-center sm:hidden">
-                        <button
-                            onClick={() =>
-                                setShowingNavigationDropdown(
-                                    (previousState) => !previousState
-                                )
-                            }
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
-                        >
+                            {/* Arrow */}
                             <svg
-                                className="h-6 w-6"
-                                stroke="currentColor"
+                                className="h-4 w-4 text-slate-400"
                                 fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
                                 viewBox="0 0 24 24"
                             >
-                                <path
-                                    className={
-                                        !showingNavigationDropdown
-                                            ? "inline-flex"
-                                            : "hidden"
-                                    }
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                                <path
-                                    className={
-                                        showingNavigationDropdown
-                                            ? "inline-flex"
-                                            : "hidden"
-                                    }
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
+                                <path d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-                    </div>
-                </div>
-            </div>
+                    </Dropdown.Trigger>
 
-            <div
-                className={
-                    (showingNavigationDropdown ? "block" : "hidden") +
-                    " sm:hidden"
-                }
-            >
-                <div className="pt-2 pb-3 space-y-1">
-                    {sidebarLinks.map((item) => {
-                        // Check if the user has any of the required roles for the link
-                        const hasRole = item.roles.some((role) =>
-                            roles.includes(role)
-                        );
+                    <Dropdown.Content className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl">
 
-                        if (!hasRole) {
-                            return null;
-                        }
-                        const IconComponent = item.icon;
-                        const isActive =
-                            route().current(item.routeName) ||
-                            url.startsWith(`${item.routeName}`);
-                        return (
-                            <ResponsiveNavLink
-                                href={route(item.routeName)}
-                                key={item.label}
-                                active={isActive}
-                            >
-                                <IconComponent className="size-5" />
-                                <span className="ml-1">{item.label}</span>
-                            </ResponsiveNavLink>
-                        );
-                    })}
-
-                    <a
-                        href="https://beta.aureaoctave.com/"
-                        className={`w-full flex items-start ps-3 pe-4 py-2 border-l-4 "border-transparent text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 text-sm font-medium focus:outline-none transition duration-150 ease-in-out`}
-                    >
-                        <span>Aurea AI</span>
-                    </a>
-                    {/* Admin Links (Only for Admin Users) */}
-                    {roles.includes("admin") && (
-                        <>
-                            <h3 className="text-gray-900 relative inline-flex max-xl:block items-center p-3 pl-4 rounded text-[16px] leading-5 w-full font-bold">
-                                Admin Links
-                            </h3>
-                            {adminSidebarLinks.map((item) => {
-                                // Check if the user has any of the required roles for the link
-                                const hasRole = item.roles.some((role) =>
-                                    roles.includes(role)
-                                );
-
-                                if (!hasRole) {
-                                    return null;
-                                }
-                                const IconComponent = item.icon;
-                                const isActive =
-                                    route().current(item.routeName) ||
-                                    url.startsWith(`${item.routeName}`);
-                                return (
-                                    <ResponsiveNavLink
-                                        href={route(item.routeName)}
-                                        key={item.label}
-                                        active={isActive}
-                                    >
-                                        <IconComponent className="size-5" />
-                                        <span className="ml-1">
-                                            {item.label}
-                                        </span>
-                                    </ResponsiveNavLink>
-                                );
-                            })}
-                        </>
-                    )}
-                </div>
-
-                <div className="pt-4 pb-1 border-t border-gray-200">
-                    <div className="px-4">
-                        <div className="font-medium text-base text-gray-800">
-                            {user.name}
-                        </div>
-                        <div className="font-medium text-sm text-gray-500">
-                            {user.email}
-                        </div>
-                    </div>
-
-                    <div className="mt-3 space-y-1">
-                        <ResponsiveNavLink href={route("profile.edit")}>
+                        <Dropdown.Link
+                            href={route("profile.edit")}
+                            className="text-black hover:bg-gray-100 transition-all duration-300"
+                        >
                             Profile
-                        </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            method="post"
+                        </Dropdown.Link>
+
+                        <Dropdown.Link
                             href={route("logout")}
+                            method="post"
                             as="button"
+                            className="text-red-400 hover:bg-red-500/10"
                         >
                             Log Out
-                        </ResponsiveNavLink>
-                    </div>
-                </div>
+                        </Dropdown.Link>
+                    </Dropdown.Content>
+                </Dropdown>
             </div>
-        </nav>
+
+            {/* Mobile Toggle */}
+            <div className="sm:hidden">
+                <button
+                    onClick={() =>
+                        setShowingNavigationDropdown((prev) => !prev)
+                    }
+                    className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
+                >
+                    <svg
+                        className="h-6 w-6"
+                        stroke="currentColor"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                    >
+                        {showingNavigationDropdown ? (
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M6 18L18 6M6 6l12 12"
+                            />
+                        ) : (
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h16M4 18h16"
+                            />
+                        )}
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {/* Mobile Menu */}
+    {showingNavigationDropdown && (
+        <div className="sm:hidden bg-slate-900 border-t border-slate-700 px-4 py-4 space-y-2">
+
+            {sidebarLinks.map((item) => {
+                const hasRole = item.roles.some((role) =>
+                    roles.includes(role)
+                );
+                if (!hasRole) return null;
+
+                const IconComponent = item.icon;
+
+                return (
+                    <ResponsiveNavLink
+                        key={item.label}
+                        href={route(item.routeName)}
+                        className="flex items-center gap-3 text-slate-300 hover:bg-slate-800 rounded-lg px-3 py-2"
+                    >
+                        <IconComponent className="size-5" />
+                        {item.label}
+                    </ResponsiveNavLink>
+                );
+            })}
+
+            <div className="border-t border-slate-700 pt-3 mt-3">
+                <ResponsiveNavLink href={route("profile.edit")}>
+                    Profile
+                </ResponsiveNavLink>
+
+                <ResponsiveNavLink
+                    method="post"
+                    href={route("logout")}
+                    as="button"
+                    className="text-red-400"
+                >
+                    Log Out
+                </ResponsiveNavLink>
+            </div>
+        </div>
+    )}
+</nav>
     );
 };
 

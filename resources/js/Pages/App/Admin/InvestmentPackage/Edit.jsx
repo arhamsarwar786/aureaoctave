@@ -170,7 +170,7 @@ export default function EditInvestmentPackage({ auth, investmentPackage }) {
                         <div className="flex items-center gap-4">
                             <PrimaryButton
                                 disabled={processing}
-                                className="w-full !bg-[#3B4FE4] !rounded"
+                                className="w-full !bg-[#3AF5C4] !rounded"
                             >
                                 Update
                             </PrimaryButton>

@@ -15,7 +15,7 @@ function TradingViewWidget() {
           "symbol": "BITSTAMP:BTCUSD",
           "interval": "D",
           "timezone": "Etc/UTC",
-          "theme": "light",
+          "theme": "dark",
           "style": "1",
           "locale": "en",
           "allow_symbol_change": true,
@@ -27,7 +27,7 @@ function TradingViewWidget() {
 
     return (
         <div
-            className="tradingview-widget-container chart"
+            className="tradingview-widget-container bg-[#0E151D] chart"
             ref={container}
             style={{ height: "24rem !important", width: "100%" }}
         >

@@ -53,7 +53,7 @@ const TrendingMarket = () => {
     ];
     return (
         <div className="mb-8">
-            <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div className="bg-[#0E151D] overflow-hidden shadow-sm sm:rounded-lg">
                 <div className="p-6 space-y-4">
                     <header className="w-ful flex gap-5 flex-wrap items-center justify-between">
                         <h1 className="text-xl font-bold text-black ">

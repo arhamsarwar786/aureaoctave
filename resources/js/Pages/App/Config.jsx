@@ -15,7 +15,7 @@ export default function Config({ auth, transaction }) {
                         Transactions
                     </h1>
                 </header>
-                <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg min-h-56">
+                <div className="bg-[#0E151D] overflow-hidden shadow-sm sm:rounded-lg min-h-56">
                     <div className="p-6 space-y-4">
                         <main>
                             <div className="md:flex justify-end">

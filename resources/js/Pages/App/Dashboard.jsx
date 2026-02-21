@@ -53,7 +53,7 @@ export default function Dashboard({ auth, balance }) {
 
                         {/* TradingView Widget */}
                         <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                            <div className="p-6">
+                            <div className="p-6 bg-[#0E151D]">
                                 <TradingViewWidget />
                             </div>
                         </div>
@@ -65,17 +65,17 @@ export default function Dashboard({ auth, balance }) {
                     {/* Right Column (2 columns on desktop) */}
                     <div className="lg:col-span-2 space-y-5">
                         {/* Deposit and Withdrawal Buttons */}
-                        <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="bg-[#0E151D] border border-gray-500 overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="p-6 space-y-4">
                                 <Link
                                     href={route("deposit")}
-                                    className="block w-full text-center py-3 bg-[#C58C42] rounded text-white border border-[#C58C42] text-lg font-bold hover:bg-[#B37B3A] transition-colors"
+                                    className="block w-full text-center py-3 bg-[#3AF5C4] rounded text-black border border-[#3AF5C4] text-lg font-bold hover:bg-[#84f1d4] transition-colors"
                                 >
                                     Deposit
                                 </Link>
                                 <Link
                                     href={route("withdrawal")}
-                                    className="block w-full text-center py-3 bg-white rounded text-[#2752E7] border border-[#2752E7] text-lg font-bold hover:bg-gray-100 transition-colors"
+                                    className="block w-full text-center py-3 bg-black rounded text-[#3AF5C4] border border-[#3AF5C4] text-lg font-bold hover:bg-gray-100 transition-colors"
                                 >
                                     Withdrawal
                                 </Link>

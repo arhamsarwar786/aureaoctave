@@ -7,12 +7,12 @@ const BuySellSection = () => {
     const [tab, setTab] = useState("buy");
 
     return (
-        <div className="mb-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div className="mb-8 bg-[#0E151D] border border-gray-500 overflow-hidden shadow-sm sm:rounded-lg">
             <div className="p-6 space-y-4">
                 <div className="relative grid grid-cols-2 divide-x">
                     <button
                         className={`${
-                            tab === "buy" ? "text-[#001B42]" : "text-[#A9A9A9]"
+                            tab === "buy" ? "text-[#3AF5C4]" : "text-[#A9A9A9]"
                         } w-full p-3 text-lg font-semibold transition delay-150`}
                         onClick={() => setTab("buy")}
                     >
@@ -20,7 +20,7 @@ const BuySellSection = () => {
                     </button>
                     <button
                         className={`${
-                            tab === "sell" ? "text-[#001B42]" : "text-[#A9A9A9]"
+                            tab === "sell" ? "text-[#3AF5C4]" : "text-[#A9A9A9]"
                         } w-full p-3 text-lg font-semibold transition delay-150`}
                         onClick={() => setTab("sell")}
                     >
@@ -29,7 +29,7 @@ const BuySellSection = () => {
                 </div>
                 <div className="text-center relative py-1">
                     <h2 className="text-[#A9A9A9] text-lg">Ethereum Price</h2>
-                    <h1 className="text-black text-2xl font-bold">$3110,31</h1>
+                    <h1 className="text-white text-2xl font-bold">$3110,31</h1>
                 </div>
                 <div className="relative space-y-5">
                     <div className="border rounded w-full overflow-hidden min-h-12">
@@ -43,7 +43,7 @@ const BuySellSection = () => {
                                     className="w-full min-h-12 border-none outline-none"
                                 />
                             </div>
-                            <div className="w-20">lore</div>
+                            <div className="w-20 text-white">lore</div>
                         </div>
                     </div>
 
@@ -64,8 +64,8 @@ const BuySellSection = () => {
                                     className="w-full min-h-12 border-none outline-none text-[#001B42]"
                                 />
                             </div>
-                            <div className="w-20">
-                                <Select.Root defaultValue="apple">
+                            <div className="w-20 text-white ">
+                                <Select.Root defaultValue="apple" >
                                     <Select.Trigger variant="ghost" />
                                     <Select.Content>
                                         <Select.Item value="carrot">
@@ -80,8 +80,8 @@ const BuySellSection = () => {
                         </div>
                     </div>
                 </div>
-                <button className="relative w-full flex min-h-14 items-center justify-center bg-[#C58C42] rounded text-white border border-[#C58C42]">
-                    <div className="text-lg font-bold">Buy ETH</div>
+                <button className="relative w-full flex min-h-14 items-center justify-center bg-[#3AF5C4] rounded text-black border border-[#C58C42]">
+                    <div className="text-lg font-bold ">Buy ETH</div>
                 </button>
             </div>
         </div>

@@ -20,7 +20,7 @@ export default function ChangePassword({ auth }) {
                         <p>Update your account information</p>
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow rounded-lg space-y-8">
+                    <div className="p-4 sm:p-8 bg-[#0E151D] shadow rounded-lg space-y-8">
                         <header>
                             <h2 className="text-lg font-medium text-[#1D1D1F] flex items-center gap-2">
                                 <LockIcon /> Change Password

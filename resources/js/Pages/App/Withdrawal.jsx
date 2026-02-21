@@ -19,88 +19,134 @@ export default function Dashboard({ auth }) {
     };
 
     return (
-        <AuthenticatedLayout user={auth.user} title="Withdrawal">
-            <section className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-                {/* Left Column: Withdrawal Information */}
-                <div className="p-4 sm:p-8 bg-white shadow rounded-lg space-y-5">
-                    <main className="space-y-5 text-sm">
-                        {[
-                            "Withdrawal request cut off time 12:00 AEST/AEDT. Withdrawal submitted before this time will be processed same day, requests made after will be processed next business day.",
-                            "The requested withdrawal amount should be less than or equal to the account balance at the time of the processing of your withdrawal request.",
-                            "Phoenix Trading does not allow third-party transfers, funds will need to be returned to a bank account under the same name as your trading account.",
-                            "Credit card withdrawals are to be processed according to the same card that was used to deposit with.",
-                            "There should be at least 100% free margin available in your trade account. This requirement is in place to reduce the likelihood of a margin call.",
-                            "You must add your bank details here if you are making a request to your bank account for the first time.",
-                            "Kindly note to ensure the security of your funds, all withdrawal requests require additional confirmation. You can do this by clicking the 'Confirm Withdrawal' button in the email you will receive after submitting your request.",
-                            "For First USDT withdrawals, we require that you upload a screenshot of the Wallet QR Code and the Wallet ID for the Verification.",
-                        ].map((text, index) => (
-                            <div key={index} className="flex gap-5">
-                                <div>
-                                    <CheckCheckIcon className="text-green-500" />
-                                </div>
-                                <div>{text}</div>
-                            </div>
-                        ))}
-                    </main>
+     <AuthenticatedLayout user={auth.user} title="Withdrawal">
+    <div className="p-6 lg:p-10">
+
+        <section className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+            {/* LEFT COLUMN - Rules Card */}
+            <div className="bg-gradient-to-br from-[#0F1720] to-[#0B1117]
+                            border border-slate-700
+                            rounded-2xl shadow-2xl
+                            p-8 space-y-6">
+
+                <div>
+                    <h2 className="text-2xl font-bold text-white">
+                        Withdrawal Guidelines
+                    </h2>
+                    <p className="text-slate-400 mt-2 text-sm">
+                        Please read carefully before submitting your withdrawal request.
+                    </p>
                 </div>
 
-                {/* Right Column: Withdrawal Form */}
-                <div className="p-4 sm:p-8 bg-white shadow rounded-lg space-y-5">
-                    <header>
-                        <h1 className="font-bold text-2xl">Withdrawal</h1>
-                        <p>Fill the form to withdraw from your account.</p>
-                    </header>
-                    <form onSubmit={onSubmit} className="space-y-6">
-                        <div>
-                            <InputLabel
-                                htmlFor="amount"
-                                value="Withdrawal Amount"
-                            />
-                            <TextInput
-                                id="amount"
-                                value={data.amount}
-                                onChange={(e) =>
-                                    setData("amount", e.target.value)
-                                }
-                                type="text"
-                                className="mt-1 block w-full"
-                                required
-                            />
-                            <InputError
-                                message={errors.amount}
-                                className="mt-2"
-                            />
+                <main className="space-y-5 text-sm text-slate-300">
+                    {[
+                        "Withdrawal request cut off time 12:00 AEST/AEDT.",
+                        "Withdrawal amount must be less than or equal to your balance.",
+                        "No third-party transfers allowed.",
+                        "Credit card withdrawals go to the same card used.",
+                        "At least 100% free margin must be available.",
+                        "Add your bank details if withdrawing for the first time.",
+                        "All withdrawals require email confirmation.",
+                        "For first USDT withdrawals, upload wallet QR & ID.",
+                    ].map((text, index) => (
+                        <div key={index} className="flex gap-4 items-start">
+                            <CheckCheckIcon className="text-[#3BF5C4] mt-1 shrink-0" />
+                            <p className="leading-relaxed">{text}</p>
                         </div>
+                    ))}
+                </main>
+            </div>
 
-                        <div>
-                            <InputLabel htmlFor="address" value="BTC Address" />
-                            <TextInput
-                                id="address"
-                                value={data.address}
-                                onChange={(e) =>
-                                    setData("address", e.target.value)
-                                }
-                                type="text"
-                                className="mt-1 block w-full"
-                                required
-                            />
-                            <InputError
-                                message={errors.address}
-                                className="mt-2"
-                            />
-                        </div>
+            {/* RIGHT COLUMN - Form Card */}
+            <div className="bg-gradient-to-br from-[#0F1720] to-[#0B1117]
+                            border border-slate-700
+                            rounded-2xl shadow-2xl
+                            p-8 space-y-8">
 
-                        <div>
-                            <PrimaryButton
-                                disabled={processing}
-                                className="w-full !bg-[#3B4FE4] !rounded"
-                            >
-                                Withdraw
-                            </PrimaryButton>
-                        </div>
-                    </form>
-                </div>
-            </section>
-        </AuthenticatedLayout>
+                <header>
+                    <h1 className="text-3xl font-bold text-white">
+                        Withdraw Funds
+                    </h1>
+                    <p className="text-slate-400 mt-2">
+                        Enter your withdrawal details below.
+                    </p>
+                </header>
+
+                <form onSubmit={onSubmit} className="space-y-8">
+
+                    {/* Amount */}
+                    <div>
+                        <label className="text-sm text-slate-400">
+                            Withdrawal Amount (USD)
+                        </label>
+
+                        <input
+                            type="text"
+                            value={data.amount}
+                            onChange={(e) =>
+                                setData("amount", e.target.value)
+                            }
+                            required
+                            placeholder="Enter amount"
+                            className="mt-2 w-full bg-[#0B141B]
+                                       border border-slate-700
+                                       text-white rounded-xl px-4 py-3
+                                       focus:border-[#3BF5C4]
+                                       focus:ring-0 transition"
+                        />
+
+                        <InputError
+                            message={errors.amount}
+                            className="mt-2"
+                        />
+                    </div>
+
+                    {/* BTC Address */}
+                    <div>
+                        <label className="text-sm text-slate-400">
+                            BTC Address
+                        </label>
+
+                        <input
+                            type="text"
+                            value={data.address}
+                            onChange={(e) =>
+                                setData("address", e.target.value)
+                            }
+                            required
+                            placeholder="Enter your BTC wallet address"
+                            className="mt-2 w-full bg-[#0B141B]
+                                       border border-slate-700
+                                       text-white rounded-xl px-4 py-3
+                                       focus:border-[#3BF5C4]
+                                       focus:ring-0 transition"
+                        />
+
+                        <InputError
+                            message={errors.address}
+                            className="mt-2"
+                        />
+                    </div>
+
+                    {/* CTA Button */}
+                    <button
+                        disabled={processing}
+                        className="w-full py-4 rounded-xl
+                                   bg-gradient-to-r from-[#3BF5C4] to-[#2DD4BF]
+                                   text-black font-semibold tracking-wide
+                                   hover:scale-[1.02]
+                                   hover:shadow-lg
+                                   transition-all duration-300"
+                    >
+                        {processing ? "Processing..." : "Submit Withdrawal"}
+                    </button>
+
+                </form>
+            </div>
+
+        </section>
+    </div>
+</AuthenticatedLayout>
     );
 }

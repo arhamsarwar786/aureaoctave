@@ -34,6 +34,9 @@ Route::get('/become-our-client', function () {
 Route::get('/ai', function () {
     return Inertia::render('AI/Index');
 })->name('ai');
+Route::get('/aurea-ai', function () {
+    return Inertia::render('App/aurea-ai/index');
+})->name('aurea-ai');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
