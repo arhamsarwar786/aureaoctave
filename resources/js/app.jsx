@@ -4,6 +4,7 @@ import "../css/app.css";
 import { createRoot } from "react-dom/client";
 import { createInertiaApp } from "@inertiajs/react";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { ThemeProvider } from "@/Components/App/ThemeContext";
 
 import "@radix-ui/themes/styles.css";
 import { Theme } from "@radix-ui/themes";
@@ -20,9 +21,11 @@ createInertiaApp({
         const root = createRoot(el);
 
         root.render(
-            <Theme>
-                <App {...props} />
-            </Theme>
+            <ThemeProvider>
+                <Theme>
+                    <App {...props} />
+                </Theme>
+            </ThemeProvider>
         );
     },
     progress: {

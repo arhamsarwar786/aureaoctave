@@ -4,12 +4,15 @@ import { Avatar } from "@radix-ui/themes";
 import {
     FileTextIcon,
     LockIcon,
-    SunDimIcon,
+    MoonIcon,
+    SunIcon,
     UserRoundIcon,
 } from "lucide-react";
+import { useTheme } from "@/Components/App/ThemeContext";
 
 export default function Settings({ auth }) {
     const { user } = auth;
+    const { theme, toggleTheme } = useTheme();
     return (
         <AuthenticatedLayout user={user} title={"Account Settings"}>
             <div className="py-12">
@@ -57,13 +60,19 @@ export default function Settings({ auth }) {
                                 <LockIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                                 <p className="text-lg text-white">Change Password</p>
                             </Link>
-                            {/* <Link
-                                href={"#"}
-                                className="relative flex items-center space-x-2 md:space-x-4 text-[#1D1D1F]"
+                            <button
+                                onClick={toggleTheme}
+                                className="relative flex items-center space-x-2 md:space-x-4 w-full text-left"
                             >
-                                <SunDimIcon className="h-5 w-5 md:h-6 md:w-6 text-white" />
-                                <p className="text-lg text-white">Switch Theme</p>
-                            </Link> */}
+                                {theme === "dark" ? (
+                                    <SunIcon className="h-5 w-5 md:h-6 md:w-6 text-yellow-300" />
+                                ) : (
+                                    <MoonIcon className="h-5 w-5 md:h-6 md:w-6 text-indigo-400" />
+                                )}
+                                <p className="text-lg text-white">
+                                    {theme === "dark" ? "Switch to Light" : "Switch to Dark"}
+                                </p>
+                            </button>
                         </div>
                     </div>
                 </div>

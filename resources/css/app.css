@@ -17,9 +17,12 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
 }
+
 .glassmorphism {
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(4px);
@@ -109,6 +112,7 @@
     .text-36 {
         @apply text-[36px] leading-[44px];
     }
+
     /* Home */
     .home {
         @apply no-scrollbar flex w-full flex-row max-xl:max-h-screen max-xl:overflow-y-scroll;
@@ -210,7 +214,7 @@
     }
 
     .transactions-account-balance {
-        @apply flex-center flex-col  gap-2 rounded-md bg-blue-25/20 px-4 py-2 text-white;
+        @apply flex-center flex-col gap-2 rounded-md bg-blue-25/20 px-4 py-2 text-white;
     }
 
     .header-box {
@@ -277,7 +281,7 @@
     /* Auth */
     .auth-asset {
         /* @apply h-screen max-lg:hidden; */
-        @apply flex h-screen  sticky top-0 items-center justify-end max-lg:hidden;
+        @apply flex h-screen sticky top-0 items-center justify-end max-lg:hidden;
     }
 
     /* Auth Form */
@@ -406,34 +410,175 @@
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
+
 .markdown-content h2 {
     font-size: 1.25rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
+
 .markdown-content h3 {
     font-size: 1.1rem;
     margin-top: 1rem;
     margin-bottom: 0.5rem;
 }
+
 .markdown-content p {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .markdown-content ul,
 .markdown-content ol {
     margin-left: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
 .markdown-content code {
     background-color: #f0f0f0;
     padding: 0.2rem 0.4rem;
     border-radius: 0.2rem;
 }
+
 .markdown-content pre {
     background-color: #f0f0f0;
     padding: 1rem;
     border-radius: 0.3rem;
     overflow-x: auto;
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   Applied when html[data-theme="light"]
+   ============================================================ */
+
+.theme-root[data-theme="light"] {
+    background-color: #ffffff !important;
+}
+
+/* Sidebar */
+.theme-root[data-theme="light"] aside {
+    background: linear-gradient(to bottom, #ffffff, #f1f5f9, #ffffff) !important;
+    border-right-color: #cbd5e1 !important;
+}
+
+.theme-root[data-theme="light"] aside .text-slate-300,
+.theme-root[data-theme="light"] aside .text-slate-400 {
+    color: #475569 !important;
+}
+
+.theme-root[data-theme="light"] aside .text-white {
+    color: #1e293b !important;
+}
+
+.theme-root[data-theme="light"] aside .hover\:bg-white\/10:hover {
+    background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+.theme-root[data-theme="light"] aside .text-red-400 {
+    color: #ef4444 !important;
+}
+
+/* Top Navigation */
+.theme-root[data-theme="light"] nav.sticky {
+    background-color: rgba(255, 255, 255, 0.9) !important;
+    border-bottom-color: #e2e8f0 !important;
+    backdrop-filter: blur(16px) !important;
+}
+
+.theme-root[data-theme="light"] nav .text-white,
+.theme-root[data-theme="light"] nav h1.text-white {
+    color: #1e293b !important;
+}
+
+.theme-root[data-theme="light"] nav .text-slate-400 {
+    color: #64748b !important;
+}
+
+.theme-root[data-theme="light"] nav button {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+    color: #1e293b !important;
+}
+
+/* Generic dark backgrounds -> light */
+.theme-root[data-theme="light"] .bg-\[\#161B1F\] {
+    background-color: #F0F4F8 !important;
+}
+
+.theme-root[data-theme="light"] .bg-\[\#0E151D\] {
+    background-color: #ffffff !important;
+}
+
+.theme-root[data-theme="light"] .bg-\[\#0B0F14\],
+.theme-root[data-theme="light"] .bg-\[\#0b0f14\] {
+    background-color: #f8fafc !important;
+}
+
+.theme-root[data-theme="light"] .bg-\[\#0B141B\],
+.theme-root[data-theme="light"] .bg-\[\#111A22\] {
+    background-color: #f1f5f9 !important;
+}
+
+/* Gradient cards (Deposit/Withdrawal) */
+.theme-root[data-theme="light"] .from-\[\#0F1720\] {
+    --tw-gradient-from: #f8fafc !important;
+}
+
+.theme-root[data-theme="light"] .to-\[\#0B1117\] {
+    --tw-gradient-to: #f1f5f9 !important;
+}
+
+/* Text */
+.theme-root[data-theme="light"] .text-white {
+    color: #1e293b !important;
+}
+
+.theme-root[data-theme="light"] .text-gray-200,
+.theme-root[data-theme="light"] .text-gray-300 {
+    color: #475569 !important;
+}
+
+.theme-root[data-theme="light"] .text-slate-300,
+.theme-root[data-theme="light"] .text-slate-400 {
+    color: #64748b !important;
+}
+
+/* Borders */
+.theme-root[data-theme="light"] .border-slate-700 {
+    border-color: #e2e8f0 !important;
+}
+
+.theme-root[data-theme="light"] .border-gray-500 {
+    border-color: #cbd5e1 !important;
+}
+
+/* Inputs */
+.theme-root[data-theme="light"] input {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* Preserve teal accent buttons */
+.theme-root[data-theme="light"] .bg-\[\#3AF5C4\],
+.theme-root[data-theme="light"] .bg-\[\#3BF5C4\] {
+    background-color: #3AF5C4 !important;
+    color: #0b1117 !important;
+}
+
+.theme-root[data-theme="light"] .text-\[\#3AF5C4\],
+.theme-root[data-theme="light"] .text-\[\#3BF5C4\] {
+    color: #0e9f6e !important;
+}
+
+/* Deposit/Withdrawal black button -> dark slate */
+.theme-root[data-theme="light"] .bg-black {
+    background-color: #1e293b !important;
+}
+
+/* Settings page label text */
+.theme-root[data-theme="light"] .text-\[\#ffffff80\] {
+    color: #64748b !important;
 }

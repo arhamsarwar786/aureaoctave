@@ -60,13 +60,13 @@ const LiveMarketTable = () => {
                                         <Table.ColumnHeaderCell className="text-white">
                                             Token
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell  className="text-white">
+                                        <Table.ColumnHeaderCell className="text-white">
                                             Symbol
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell  className="text-white">
+                                        <Table.ColumnHeaderCell className="text-white">
                                             Last Price
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell  className="text-white">
+                                        <Table.ColumnHeaderCell className="text-white">
                                             24H Change
                                         </Table.ColumnHeaderCell>
                                         <Table.ColumnHeaderCell className="text-right text-white">
@@ -92,25 +92,24 @@ const LiveMarketTable = () => {
                                             </Table.Cell>
                                             <Table.Cell className="text-white">
                                                 $
-                                                {coin.current_price.toLocaleString()}
+                                                {(coin.current_price ?? 0).toLocaleString()}
                                             </Table.Cell>
                                             <Table.Cell>
                                                 <div
-                                                    className={`${
-                                                        coin.price_change_percentage_24h >
+                                                    className={`${(coin.price_change_percentage_24h ?? 0) >
                                                         0
-                                                            ? "text-[#53D258]"
-                                                            : "text-[#E25C5C]"
-                                                    } space-x-1 inline-flex items-center`}
+                                                        ? "text-[#53D258]"
+                                                        : "text-[#E25C5C]"
+                                                        } space-x-1 inline-flex items-center`}
                                                 >
-                                                    {coin.price_change_percentage_24h >
-                                                    0 ? (
+                                                    {(coin.price_change_percentage_24h ?? 0) >
+                                                        0 ? (
                                                         <SquareArrowUpIcon className="inline-block" />
                                                     ) : (
                                                         <SquareArrowDownIcon className="inline-block" />
                                                     )}
                                                     <span>
-                                                        {coin.price_change_percentage_24h.toFixed(
+                                                        {(coin.price_change_percentage_24h ?? 0).toFixed(
                                                             2
                                                         )}
                                                         %
@@ -119,7 +118,7 @@ const LiveMarketTable = () => {
                                             </Table.Cell>
                                             <Table.Cell className="text-right text-white">
                                                 $
-                                                {coin.market_cap.toLocaleString()}
+                                                {(coin.market_cap ?? 0).toLocaleString()}
                                             </Table.Cell>
                                         </Table.Row>
                                     ))}

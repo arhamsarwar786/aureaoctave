@@ -11,13 +11,19 @@ import { Toaster } from "sonner";
 import FlashNotification, {
     useFlashMessages,
 } from "@/Components/App/FlashNotification";
+import { useTheme } from "@/Components/App/ThemeContext";
 
 export default function Authenticated({ user, title, children }) {
     useFlashMessages();
+    const { theme } = useTheme();
     return (
         <>
             <Head title={title} />
-            <main className="flex min-h-screen w-full font-inter bg-[#161B1F]">
+            <main
+                className={`flex min-h-screen w-full theme-root ${theme === "dark" ? "bg-[#161B1F]" : "bg-white"
+                    }`}
+                data-theme={theme}
+            >
                 <Sidebar user={user} />
                 <section className="w-full">
                     <div className="flex size-full flex-col">
