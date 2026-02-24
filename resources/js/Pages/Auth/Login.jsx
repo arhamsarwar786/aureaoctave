@@ -2,146 +2,145 @@ import { useEffect, useState } from "react";
 import Checkbox from "@/Components/App/Checkbox";
 import AuthLayout from "@/Layouts/AuthLayout";
 import InputError from "@/Components/App/InputError";
-import InputLabel from "@/Components/App/InputLabel";
-import PrimaryButton from "@/Components/App/PrimaryButton";
 import TextInput from "@/Components/App/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { Eye, EyeOff } from "lucide-react";
-import PasswordRule from "@/Components/App/PasswordRule";
+import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react";
+
+const ACCENT = "#3BF5C4";
+
+function AuthLabel({ children }) {
+    return <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">{children}</label>;
+}
+
+function AuthInput({ icon: Icon, ...props }) {
+    return (
+        <div className="relative">
+            {Icon && (
+                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+                    <Icon size={16} />
+                </span>
+            )}
+            <input
+                {...props}
+                className={`w-full h-12 rounded-xl text-sm text-white placeholder:text-gray-600 outline-none transition-all duration-200
+                    ${Icon ? "pl-10 pr-4" : "px-4"}
+                    bg-white/5 border border-white/8 focus:border-[#3BF5C4]/50 focus:ring-2 focus:ring-[#3BF5C4]/10
+                    ${props.className || ""}`}
+            />
+        </div>
+    );
+}
+
+function AuthButton({ children, disabled, ...props }) {
+    return (
+        <button
+            {...props}
+            disabled={disabled}
+            className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
+                ${disabled ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
+            style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+        >
+            {children}
+        </button>
+    );
+}
 
 export default function Login({ status, canResetPassword }) {
     const [passwordVisible, setPasswordVisible] = useState(false);
-
     const { data, setData, post, processing, errors, reset } = useForm({
         email: "",
         password: "",
         remember: false,
     });
 
-    useEffect(() => {
-        return () => {
-            reset("password");
-        };
-    }, []);
+    useEffect(() => { return () => { reset("password"); }; }, []);
 
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route("login"));
-    };
-
-    const handleVisible = (e) => {
-        e.preventDefault();
-        setPasswordVisible(!passwordVisible);
-    };
+    const submit = (e) => { e.preventDefault(); post(route("login")); };
 
     return (
         <AuthLayout>
             <Head title="Log in" />
 
-            <header className="flex flex-col gap-5 md:gap-8">
-                <div className="flex flex-col gap-1 md:gap-3">
-                    <h1 className="text-24 lg:text-[32px] font-semibold text-white">
-                        Welcome to Aurea Octave
-                        <p className="text-16 font-normal text-white mt-1">
-                            Don’t have an account?{" "}
-                            <Link
-                                href={route("register")}
-                                className="underline text-sm text-[#3BF5C4] hover:text-[#6bfbd5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Sign up
-                            </Link>
-                        </p>
-                    </h1>
-                </div>
-            </header>
+            {/* Header */}
+            <div>
+                <h1 className="text-2xl font-bold text-white mb-1">Welcome back</h1>
+                <p className="text-sm text-gray-400">
+                    Don't have an account?{" "}
+                    <Link href={route("register")} className="font-medium hover:underline transition-colors" style={{ color: ACCENT }}>
+                        Sign up free
+                    </Link>
+                </p>
+            </div>
 
             {status && (
-                <div className="mb-4 font-medium text-sm text-green-400">
+                <div className="px-4 py-3 rounded-xl text-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20">
                     {status}
                 </div>
             )}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className="space-y-5">
+                {/* Email */}
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
-                    <TextInput
-                        id="email"
+                    <AuthLabel>Email address</AuthLabel>
+                    <AuthInput
+                        icon={Mail}
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
                         autoComplete="username"
-                        isFocused={true}
+                        autoFocus
+                        placeholder="Enter your email"
                         onChange={(e) => setData("email", e.target.value)}
                     />
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.email} className="mt-1.5" />
                 </div>
 
-                <div className="mt-6 md:md-8">
-                    <div className="flex items-center justify-between">
-                        <InputLabel htmlFor="password" value="Password" />
+                {/* Password */}
+                <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                        <AuthLabel>Password</AuthLabel>
                         <button
-                            onClick={handleVisible}
-                            className="flex items-center space-x-1 text-sm text-[#3BF5C4]"
+                            type="button"
+                            onClick={() => setPasswordVisible(!passwordVisible)}
+                            className="flex items-center gap-1 text-xs transition-colors"
+                            style={{ color: ACCENT }}
                         >
-                            {passwordVisible ? (
-                                <>
-                                    <EyeOff className="h-5 w-5" />
-                                    <span>Hide</span>
-                                </>
-                            ) : (
-                                <>
-                                    <Eye className="h-5 w-5" />
-                                    <span>Show</span>
-                                </>
-                            )}
+                            {passwordVisible ? <><EyeOff size={13} /><span>Hide</span></> : <><Eye size={13} /><span>Show</span></>}
                         </button>
                     </div>
-                    <TextInput
-                        id="password"
+                    <AuthInput
+                        icon={Lock}
                         type={passwordVisible ? "text" : "password"}
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
                         autoComplete="current-password"
+                        placeholder="••••••••"
                         onChange={(e) => setData("password", e.target.value)}
                     />
-                    <InputError message={errors.password} className="mt-2" />
-                    <PasswordRule />
+                    <InputError message={errors.password} className="mt-1.5" />
                 </div>
 
-                <div className="block mt-6 md:md-8 ">
-                    <label className="flex items-center">
+                {/* Remember + forgot */}
+                <div className="flex items-center justify-between">
+                    <label className="flex items-center gap-2 cursor-pointer">
                         <Checkbox
                             name="remember"
                             checked={data.remember}
-                            onChange={(e) =>
-                                setData("remember", e.target.checked)
-                            }
+                            onChange={(e) => setData("remember", e.target.checked)}
                         />
-                        <span className="ms-2 text-sm text-gray-200 hover:text-[#3BF5C4]">
-                            Remember me
-                        </span>
+                        <span className="text-sm text-gray-400 select-none">Remember me</span>
                     </label>
-                </div>
-
-                <div className="mt-6 md:md-8">
-                    <PrimaryButton className="bg-[#3BF5C4]" disabled={processing}>
-                        Log in
-                    </PrimaryButton>
-                </div>
-
-                <div className="mt-2">
                     {canResetPassword && (
-                        <Link
-                            href={route("password.request")}
-                            className="underline text-sm text-white hover:text-[#3BF5C4] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Forgot your password?
+                        <Link href={route("password.request")} className="text-sm text-gray-400 hover:text-white transition-colors">
+                            Forgot password?
                         </Link>
                     )}
                 </div>
+
+                <AuthButton disabled={processing}>
+                    <LogIn size={16} />
+                    {processing ? "Signing in…" : "Sign in"}
+                </AuthButton>
             </form>
         </AuthLayout>
     );

@@ -1,14 +1,48 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AuthLayout from "@/Layouts/AuthLayout";
 import InputError from "@/Components/App/InputError";
-import InputLabel from "@/Components/App/InputLabel";
-import PrimaryButton from "@/Components/App/PrimaryButton";
-import TextInput from "@/Components/App/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
-import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { Eye, EyeOff, UserPlus, Mail, Lock, User } from "lucide-react";
 import Checkbox from "@/Components/App/Checkbox";
-import PasswordRule from "@/Components/App/PasswordRule";
+
+const ACCENT = "#3BF5C4";
+
+function AuthLabel({ children }) {
+    return <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">{children}</label>;
+}
+
+function AuthInput({ icon: Icon, ...props }) {
+    return (
+        <div className="relative">
+            {Icon && (
+                <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none">
+                    <Icon size={16} />
+                </span>
+            )}
+            <input
+                {...props}
+                className={`w-full h-12 rounded-xl text-sm text-white placeholder:text-gray-600 outline-none transition-all duration-200
+                    ${Icon ? "pl-10 pr-4" : "px-4"}
+                    bg-white/5 border border-white/8 focus:border-[#3BF5C4]/50 focus:ring-2 focus:ring-[#3BF5C4]/10
+                    ${props.className || ""}`}
+            />
+        </div>
+    );
+}
+
+function AuthButton({ children, disabled }) {
+    return (
+        <button
+            type="submit"
+            disabled={disabled}
+            className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
+                ${disabled ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
+            style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+        >
+            {children}
+        </button>
+    );
+}
 
 export default function Register() {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -17,183 +51,126 @@ export default function Register() {
         email: "",
         password: "",
         password_confirmation: "",
-        terms: "",
+        terms: false,
     });
 
-    useEffect(() => {
-        return () => {
-            reset("password", "password_confirmation");
-        };
-    }, []);
+    useEffect(() => { return () => { reset("password", "password_confirmation"); }; }, []);
 
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route("register"));
-    };
-
-    const handleVisible = (e) => {
-        e.preventDefault();
-        setPasswordVisible(!passwordVisible);
-    };
+    const submit = (e) => { e.preventDefault(); post(route("register")); };
 
     return (
         <AuthLayout>
             <Head title="Register" />
 
-            <header className="flex flex-col gap-5 md:gap-8">
-                <div className="flex flex-col gap-1 md:gap-3">
-                    <h1 className="text-24 lg:text-[32px] font-semibold text-white">
-                        Welcome toAurea Octave
-                        <p className="text-16 font-normal text-white mt-1">
-                            Already have an account?{" "}
-                            <Link
-                                href={route("login")}
-                                className="underline text-sm text-[#3BF5C4] hover:text-[#6bfbd5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            >
-                                Log in
-                            </Link>
-                        </p>
-                    </h1>
-                </div>
-            </header>
+            {/* Header */}
+            <div>
+                <h1 className="text-2xl font-bold text-white mb-1">Create your account</h1>
+                <p className="text-sm text-gray-400">
+                    Already have an account?{" "}
+                    <Link href={route("login")} className="font-medium hover:underline transition-colors" style={{ color: ACCENT }}>
+                        Sign in
+                    </Link>
+                </p>
+            </div>
 
-            <form onSubmit={submit}>
-                <div className="mt-6 md:mt-0">
-                    <InputLabel htmlFor="name" value="Name" />
-                    <TextInput
-                        id="name"
+            <form onSubmit={submit} className="space-y-4">
+                {/* Name */}
+                <div>
+                    <AuthLabel>Full name</AuthLabel>
+                    <AuthInput
+                        icon={User}
+                        type="text"
                         name="name"
                         value={data.name}
-                        className="mt-1 block w-full"
                         autoComplete="name"
-                        isFocused={true}
+                        autoFocus
+                        placeholder="John Doe"
                         onChange={(e) => setData("name", e.target.value)}
                         required
                     />
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.name} className="mt-1.5" />
                 </div>
 
-                <div className="mt-6 md:mt-8">
-                    <InputLabel htmlFor="email" value="Email" />
-                    <TextInput
-                        id="email"
+                {/* Email */}
+                <div>
+                    <AuthLabel>Email address</AuthLabel>
+                    <AuthInput
+                        icon={Mail}
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
                         autoComplete="username"
+                        placeholder="you@example.com"
                         onChange={(e) => setData("email", e.target.value)}
                         required
                     />
-                    <InputError message={errors.email} className="mt-2" />
+                    <InputError message={errors.email} className="mt-1.5" />
                 </div>
 
-                <div className="mt-6 md:mt-8">
-                    <div className="flex items-center justify-between">
-                        <InputLabel htmlFor="password" value="Password" />
+                {/* Password */}
+                <div>
+                    <div className="flex items-center justify-between mb-1.5">
+                        <AuthLabel>Password</AuthLabel>
                         <button
-                            onClick={handleVisible}
-                            className="flex items-center space-x-1 text-sm text-[#3BF5C4]"
+                            type="button"
+                            onClick={() => setPasswordVisible(!passwordVisible)}
+                            className="flex items-center gap-1 text-xs"
+                            style={{ color: ACCENT }}
                         >
-                            {passwordVisible ? (
-                                <>
-                                    <EyeOff className="h-5 w-5" />
-                                    <span>Hide</span>
-                                </>
-                            ) : (
-                                <>
-                                    <Eye className="h-5 w-5" />
-                                    <span>Show</span>
-                                </>
-                            )}
+                            {passwordVisible ? <><EyeOff size={13} /> Hide</> : <><Eye size={13} /> Show</>}
                         </button>
                     </div>
-                    <TextInput
-                        id="password"
+                    <AuthInput
+                        icon={Lock}
                         type={passwordVisible ? "text" : "password"}
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
                         autoComplete="new-password"
+                        placeholder="Min. 8 characters"
                         onChange={(e) => setData("password", e.target.value)}
                         required
                     />
-                    <InputError message={errors.password} className="mt-2" />
+                    <InputError message={errors.password} className="mt-1.5" />
                 </div>
 
-                <div className="mt-6 md:mt-8">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
-
-                    <TextInput
-                        id="password_confirmation"
+                {/* Confirm password */}
+                <div>
+                    <AuthLabel>Confirm password</AuthLabel>
+                    <AuthInput
+                        icon={Lock}
                         type={passwordVisible ? "text" : "password"}
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={(e) =>
-                            setData("password_confirmation", e.target.value)
-                        }
+                        placeholder="Re-enter your password"
+                        onChange={(e) => setData("password_confirmation", e.target.value)}
                         required
                     />
+                    <InputError message={errors.password_confirmation} className="mt-1.5" />
+                </div>
 
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
+                {/* Terms checkbox */}
+                <div className="flex items-start gap-2.5 pt-1">
+                    <Checkbox
+                        name="terms"
+                        checked={data.terms}
+                        onChange={(e) => setData("terms", e.target.checked)}
+                        className="mt-0.5"
                     />
-                    <PasswordRule />
+                    <span className="text-xs text-gray-400 leading-relaxed">
+                        I agree to the{" "}
+                        <Link href={route("login")} className="hover:underline" style={{ color: ACCENT }}>Terms of use</Link>
+                        {" "}and{" "}
+                        <Link href={route("login")} className="hover:underline" style={{ color: ACCENT }}>Privacy Policy</Link>.
+                        I'd also like product & marketing updates.
+                    </span>
                 </div>
 
-                <div className="block mt-6 md:mt-8">
-                    <label className="flex items-top">
-                        <Checkbox
-                            name="terms"
-                            checked={data.terms}
-                            onChange={(e) => setData("terms", e.target.checked)}
-                        />
-                        <span className="ms-2 text-sm text-[#3BF5C4]">
-                            I want to receive emails about the product, feature
-                            updates, events, and marketing promotions.
-                        </span>
-                    </label>
-                </div>
-
-                <div className="mt-6 md:mt-8">
-                    <p className="text-white text-sm">
-                        By creating an account, you agree to the{" "}
-                        <Link
-                            href={route("login")}
-                            className="underline text-sm text-[#3BF5C4] hover:text-[#6bfbd5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Terms of use
-                        </Link>{" "}
-                        and{" "}
-                        <Link
-                            href={route("login")}
-                            className="underline text-sm text-[#3BF5C4] hover:text-[#6bfbd5] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        >
-                            Privacy Policy.
-                        </Link>
-                    </p>
-                </div>
-
-                <div className="mt-6 md:mt-8">
-                    <PrimaryButton className="" disabled={processing}>
-                        Create an account
-                    </PrimaryButton>
-                </div>
-
-                <div className="mt-2">
-                    <Link
-                        href={route("login")}
-                        className="underline text-sm text-gray-200 hover:text-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Already have an account? Log in
-                    </Link>
+                <div className="pt-1">
+                    <AuthButton disabled={processing}>
+                        <UserPlus size={16} />
+                        {processing ? "Creating account…" : "Create account"}
+                    </AuthButton>
                 </div>
             </form>
         </AuthLayout>

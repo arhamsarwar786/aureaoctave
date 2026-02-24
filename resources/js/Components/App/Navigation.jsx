@@ -1,184 +1,250 @@
-import React from "react";
-import ApplicationLogo from "./ApplicationLogo";
+import React, { useState } from "react";
 import Dropdown from "./Dropdown";
-import { useState } from "react";
-import NavLink from "@/Components/App/NavLink";
 import ResponsiveNavLink from "@/Components/App/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
-import { adminSidebarLinks, sidebarLinks } from "@/utils/constants";
+import { sidebarLinks, adminSidebarLinks } from "@/utils/constants";
+import {
+    SparklesIcon,
+    BellIcon,
+    ChevronDownIcon,
+    LogOutIcon,
+    UserCircleIcon,
+    MenuIcon,
+    XIcon,
+} from "lucide-react";
+
+const ACCENT = "#3BF5C4";
 
 const Navigation = ({ user }) => {
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
+    const [open, setOpen] = useState(false);
     const { url } = usePage();
-
     const roles = usePage().props.auth.roles;
+
+    // Get the label of the current active page for breadcrumb
+    const allLinks = [...sidebarLinks, ...adminSidebarLinks];
+    const activePage = allLinks.find(
+        (item) =>
+            route().current(item.routeName) ||
+            url.startsWith(`/${item.routeName}`)
+    );
+
     return (
-  <nav className="sticky top-0 z-50 backdrop-blur-xl bg-slate-900/80 border-b border-slate-700 shadow-xl">
-    <div className="w-full mx-auto px-6 lg:px-10">
-        <div className="flex justify-between h-20 items-center">
+        <>
+            <nav
+                className="sticky top-0 z-50 w-full"
+                style={{
+                    background: "rgba(13,17,23,0.85)",
+                    backdropFilter: "blur(20px)",
+                    WebkitBackdropFilter: "blur(20px)",
+                    borderBottom: "1px solid rgba(255,255,255,0.05)",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.3)",
+                }}
+            >
+                {/* Top accent line */}
+                <div
+                    className="absolute top-0 left-0 right-0 h-px"
+                    style={{ background: `linear-gradient(90deg, transparent, ${ACCENT}44, transparent)` }}
+                />
 
-            {/* Left Section - Welcome */}
-            <div className="flex items-center gap-6">
-                <div className="flex flex-col">
-                    <span className="text-xs uppercase tracking-widest text-slate-400 font-semibold">
-                        Welcome back
-                    </span>
+                <div className="px-6 lg:px-8">
+                    <div className="flex items-center justify-between h-16">
 
-                    <h1 className="capitalize text-2xl font-bold text-white leading-tight">
-                        {user.name}
-                    </h1>
-
-                    <span className="text-xs text-slate-400 font-medium">
-                        to{" "}
-                        <span className="bg-[#3AF5C4] bg-clip-text text-transparent font-semibold">
-                            Aurea Octave
-                        </span>
-                    </span>
-                </div>
-            </div>
-
-            {/* Right Section */}
-            <div className="hidden sm:flex items-center gap-6">
-
-                {/* Aurea AI Button */}
-                <Link
-                    href="/aurea-ai"
-                    className="px-5 py-2.5 rounded-xl 
-                    bg-gradient-to-r from-[#3AF5C4] to-cyan-500 
-                    text-black font-semibold shadow-lg 
-                    hover:scale-105 hover:shadow-indigo-500/30 
-                    transition-all duration-300"
-                >
-                    Aurea AI
-                </Link>
-
-                {/* Profile Dropdown */}
-                <Dropdown>
-                    <Dropdown.Trigger>
-                        <button className="flex items-center gap-3 bg-slate-800/70 hover:bg-slate-700 px-3 py-2 rounded-xl transition-all duration-300 border border-slate-700">
-
-                            {/* Avatar */}
-                            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#3AF5C4] to-cyan-500 text-white font-bold text-lg shadow-md">
-                                {user.name[0]}
+                        {/* ── LEFT — Page title / breadcrumb ── */}
+                        <div className="flex items-center gap-3">
+                            <div>
+                                <div className="flex items-center gap-1.5">
+                                    <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+                                        Welcome back
+                                    </span>
+                                    <span className="text-slate-600">·</span>
+                                    {activePage && (
+                                        <span
+                                            className="text-[10px] font-semibold uppercase tracking-widest"
+                                            style={{ color: ACCENT }}
+                                        >
+                                            {activePage.label}
+                                        </span>
+                                    )}
+                                </div>
+                                <h1 className="text-lg font-bold text-white leading-tight capitalize">
+                                    {user.name}
+                                </h1>
                             </div>
+                        </div>
 
-                            {/* Name */}
-                            <span className="text-white font-medium hidden md:block">
-                                {user.name}
-                            </span>
+                        {/* ── RIGHT — Actions ── */}
+                        <div className="hidden sm:flex items-center gap-3">
 
-                            {/* Arrow */}
-                            <svg
-                                className="h-4 w-4 text-slate-400"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                viewBox="0 0 24 24"
+                            {/* Aurea AI button */}
+                            <Link
+                                href="/aurea-ai"
+                                className="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-black transition-all duration-200 hover:brightness-110 active:scale-[0.97]"
+                                style={{
+                                    background: `linear-gradient(135deg, ${ACCENT}, #10b981)`,
+                                    boxShadow: `0 0 20px rgba(59,245,196,0.2)`,
+                                }}
                             >
-                                <path d="M19 9l-7 7-7-7" />
-                            </svg>
+                                <SparklesIcon size={15} />
+                                Aurea AI
+                            </Link>
+
+                            {/* Notification bell */}
+                            <button
+                                className="relative w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
+                                style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
+                            >
+                                <BellIcon size={16} />
+                                {/* Unread dot */}
+                                <span
+                                    className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full"
+                                    style={{ background: ACCENT, boxShadow: `0 0 6px ${ACCENT}` }}
+                                />
+                            </button>
+
+                            {/* Profile dropdown */}
+                            <Dropdown>
+                                <Dropdown.Trigger>
+                                    <button
+                                        className="flex items-center gap-2.5 px-3 py-1.5 rounded-xl transition-all duration-200"
+                                        style={{
+                                            background: "rgba(255,255,255,0.04)",
+                                            border: "1px solid rgba(255,255,255,0.07)",
+                                        }}
+                                        onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.07)"}
+                                        onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.04)"}
+                                    >
+                                        {/* Avatar */}
+                                        <div
+                                            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-black flex-shrink-0"
+                                            style={{ background: `linear-gradient(135deg, ${ACCENT}, #10b981)` }}
+                                        >
+                                            {user.name[0]?.toUpperCase()}
+                                        </div>
+                                        <span className="hidden md:block text-sm font-medium text-white max-w-[120px] truncate">
+                                            {user.name}
+                                        </span>
+                                        <ChevronDownIcon size={14} className="text-slate-400" />
+                                    </button>
+                                </Dropdown.Trigger>
+
+                                <Dropdown.Content
+                                    className="mt-1 rounded-xl overflow-hidden shadow-2xl"
+                                    style={{
+                                        background: "#111820",
+                                        border: "1px solid rgba(255,255,255,0.07)",
+                                        minWidth: "200px",
+                                    }}
+                                >
+                                    {/* User info header */}
+                                    <div
+                                        className="px-4 py-3 border-b"
+                                        style={{ borderColor: "rgba(255,255,255,0.05)" }}
+                                    >
+                                        <p className="text-xs font-semibold text-white truncate">{user.name}</p>
+                                        <p className="text-[11px] text-slate-500 truncate">{user.email}</p>
+                                    </div>
+
+                                    <div className="p-1">
+                                        <Dropdown.Link
+                                            href={route("profile.edit")}
+                                            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-black hover:bg-white/5 hover:text-black transition-all"
+                                        >
+                                            {/* <UserCircleIcon size={15} className="text-slate-500" /> */}
+                                            Profile
+                                        </Dropdown.Link>
+
+                                        <Dropdown.Link
+                                            href={route("settings")}
+                                            className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-black hover:bg-white/5 hover:text-black transition-all"
+                                        >
+                                            {/* <span className="w-[30px] h-[30px] flex items-center justify-center text-slate-500">⚙</span> */}
+                                            Settings
+                                        </Dropdown.Link>
+
+                                        <div
+                                            className="my-1 h-px mx-2"
+                                            style={{ background: "rgba(255,255,255,0.05)" }}
+                                        />
+
+                                        <Dropdown.Link
+                                            href={route("logout")}
+                                            method="post"
+                                            as="button"
+                                            className="flex items-center gap-2.5 w-full px-3 py-2 rounded-lg text-sm text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all"
+                                        >
+                                            <LogOutIcon size={15} />
+                                            Log Out
+                                        </Dropdown.Link>
+                                    </div>
+                                </Dropdown.Content>
+                            </Dropdown>
+                        </div>
+
+                        {/* ── Mobile toggle ── */}
+                        <button
+                            onClick={() => setOpen(!open)}
+                            className="sm:hidden w-9 h-9 rounded-xl flex items-center justify-center text-slate-300 transition-all duration-200"
+                            style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}
+                        >
+                            {open ? <XIcon size={18} /> : <MenuIcon size={18} />}
                         </button>
-                    </Dropdown.Trigger>
+                    </div>
+                </div>
 
-                    <Dropdown.Content className="bg-slate-800 border border-slate-700 rounded-xl shadow-xl">
+                {/* ── Mobile Menu ── */}
+                {open && (
+                    <div
+                        className="sm:hidden px-4 py-4 space-y-1"
+                        style={{ borderTop: "1px solid rgba(255,255,255,0.05)", background: "#0d1117" }}
+                    >
+                        {sidebarLinks.map((item) => {
+                            if (!item.roles.some((r) => roles.includes(r))) return null;
+                            const Icon = item.icon;
+                            const isActive = route().current(item.routeName) || url.startsWith(`/${item.routeName}`);
+                            return (
+                                <ResponsiveNavLink
+                                    key={item.label}
+                                    href={route(item.routeName)}
+                                    className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200
+                                        ${isActive
+                                            ? "text-black font-semibold"
+                                            : "text-slate-400 hover:text-white hover:bg-white/5"}`}
+                                    style={isActive ? {
+                                        background: `linear-gradient(135deg, ${ACCENT}, #10b981)`,
+                                    } : {}}
+                                >
+                                    <Icon size={16} className={isActive ? "text-black" : ""} />
+                                    {item.label}
+                                </ResponsiveNavLink>
+                            );
+                        })}
 
-                        <Dropdown.Link
+                        <div
+                            className="my-3 h-px"
+                            style={{ background: "rgba(255,255,255,0.05)" }}
+                        />
+
+                        <ResponsiveNavLink
                             href={route("profile.edit")}
-                            className="text-black hover:bg-gray-100 transition-all duration-300"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-slate-400 hover:text-white hover:bg-white/5"
                         >
+                            <UserCircleIcon size={16} />
                             Profile
-                        </Dropdown.Link>
+                        </ResponsiveNavLink>
 
-                        <Dropdown.Link
-                            href={route("logout")}
+                        <ResponsiveNavLink
                             method="post"
+                            href={route("logout")}
                             as="button"
-                            className="text-red-400 hover:bg-red-500/10"
+                            className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm text-red-400 hover:bg-red-500/10 w-full"
                         >
+                            <LogOutIcon size={16} />
                             Log Out
-                        </Dropdown.Link>
-                    </Dropdown.Content>
-                </Dropdown>
-            </div>
-
-            {/* Mobile Toggle */}
-            <div className="sm:hidden">
-                <button
-                    onClick={() =>
-                        setShowingNavigationDropdown((prev) => !prev)
-                    }
-                    className="p-2 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 transition"
-                >
-                    <svg
-                        className="h-6 w-6"
-                        stroke="currentColor"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                    >
-                        {showingNavigationDropdown ? (
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M6 18L18 6M6 6l12 12"
-                            />
-                        ) : (
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h16M4 18h16"
-                            />
-                        )}
-                    </svg>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    {/* Mobile Menu */}
-    {showingNavigationDropdown && (
-        <div className="sm:hidden bg-slate-900 border-t border-slate-700 px-4 py-4 space-y-2">
-
-            {sidebarLinks.map((item) => {
-                const hasRole = item.roles.some((role) =>
-                    roles.includes(role)
-                );
-                if (!hasRole) return null;
-
-                const IconComponent = item.icon;
-
-                return (
-                    <ResponsiveNavLink
-                        key={item.label}
-                        href={route(item.routeName)}
-                        className="flex items-center gap-3 text-slate-300 hover:bg-slate-800 rounded-lg px-3 py-2"
-                    >
-                        <IconComponent className="size-5" />
-                        {item.label}
-                    </ResponsiveNavLink>
-                );
-            })}
-
-            <div className="border-t border-slate-700 pt-3 mt-3">
-                <ResponsiveNavLink href={route("profile.edit")}>
-                    Profile
-                </ResponsiveNavLink>
-
-                <ResponsiveNavLink
-                    method="post"
-                    href={route("logout")}
-                    as="button"
-                    className="text-red-400"
-                >
-                    Log Out
-                </ResponsiveNavLink>
-            </div>
-        </div>
-    )}
-</nav>
+                        </ResponsiveNavLink>
+                    </div>
+                )}
+            </nav>
+        </>
     );
 };
 

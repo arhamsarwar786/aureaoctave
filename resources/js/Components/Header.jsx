@@ -161,11 +161,11 @@ const Header = () => {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className={`text-2xl font-light tracking-wide transition-colors ${
-                            isScrolled ? "text-[#3BF5C4]" : "text-white"
-                        }`}
+                        className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#3BF5C4]" : "text-white"
+                            }`}
                     >
-                        ATA
+                        <img src="/assets/img/logo1.png" alt="" className="size-10" />
+                        Aurea Octave
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -173,9 +173,8 @@ const Header = () => {
 
                         <Link
                             href="/"
-                            className={`transition-colors ${
-                                isScrolled ? "text-gray-400" : "text-white"
-                            } hover:text-[#3BF5C4]`}
+                            className={`transition-colors ${isScrolled ? "text-gray-400" : "text-white"
+                                } hover:text-[#3BF5C4]`}
                         >
                             Home
                         </Link>
@@ -183,9 +182,8 @@ const Header = () => {
                         {/* What We Do Dropdown */}
                         <div className="relative group">
                             <button
-                                className={`flex items-center gap-1 transition-colors ${
-                                    isScrolled ? "text-gray-400" : "text-white"
-                                } hover:text-[#3BF5C4]`}
+                                className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
+                                    } hover:text-[#3BF5C4]`}
                             >
                                 What We Do <ChevronDown size={16} />
                             </button>
@@ -208,9 +206,8 @@ const Header = () => {
 
                         <Link
                             href="#ecosystem"
-                            className={`transition-colors ${
-                                isScrolled ? "text-gray-400" : "text-white"
-                            } hover:text-[#3BF5C4]`}
+                            className={`transition-colors ${isScrolled ? "text-gray-400" : "text-white"
+                                } hover:text-[#3BF5C4]`}
                         >
                             WHY ATA
                         </Link>
@@ -218,9 +215,8 @@ const Header = () => {
                         {/* About Dropdown */}
                         <div className="relative group">
                             <button
-                                className={`flex items-center gap-1 transition-colors ${
-                                    isScrolled ? "text-gray-400" : "text-white"
-                                } hover:text-[#3BF5C4]`}
+                                className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
+                                    } hover:text-[#3BF5C4]`}
                             >
                                 About <ChevronDown size={16} />
                             </button>
@@ -252,22 +248,20 @@ const Header = () => {
                     <div className="hidden md:flex items-center gap-4">
                         <Link
                             href="/register"
-                            className={`px-6 py-2.5 rounded-full font-medium transition-colors ${
-                                isScrolled
-                                    ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
-                                    : "bg-white text-black hover:bg-gray-100"
-                            }`}
+                            className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
+                                ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
+                                : "bg-white text-black hover:bg-gray-100"
+                                }`}
                         >
                             Sign Up
                         </Link>
 
                         <Link
                             href="/login"
-                            className={`px-6 py-2.5 rounded-full font-medium border transition-colors ${
-                                isScrolled
-                                    ? "border-[#3BF5C4] text-[#3BF5C4] hover:bg-[#3BF5C4]/10"
-                                    : "border-white text-white hover:bg-white/10"
-                            }`}
+                            className={`px-6 py-2.5 rounded-full font-medium border transition-colors ${isScrolled
+                                ? "border-[#3BF5C4] text-[#3BF5C4] hover:bg-[#3BF5C4]/10"
+                                : "border-white text-white hover:bg-white/10"
+                                }`}
                         >
                             Log In
                         </Link>

@@ -1,50 +1,61 @@
 import AuthLayout from "@/Layouts/AuthLayout";
-import PrimaryButton from "@/Components/App/PrimaryButton";
 import { Head, Link, useForm } from "@inertiajs/react";
+import { MailCheck, RefreshCw, LogOut } from "lucide-react";
 
 export default function VerifyEmail({ status }) {
     const { post, processing } = useForm({});
 
-    const submit = (e) => {
-        e.preventDefault();
-
-        post(route("verification.send"));
-    };
+    const submit = (e) => { e.preventDefault(); post(route("verification.send")); };
 
     return (
         <AuthLayout>
             <Head title="Email Verification" />
 
-            <div className="mb-4 text-sm text-gray-200">
-                Thanks for signing up! Before getting started, could you verify
-                your email address by clicking on the link we just emailed to
-                you? If you didn't receive the email, we will gladly send you
-                another.
+            {/* Icon */}
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2"
+                style={{ background: "rgba(59,245,196,0.1)", border: "1px solid rgba(59,245,196,0.2)" }}>
+                <MailCheck size={30} style={{ color: "#3BF5C4" }} />
+            </div>
+
+            <div className="text-center">
+                <h1 className="text-2xl font-bold text-white mb-2">Check your inbox</h1>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                    Thanks for signing up! We sent a verification link to your email address. Click the link to activate your account.
+                </p>
             </div>
 
             {status === "verification-link-sent" && (
-                <div className="mb-4 font-medium text-sm text-green-400">
-                    A new verification link has been sent to the email address
-                    you provided during registration.
+                <div className="px-4 py-3 rounded-xl text-sm text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 text-center">
+                    ✓ A new verification link has been sent to your email address.
                 </div>
             )}
 
-            <form onSubmit={submit}>
-                <div className="mt-4 flex items-center justify-between">
-                    <PrimaryButton disabled={processing}>
-                        Resend Verification Email
-                    </PrimaryButton>
+            <form onSubmit={submit} className="space-y-3">
+                <button
+                    type="submit"
+                    disabled={processing}
+                    className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
+                        ${processing ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
+                    style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+                >
+                    <RefreshCw size={15} className={processing ? "animate-spin" : ""} />
+                    {processing ? "Resending…" : "Resend verification email"}
+                </button>
 
-                    <Link
-                        href={route("logout")}
-                        method="post"
-                        as="button"
-                        className="underline text-sm text-gray-200 hover:text-[#3BF5C4] rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    >
-                        Log Out
-                    </Link>
-                </div>
+                <Link
+                    href={route("logout")}
+                    method="post"
+                    as="button"
+                    className="w-full h-11 rounded-xl text-sm text-gray-400 hover:text-white border border-white/8 hover:border-white/15 flex items-center justify-center gap-2 transition-all duration-200"
+                >
+                    <LogOut size={14} />
+                    Log out
+                </Link>
             </form>
+
+            <p className="text-center text-xs text-gray-600">
+                Didn't get the email? Check your spam folder or click resend above.
+            </p>
         </AuthLayout>
     );
 }
