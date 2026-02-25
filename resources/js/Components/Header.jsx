@@ -164,7 +164,7 @@ const Header = () => {
                         className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#3BF5C4]" : "text-white"
                             }`}
                     >
-                        <img src="/assets/img/logo1.png" alt="" className="size-10" />
+                        <img src="/assets/img/logo1.png" alt="" className="w-12 h-10" />
                         Aurea Octave
                     </Link>
 
@@ -179,16 +179,17 @@ const Header = () => {
                             Home
                         </Link>
 
-                        {/* What We Do Dropdown */}
+                        {/* What We Do */}
                         <div className="relative group">
-                            <button
+                            <Link
+                                href="/what-we-do"
                                 className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
                                     } hover:text-[#3BF5C4]`}
                             >
-                                What We Do <ChevronDown size={16} />
-                            </button>
+                                What We Do
+                            </Link>
 
-                            <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
+                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
                                 <Link
                                     href="/services/products"
                                     className="block px-4 py-2 hover:bg-[#3BF5C4]/10"
@@ -201,11 +202,11 @@ const Header = () => {
                                 >
                                     Tokenization-as-a-Service
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
 
                         <Link
-                            href="#ecosystem"
+                            href="/why-ata"
                             className={`transition-colors ${isScrolled ? "text-gray-400" : "text-white"
                                 } hover:text-[#3BF5C4]`}
                         >
@@ -217,11 +218,13 @@ const Header = () => {
                             <button
                                 className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
                                     } hover:text-[#3BF5C4]`}
+                                onClick={() => window.location.href = "/contact-us"}
                             >
-                                About <ChevronDown size={16} />
+                                Contact Us
+                                {/* <ChevronDown size={16} /> */}
                             </button>
 
-                            <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
+                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
                                 <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
                                     Docs & FAQs
                                 </Link>
@@ -240,7 +243,7 @@ const Header = () => {
                                 <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
                                     Careers
                                 </Link>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
 
@@ -285,15 +288,17 @@ const Header = () => {
             {showingNavigationDropdown && (
                 <div className="md:hidden bg-[#0B0F14] px-6 py-4 space-y-3 text-gray-300">
                     <Link href="/" className="block">Home</Link>
-                    <Link href="/services/products" className="block">
-                        Tokenized Investment Products
+                    <Link href="/what-we-do" className="block hover:text-[#3BF5C4] transition-colors">
+                        What We Do
                     </Link>
-                    <Link href="/services/taas" className="block">
-                        Tokenization-as-a-Service
+                    <Link href="/why-ata" className="block hover:text-[#3BF5C4] transition-colors">
+                        WHY ATA
                     </Link>
-                    <Link href="/about-us/contact-us" className="block">
+                    <Link href="/contact-us" className="block hover:text-[#3BF5C4] transition-colors">
                         Contact Us
                     </Link>
+                    <Link href="/register" className="block hover:text-[#3BF5C4] transition-colors">Sign Up</Link>
+                    <Link href="/login" className="block hover:text-[#3BF5C4] transition-colors">Log In</Link>
                 </div>
             )}
         </header>

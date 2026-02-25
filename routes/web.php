@@ -31,6 +31,14 @@ Route::get('/become-our-client', function () {
     return Inertia::render('BecomeOurClient/Index');
 })->name('become-our-client');
 
+Route::get('/what-we-do', function () {
+    return Inertia::render('WhatWeDo/Index');
+})->name('what-we-do');
+
+Route::get('/why-ata', function () {
+    return Inertia::render('WhyATA/Index');
+})->name('why-ata');
+
 Route::get('/ai', function () {
     return Inertia::render('AI/Index');
 })->name('ai');

@@ -87,7 +87,7 @@ const Sidebar = ({ user }) => {
                             border: `1px solid rgba(59,245,196,0.25)`,
                         }}
                     > */}
-                    <img src="/assets/img/logo1.png" alt="Logo" className="w-10 h-10 object-contain" />
+                    <img src="/assets/img/logo1.png" alt="Logo" className="w-12 h-10 object-contain" />
                     {/* </div> */}
                     <span
                         className="text-lg font-bold tracking-wide"
