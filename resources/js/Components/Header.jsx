@@ -128,10 +128,11 @@
 // export default Header;
 
 import React, { useState, useEffect } from "react";
-import { Link } from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
 import { ChevronDown } from "lucide-react";
 
 const Header = () => {
+    const { auth } = usePage().props;
     const [isScrolled, setIsScrolled] = useState(false);
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
@@ -249,25 +250,39 @@ const Header = () => {
 
                     {/* Right Buttons */}
                     <div className="hidden md:flex items-center gap-4">
-                        <Link
-                            href="/register"
-                            className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
-                                ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
-                                : "bg-white text-black hover:bg-gray-100"
-                                }`}
-                        >
-                            Sign Up
-                        </Link>
+                        {auth?.user ? (
+                            <Link
+                                href="/dashboard"
+                                className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
+                                    ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
+                                    : "bg-white text-black hover:bg-gray-100"
+                                    }`}
+                            >
+                                Dashboard
+                            </Link>
+                        ) : (
+                            <>
+                                <Link
+                                    href="/register"
+                                    className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
+                                        ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
+                                        : "bg-white text-black hover:bg-gray-100"
+                                        }`}
+                                >
+                                    Sign Up
+                                </Link>
 
-                        <Link
-                            href="/login"
-                            className={`px-6 py-2.5 rounded-full font-medium border transition-colors ${isScrolled
-                                ? "border-[#3BF5C4] text-[#3BF5C4] hover:bg-[#3BF5C4]/10"
-                                : "border-white text-white hover:bg-white/10"
-                                }`}
-                        >
-                            Log In
-                        </Link>
+                                <Link
+                                    href="/login"
+                                    className={`px-6 py-2.5 rounded-full font-medium border transition-colors ${isScrolled
+                                        ? "border-[#3BF5C4] text-[#3BF5C4] hover:bg-[#3BF5C4]/10"
+                                        : "border-white text-white hover:bg-white/10"
+                                        }`}
+                                >
+                                    Log In
+                                </Link>
+                            </>
+                        )}
                     </div>
 
                     {/* Mobile Toggle */}
@@ -297,8 +312,14 @@ const Header = () => {
                     <Link href="/contact-us" className="block hover:text-[#3BF5C4] transition-colors">
                         Contact Us
                     </Link>
-                    <Link href="/register" className="block hover:text-[#3BF5C4] transition-colors">Sign Up</Link>
-                    <Link href="/login" className="block hover:text-[#3BF5C4] transition-colors">Log In</Link>
+                    {auth?.user ? (
+                        <Link href="/dashboard" className="block hover:text-[#3BF5C4] transition-colors">Dashboard</Link>
+                    ) : (
+                        <>
+                            <Link href="/register" className="block hover:text-[#3BF5C4] transition-colors">Sign Up</Link>
+                            <Link href="/login" className="block hover:text-[#3BF5C4] transition-colors">Log In</Link>
+                        </>
+                    )}
                 </div>
             )}
         </header>

@@ -79,7 +79,7 @@ const Sidebar = ({ user }) => {
 
             {/* ── LOGO ── */}
             <div className="px-6 pt-8 pb-6">
-                <Link href="/" className="flex items-center gap-3">
+                <Link href="/dashboard" className="flex items-center gap-3">
                     {/* <div
                         className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
                         style={{

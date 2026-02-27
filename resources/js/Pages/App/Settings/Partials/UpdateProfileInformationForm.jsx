@@ -33,18 +33,18 @@ export default function UpdateProfileInformation({
 
     return (
         <section className={` ${className}`}>
-            <div className="max-w-4xl mx-auto bg-[#111827] rounded-2xl shadow-xl p-8 space-y-8">
+            <div className="max-w-4xl mx-auto bg-white dark:bg-[#111827] rounded-2xl shadow-xl p-8 space-y-8">
                 {/* Header */}
-                <header className="flex items-center gap-3 text-white mb-6">
+                <header className="flex items-center gap-3 text-gray-900 dark:text-white mb-6">
                     <UserRoundIcon className="w-6 h-6 text-[#3AF5C4]" />
                     <h2 className="text-2xl font-semibold">Account Details</h2>
                 </header>
 
-                <form onSubmit={submit} className="space-y-8 text-white">
-                    <div className="grid sm:grid-cols-2 gap-8 divide-x-2 divide-gray-700">
+                <form onSubmit={submit} className="space-y-8 text-gray-900 dark:text-white">
+                    <div className="grid sm:grid-cols-2 gap-8 divide-y sm:divide-y-0 sm:divide-x-2 divide-gray-200 dark:divide-gray-700">
                         {/* General Information */}
-                        <div className="space-y-6 pr-5">
-                            <h3 className="text-xl font-semibold text-[#3AF5C4]">
+                        <div className="space-y-6 sm:pr-5 pb-6 sm:pb-0">
+                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#3AF5C4]">
                                 General Information
                             </h3>
 
@@ -55,7 +55,7 @@ export default function UpdateProfileInformation({
                                     src={user.avatar || ""}
                                     fallback={user.name?.[0] || "A"}
                                     radius="full"
-                                    className="border-2 border-[#3AF5C4]"
+                                    className="border-2 border-[#1D9D8E] dark:border-[#3AF5C4]"
                                 />
                                 <button
                                     type="button"
@@ -67,11 +67,11 @@ export default function UpdateProfileInformation({
 
                             {/* Name */}
                             <div>
-                                <InputLabel htmlFor="name" value="Name" />
+                                <InputLabel htmlFor="name" value="Name" className="text-gray-700 dark:text-gray-300" />
                                 <TextInput
                                     id="name"
                                     type="text"
-                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
                                     value={data.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
@@ -81,18 +81,18 @@ export default function UpdateProfileInformation({
                                     autoComplete="name"
                                 />
                                 <InputError
-                                    className="mt-2 text-red-400"
+                                    className="mt-2 text-red-600 dark:text-red-400"
                                     message={errors.name}
                                 />
                             </div>
 
                             {/* Email */}
                             <div>
-                                <InputLabel htmlFor="email" value="Email" />
+                                <InputLabel htmlFor="email" value="Email" className="text-gray-700 dark:text-gray-300" />
                                 <TextInput
                                     id="email"
                                     type="email"
-                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
                                     value={data.email}
                                     onChange={(e) =>
                                         setData("email", e.target.value)
@@ -101,7 +101,7 @@ export default function UpdateProfileInformation({
                                     autoComplete="username"
                                 />
                                 <InputError
-                                    className="mt-2 text-red-400"
+                                    className="mt-2 text-red-600 dark:text-red-400"
                                     message={errors.email}
                                 />
                             </div>
@@ -111,11 +111,12 @@ export default function UpdateProfileInformation({
                                 <InputLabel
                                     htmlFor="phone_number"
                                     value="Phone Number"
+                                    className="text-gray-700 dark:text-gray-300"
                                 />
                                 <TextInput
                                     id="phone_number"
                                     type="tel"
-                                    className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
                                     value={data.phone_number}
                                     onChange={(e) =>
                                         setData("phone_number", e.target.value)
@@ -123,14 +124,14 @@ export default function UpdateProfileInformation({
                                     required
                                 />
                                 <InputError
-                                    className="mt-2 text-red-400"
+                                    className="mt-2 text-red-600 dark:text-red-400"
                                     message={errors.phone_number}
                                 />
                             </div>
 
                             {/* Email verification notice */}
                             {mustVerifyEmail && !user.email_verified_at && (
-                                <div className="bg-yellow-500 text-black p-3 rounded-lg text-sm">
+                                <div className="bg-yellow-100 dark:bg-yellow-500 text-yellow-800 dark:text-black p-3 rounded-lg text-sm">
                                     Your email is unverified.{" "}
                                     <Link
                                         href={route("verification.send")}
@@ -145,8 +146,8 @@ export default function UpdateProfileInformation({
                         </div>
 
                         {/* Address Information */}
-                        <div className="space-y-6 pl-5">
-                            <h3 className="text-xl font-semibold text-[#3AF5C4]">
+                        <div className="space-y-6 sm:pl-5 pt-6 sm:pt-0">
+                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#3AF5C4]">
                                 Address Information
                             </h3>
 
@@ -161,11 +162,12 @@ export default function UpdateProfileInformation({
                                     <InputLabel
                                         htmlFor={field.id}
                                         value={field.label}
+                                        className="text-gray-700 dark:text-gray-300"
                                     />
                                     <TextInput
                                         id={field.id}
                                         type="text"
-                                        className="mt-1 block w-full bg-[#1F2937] border border-gray-600 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
+                                        className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3AF5C4] focus:border-transparent"
                                         value={data[field.id]}
                                         onChange={(e) =>
                                             setData(field.id, e.target.value)
@@ -173,7 +175,7 @@ export default function UpdateProfileInformation({
                                         required
                                     />
                                     <InputError
-                                        className="mt-2 text-red-400"
+                                        className="mt-2 text-red-600 dark:text-red-400"
                                         message={errors[field.id]}
                                     />
                                 </div>
@@ -185,7 +187,7 @@ export default function UpdateProfileInformation({
                     <div className="space-y-4">
                         <PrimaryButton
                             disabled={processing}
-                            className="w-full bg-gradient-to-r from-[#3AF5C4] to-[#1D9D8E] hover:from-[#32eab0] hover:to-[#1b9c88] text-black font-bold rounded-xl py-3 transition"
+                            className="w-full bg-gradient-to-r from-[#1D9D8E] to-[#147065] dark:from-[#3AF5C4] dark:to-[#1D9D8E] hover:from-[#1b9183] hover:to-[#126157] dark:hover:from-[#32eab0] dark:hover:to-[#1b9c88] text-white dark:text-black font-bold rounded-xl py-3 transition flex justify-center"
                         >
                             Update
                         </PrimaryButton>
@@ -198,14 +200,14 @@ export default function UpdateProfileInformation({
                             leave="transition ease-in-out duration-300"
                             leaveTo="opacity-0"
                         >
-                            <p className="text-sm text-green-400 text-center">
+                            <p className="text-sm text-green-600 dark:text-green-400 text-center">
                                 Profile updated successfully!
                             </p>
                         </Transition>
 
                         <Link
                             href={route("settings")}
-                            className="inline-block w-full text-center py-3 rounded-xl border-2 border-[#3AF5C4] text-[#3AF5C4] font-semibold uppercase hover:bg-[#1F2937] transition"
+                            className="inline-flex items-center justify-center w-full text-center py-3 rounded-xl border-2 border-[#1D9D8E] dark:border-[#3AF5C4] text-[#1D9D8E] dark:text-[#3AF5C4] font-semibold uppercase hover:bg-gray-50 dark:hover:bg-[#1F2937] transition"
                         >
                             Cancel
                         </Link>
