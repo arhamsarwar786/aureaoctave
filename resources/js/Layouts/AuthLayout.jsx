@@ -15,15 +15,15 @@ export default function AuthLayout({ children }) {
             {/* ── LEFT PANEL — branding ─────────────────────────────────── */}
             <div className="hidden lg:flex lg:w-[52%] relative flex-col justify-between p-14 overflow-hidden">
 
-                {/* Layered background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#0B0F14] via-[#0e1a1a] to-[#071410]" />
-                <div className="absolute inset-0"
-                    style={{
-                        background:
-                            "radial-gradient(ellipse 70% 60% at 20% 30%, rgba(59,245,196,0.12) 0%, transparent 70%), " +
-                            "radial-gradient(ellipse 50% 50% at 80% 80%, rgba(59,245,196,0.05) 0%, transparent 60%)",
-                    }}
-                />
+                {/* Layered background with online image */}
+                <div className="absolute inset-0">
+                    <img 
+                        src="/assets/img/kevin-matos-Nl_FMFpXo2g-unsplash.jpg" 
+                        alt="Background" 
+                        className="w-full h-full object-cover object-center" 
+                        style={{ filter: "brightness(0.5) blur(1px)" }}
+                    />
+                </div>
 
                 {/* Decorative grid */}
                 <div
@@ -36,16 +36,16 @@ export default function AuthLayout({ children }) {
                 />
 
                 {/* Floating orbs */}
-                <div className="absolute top-24 right-20 w-64 h-64 rounded-full opacity-10 blur-3xl"
+                {/* <div className="absolute top-24 right-20 w-64 h-64 rounded-full opacity-10 blur-3xl"
                     style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }} />
                 <div className="absolute bottom-32 left-10 w-48 h-48 rounded-full opacity-8 blur-3xl"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }} />
+                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }} /> */}
 
                 {/* Content */}
                 <div className="relative z-10">
                     <Link href="/" className="flex items-center gap-3">
-                        <img src="/assets/img/logo1.png" alt="" className="size-10" />
-                        <span className="text-xl font-bold text-white tracking-wide">Aurea Octave</span>
+                        <img src="/assets/img/logo1.svg" alt="" className="w-40 h-14" />
+                        {/* <span className="text-xl font-bold text-white tracking-wide">Aurea Octave</span> */}
                     </Link>
                 </div>
 

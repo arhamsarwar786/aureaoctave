@@ -165,8 +165,8 @@ const Header = () => {
                         className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#3BF5C4]" : "text-white"
                             }`}
                     >
-                        <img src="/assets/img/logo1.png" alt="" className="w-12 h-10" />
-                        Aurea Octave
+                        <img src="/assets/img/logo1.svg" alt="" className="w-40 h-14" />
+
                     </Link>
 
                     {/* Desktop Navigation */}
