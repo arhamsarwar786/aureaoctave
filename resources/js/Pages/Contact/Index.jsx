@@ -121,10 +121,10 @@ export default function ContactPage() {
 
     const fieldClass = (field) =>
         `w-full bg-white/5 border rounded-xl px-4 py-3 text-sm text-white placeholder:text-slate-500 outline-none
-         transition-all duration-200 focus:ring-2 focus:ring-[#3BF5C4]/30
+         transition-all duration-200 focus:ring-2 focus:ring-[#E8A535]/30
          ${hasError(field)
             ? "border-red-500/60 focus:border-red-500"
-            : "border-white/8 focus:border-[#3BF5C4]/50"
+            : "border-white/8 focus:border-[#E8A535]/50"
         }`;
 
     return (
@@ -157,10 +157,10 @@ export default function ContactPage() {
                     {/* Decorative orb */}
                     <div
                         className="absolute -top-10 -right-10 w-64 h-64 rounded-full blur-3xl opacity-10 pointer-events-none"
-                        style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }}
+                        style={{ background: "radial-gradient(circle, #E8A535, transparent)" }}
                     />
                     <h2 className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: "Poppins, sans-serif" }}>
-                        Our <span style={{ color: "#3BF5C4" }}>expertise</span>, your success.
+                        Our <span style={{ color: "#E8A535" }}>expertise</span>, your success.
                     </h2>
                     <p className="text-base text-white/70" style={{ fontFamily: "Poppins, sans-serif" }}>
                         Partner with Aurea Octave and benefit from informed decisions powered by top-tier research.
@@ -190,7 +190,7 @@ export default function ContactPage() {
                                         border: "1px solid rgba(59,245,196,0.2)",
                                     }}
                                 >
-                                    <Icon size={20} style={{ color: "#3BF5C4" }} />
+                                    <Icon size={20} style={{ color: "#E8A535" }} />
                                 </div>
                                 <div>
                                     <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1">
@@ -217,7 +217,7 @@ export default function ContactPage() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="font-medium hover:underline"
-                                    style={{ color: "#3BF5C4" }}
+                                    style={{ color: "#E8A535" }}
                                 >
                                     {PAGE_URL}
                                 </a>
@@ -322,7 +322,7 @@ export default function ContactPage() {
                                         : "hover:brightness-110 active:scale-[0.98]"
                                     }`}
                                 style={{
-                                    background: "linear-gradient(135deg, #3BF5C4, #10b981)",
+                                    background: "linear-gradient(135deg, #E8A535, #10b981)",
                                     boxShadow: "0 0 24px rgba(59,245,196,0.2)",
                                 }}
                             >

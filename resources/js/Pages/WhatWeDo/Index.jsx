@@ -125,7 +125,7 @@ export default function WhatWeDo() {
                 {/* Glow */}
                 <div
                     className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full pointer-events-none blur-[120px] opacity-10"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }}
+                    style={{ background: "radial-gradient(circle, #E8A535, transparent)" }}
                 />
 
                 <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -137,14 +137,14 @@ export default function WhatWeDo() {
                     >
                         {/* Left */}
                         <div>
-                            <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-6 font-semibold">
+                            <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-6 font-semibold">
                                 What We Do
                             </motion.p>
 
                             <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.08] text-white mb-8">
                                 Redefining<br />
                                 <span style={{
-                                    background: "linear-gradient(135deg, #3BF5C4, #67e8f9)",
+                                    background: "linear-gradient(135deg, #E8A535, #67e8f9)",
                                     WebkitBackgroundClip: "text",
                                     WebkitTextFillColor: "transparent",
                                 }}>
@@ -161,13 +161,13 @@ export default function WhatWeDo() {
                                 <Link
                                     href="/register"
                                     className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
-                                    style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.2)" }}
+                                    style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.2)" }}
                                 >
                                     Get Started <ArrowRight size={16} />
                                 </Link>
                                 <Link
                                     href="/contact-us"
-                                    className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium text-[#3BF5C4] border border-[#3BF5C4]/30 hover:bg-[#3BF5C4]/8 transition"
+                                    className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium text-[#E8A535] border border-[#E8A535]/30 hover:bg-[#E8A535]/8 transition"
                                 >
                                     Talk to Us <ArrowRight size={16} />
                                 </Link>
@@ -195,16 +195,16 @@ export default function WhatWeDo() {
                                         e.currentTarget.style.background = "rgba(255,255,255,0.03)";
                                     }}
                                 >
-                                    <span className="text-2xl font-light text-[#3BF5C4]/40 font-mono w-8 flex-shrink-0 mt-0.5">
+                                    <span className="text-2xl font-light text-[#E8A535]/40 font-mono w-8 flex-shrink-0 mt-0.5">
                                         {svc.id}
                                     </span>
                                     <div className="flex-1">
-                                        <h3 className="text-white font-semibold mb-1 group-hover:text-[#3BF5C4] transition-colors">
+                                        <h3 className="text-white font-semibold mb-1 group-hover:text-[#E8A535] transition-colors">
                                             {svc.title}
                                         </h3>
                                         <p className="text-sm text-[#9CA3AF] leading-relaxed">{svc.short}</p>
                                     </div>
-                                    <ChevronRight size={18} className="text-[#9CA3AF] group-hover:text-[#3BF5C4] transition-colors flex-shrink-0 mt-1" />
+                                    <ChevronRight size={18} className="text-[#9CA3AF] group-hover:text-[#E8A535] transition-colors flex-shrink-0 mt-1" />
                                 </motion.div>
                             ))}
                         </motion.div>
@@ -241,7 +241,7 @@ export default function WhatWeDo() {
                         viewport={{ once: true }}
                         className="text-center mb-20"
                     >
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-4 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-4 font-semibold">
                             Our Services
                         </p>
                         <h2 className="text-4xl md:text-5xl font-light text-white mb-5">
@@ -282,10 +282,10 @@ export default function WhatWeDo() {
                                             border: `1px solid ${isActive ? "rgba(59,245,196,0.35)" : "rgba(255,255,255,0.08)"}`,
                                         }}
                                     >
-                                        <Icon size={22} style={{ color: isActive ? "#3BF5C4" : "#9CA3AF" }} />
+                                        <Icon size={22} style={{ color: isActive ? "#E8A535" : "#9CA3AF" }} />
                                     </div>
 
-                                    <h3 className="text-lg font-semibold text-white mb-3 leading-snug" style={{ color: isActive ? "#3BF5C4" : "#fff" }}>
+                                    <h3 className="text-lg font-semibold text-white mb-3 leading-snug" style={{ color: isActive ? "#E8A535" : "#fff" }}>
                                         {pillar.title}
                                     </h3>
 
@@ -296,13 +296,13 @@ export default function WhatWeDo() {
                                     <div className={`space-y-2 overflow-hidden transition-all duration-300 ${isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}>
                                         {pillar.points.map((pt) => (
                                             <div key={pt} className="flex items-center gap-2 text-sm text-[#9CA3AF]">
-                                                <CheckCircle2 size={14} style={{ color: "#3BF5C4", flexShrink: 0 }} />
+                                                <CheckCircle2 size={14} style={{ color: "#E8A535", flexShrink: 0 }} />
                                                 {pt}
                                             </div>
                                         ))}
                                     </div>
 
-                                    <div className="mt-5 flex items-center gap-1.5 text-xs font-medium" style={{ color: isActive ? "#3BF5C4" : "#ffffff55" }}>
+                                    <div className="mt-5 flex items-center gap-1.5 text-xs font-medium" style={{ color: isActive ? "#E8A535" : "#ffffff55" }}>
                                         {isActive ? "Click to collapse" : "Click to expand"}
                                         <ChevronRight size={13} className={`transition-transform ${isActive ? "rotate-90" : ""}`} />
                                     </div>
@@ -329,10 +329,10 @@ export default function WhatWeDo() {
                     {/* Glow orb */}
                     <div
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none blur-[100px] opacity-10"
-                        style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }}
+                        style={{ background: "radial-gradient(circle, #E8A535, transparent)" }}
                     />
 
-                    <p className="relative text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-5 font-semibold">
+                    <p className="relative text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-5 font-semibold">
                         Ready to start?
                     </p>
                     <h2 className="relative text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
@@ -346,7 +346,7 @@ export default function WhatWeDo() {
                         <Link
                             href="/register"
                             className="flex items-center gap-2 px-10 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
-                            style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.25)" }}
+                            style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.25)" }}
                         >
                             Create Account <ArrowRight size={16} />
                         </Link>

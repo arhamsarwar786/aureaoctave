@@ -127,10 +127,10 @@ const lines = [
 ];
 
 export default function Hero() {
-    const [completedLines, setCompletedLines] = useState([]);
-    const [currentLine, setCurrentLine] = useState("");
-    const [lineIndex, setLineIndex] = useState(0);
-    const [charIndex, setCharIndex] = useState(0);
+  const [completedLines, setCompletedLines] = useState([]);
+  const [currentLine, setCurrentLine] = useState("");
+  const [lineIndex, setLineIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -158,30 +158,30 @@ export default function Hero() {
 
     return () => clearTimeout(timeout);
   }, [charIndex, lineIndex, currentLine]);
-  
+
   return (
 
     <div>
-          <GuestLayout title="Home">
-    <section className="relative h-screen w-full overflow-hidden bg-[#0B0F14]">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          src="/assets/videos/6823023-uhd_3840_2160_24fps.mp4"
-          className="w-full h-full object-cover opacity-80"
-          autoPlay
-          loop
-          muted
-          playsInline
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-[#0B0F14]/60 via-[#0B0F14]/40 to-transparent" />
-      </div>
+      <GuestLayout title="Home">
+        <section className="relative h-screen w-full overflow-hidden bg-[#0B0F14]">
+          {/* Background Video */}
+          <div className="absolute inset-0 z-0">
+            <video
+              src="/assets/videos/6823023-uhd_3840_2160_24fps.mp4"
+              className="w-full h-full object-cover opacity-80"
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+            <div className="absolute inset-0 bg-linear-to-r from-[#0B0F14]/60 via-[#0B0F14]/40 to-transparent" />
+          </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 flex h-full flex-col justify-center px-6 md:px-16 lg:px-24">
-        <div className="max-w-4xl space-y-10">
-          {/* Heading */}
-          {/* <motion.h1
+          {/* Hero Content */}
+          <div className="relative z-10 flex h-full flex-col justify-center px-6 md:px-16 lg:px-24">
+            <div className="max-w-4xl space-y-10">
+              {/* Heading */}
+              {/* <motion.h1
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
@@ -207,82 +207,81 @@ export default function Hero() {
             </motion.span>
           </motion.h1> */}
 
-           <h2 className="text-5xl md:text-6xl font-semibold leading-tight  text-white min-h-[130px]">
-            {completedLines.map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-            {lineIndex < lines.length && (
-              <div>
-                {currentLine}
-                <span className="ml-1 animate-pulse text-[#3BF5C4]">▍</span>
-              </div>
-            )}
-          </h2>
+              <h2 className="text-5xl md:text-6xl font-semibold leading-tight  text-white min-h-[130px]">
+                {completedLines.map((line, i) => (
+                  <div key={i}>{line}</div>
+                ))}
+                {lineIndex < lines.length && (
+                  <div>
+                    {currentLine}
+                    <span className="ml-1 animate-pulse text-[#E8A535]">▍</span>
+                  </div>
+                )}
+              </h2>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 3.6 }}
-            className="max-w-xl text-base md:text-xl font-light leading-relaxed text-[#9CA3AF]"
-            style={{ fontFamily: "var(--font-poppins)" }}
-          >
-            We specialize in creating tokenized investment vehicles and delivering
-            tokenization-as-a-service for asset managers and private equity firms.
-          </motion.p>
-
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 4.2 }}
-            className="flex flex-wrap gap-4 pt-4"
-          >
-            <button
-              className="rounded-full bg-[#3BF5C4] px-8 py-4 text-sm font-semibold tracking-wide text-[#0B0F14] transition hover:scale-[1.04]"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              LEARN MORE
-            </button>
-
-            <button
-              className="rounded-full border border-[#3BF5C4]/30 px-8 py-4 text-sm font-medium tracking-wide text-[#3BF5C4] backdrop-blur-md transition hover:bg-[#3BF5C4]/10"
-              style={{ fontFamily: "var(--font-poppins)" }}
-            >
-              READ MANIFESTO
-            </button>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Company Marquee */}
-      <div className="absolute bottom-0 inset-x-0 z-10 border-t border-[#3BF5C4]/20 bg-linear-to-t from-[#0B0F14]/70 to-transparent py-8 backdrop-blur-sm">
-        <motion.div
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-          className="flex whitespace-nowrap"
-        >
-          {[...companies, ...companies].map((company, index) => (
-            <div key={index} className="px-12">
-              <span
-                className="cursor-default text-sm md:text-base font-medium tracking-widest uppercase text-[#9CA3AF] transition hover:text-[#3BF5C4]"
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, delay: 3.6 }}
+                className="max-w-xl text-base md:text-xl font-light leading-relaxed text-[#9CA3AF]"
                 style={{ fontFamily: "var(--font-poppins)" }}
               >
-                {company}
-              </span>
+                Unleashing the future of finance through  Ai vetted  tokenized assets and comprehensive investment strategies for digital assets.
+              </motion.p>
+
+              {/* CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 4.2 }}
+                className="flex flex-wrap gap-4 pt-4"
+              >
+                <button
+                  className="rounded-full bg-[#E8A535] px-8 py-4 text-sm font-semibold tracking-wide text-[#0B0F14] transition hover:scale-[1.04]"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  LEARN MORE
+                </button>
+
+                <button
+                  className="rounded-full border border-[#E8A535]/30 px-8 py-4 text-sm font-medium tracking-wide text-[#E8A535] backdrop-blur-md transition hover:bg-[#E8A535]/10"
+                  style={{ fontFamily: "var(--font-poppins)" }}
+                >
+                  READ MANIFESTO
+                </button>
+              </motion.div>
             </div>
-          ))}
-        </motion.div>
-      </div>
-    </section>
-      {/* <WhatSetUsApart /> */}
-      <TokenizedAssetsSection/>
-<Benefits/>
-<ServicesSection/>
-<TaaS2/>
-<PerspectivesCarousel/>
-<Newsletter/>
-{/* //             <GoodCompany />
+          </div>
+
+          {/* Company Marquee */}
+          <div className="absolute bottom-0 inset-x-0 z-10 border-t border-[#E8A535]/20 bg-linear-to-t from-[#0B0F14]/70 to-transparent py-8 backdrop-blur-sm">
+            <motion.div
+              animate={{ x: ["0%", "-50%"] }}
+              transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+              className="flex whitespace-nowrap"
+            >
+              {[...companies, ...companies].map((company, index) => (
+                <div key={index} className="px-12">
+                  <span
+                    className="cursor-default text-sm md:text-base font-medium tracking-widest uppercase text-[#9CA3AF] transition hover:text-[#E8A535]"
+                    style={{ fontFamily: "var(--font-poppins)" }}
+                  >
+                    {company}
+                  </span>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+        {/* <WhatSetUsApart /> */}
+        <TokenizedAssetsSection />
+        <Benefits />
+        <ServicesSection />
+        <TaaS2 />
+        <PerspectivesCarousel />
+        <Newsletter />
+        {/* //             <GoodCompany />
 
 //             <WhatWeDo />
 

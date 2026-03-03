@@ -6,7 +6,7 @@ import TextInput from "@/Components/App/TextInput";
 import { Head, Link, useForm } from "@inertiajs/react";
 import { Eye, EyeOff, LogIn, Mail, Lock } from "lucide-react";
 
-const ACCENT = "#3BF5C4";
+const ACCENT = "#E8A535";
 
 function AuthLabel({ children }) {
     return <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5">{children}</label>;
@@ -24,7 +24,7 @@ function AuthInput({ icon: Icon, ...props }) {
                 {...props}
                 className={`w-full h-12 rounded-xl text-sm text-white placeholder:text-gray-600 outline-none transition-all duration-200
                     ${Icon ? "pl-10 pr-4" : "px-4"}
-                    bg-white/5 border border-white/8 focus:border-[#3BF5C4]/50 focus:ring-2 focus:ring-[#3BF5C4]/10
+                    bg-white/5 border border-white/8 focus:border-[#E8A535]/50 focus:ring-2 focus:ring-[#E8A535]/10
                     ${props.className || ""}`}
             />
         </div>
@@ -38,7 +38,7 @@ function AuthButton({ children, disabled, ...props }) {
             disabled={disabled}
             className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
                 ${disabled ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
-            style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+            style={{ background: "linear-gradient(135deg, #E8A535, #e4ab49ff)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
         >
             {children}
         </button>

@@ -13,7 +13,7 @@ import {
     XIcon,
 } from "lucide-react";
 
-const ACCENT = "#3BF5C4";
+const ACCENT = "#E8A535";
 
 const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false);
@@ -93,9 +93,9 @@ const Navigation = ({ user }) => {
                                 className="relative w-9 h-9 rounded-xl flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
                                 style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}
                             > */}
-                                {/* <BellIcon size={16} /> */}
-                                {/* Unread dot */}
-                                {/* <span
+                            {/* <BellIcon size={16} /> */}
+                            {/* Unread dot */}
+                            {/* <span
                                     className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full"
                                     style={{ background: ACCENT, boxShadow: `0 0 6px ${ACCENT}` }}
                                 />

@@ -9,7 +9,7 @@ import NavLink from "./NavLink";
 import { Link, usePage } from "@inertiajs/react";
 import { adminSidebarLinks, sidebarLinks } from "@/utils/constants";
 
-const ACCENT = "#3BF5C4";
+const ACCENT = "#E8A535";
 
 /* Single nav item */
 function SidebarLink({ href, icon: Icon, label, isActive, isAdmin = false }) {
@@ -25,7 +25,7 @@ function SidebarLink({ href, icon: Icon, label, isActive, isAdmin = false }) {
                     : "text-slate-400 hover:text-white hover:bg-white/5"
                 }`}
             style={isActive && !isAdmin ? {
-                background: `linear-gradient(135deg, ${ACCENT}, #10b981)`,
+                background: `linear-gradient(135deg, ${ACCENT}, #E8A535)`,
                 boxShadow: `0 4px 20px rgba(59,245,196,0.25)`,
             } : {}}
         >
@@ -103,7 +103,7 @@ const Sidebar = ({ user }) => {
             </div>
 
             {/* Divider */}
-            <div className="mx-6 h-px mb-5" style={{ background: "rgba(255,255,255,0.05)" }} />
+            <div className="mx-6 h-px mb-5" style={{ background: "#E8A535" }} />
 
             {/* ── MAIN NAV ── */}
             <nav className="flex-1 px-4 flex flex-col gap-1 overflow-y-auto scrollbar-hide">
@@ -168,11 +168,11 @@ const Sidebar = ({ user }) => {
                     active={route().current("aurea-ai")}
                     className="flex items-center gap-3 px-4 py-2.5 rounded-xl mb-1 transition-all duration-200 group"
                     style={route().current("aurea-ai") ? {
-                        background: "rgba(59,245,196,0.08)",
+                        background: "#E8A535",
                         border: "1px solid rgba(59,245,196,0.2)",
                     } : {}}
                     onMouseEnter={e => {
-                        e.currentTarget.style.background = "rgba(59,245,196,0.06)";
+                        e.currentTarget.style.background = "#E8A535";
                         e.currentTarget.style.border = "1px solid rgba(59,245,196,0.15)";
                     }}
                     onMouseLeave={e => {
@@ -214,7 +214,7 @@ const Sidebar = ({ user }) => {
                     {/* Avatar */}
                     <div
                         className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-sm font-bold text-black"
-                        style={{ background: `linear-gradient(135deg, ${ACCENT}, #10b981)` }}
+                        style={{ background: `linear-gradient(135deg, ${ACCENT}, #E8A535)` }}
                     >
                         {user?.name?.[0]?.toUpperCase() ?? "U"}
                     </div>

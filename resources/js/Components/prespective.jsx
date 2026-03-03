@@ -107,7 +107,7 @@ export default function PerspectivesCarousel() {
               className="absolute inset-0"
             >
               <div className="h-full rounded-3xl bg-white/[0.04] border border-white/10 backdrop-blur-xl px-14 py-16 flex flex-col justify-between">
-                
+
                 {/* Company */}
                 <div className="mb-12">
                   {active.company === "BlackRock" && (
@@ -167,7 +167,7 @@ export default function PerspectivesCarousel() {
       </div>
 
       {/* Accent Glow */}
-      <div className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#3BF5C4]/10 blur-[120px] rounded-full" />
+      <div className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#E8A535]/10 blur-[120px] rounded-full" />
     </section>
   );
 }

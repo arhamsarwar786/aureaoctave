@@ -19,35 +19,35 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: <Building2 className="w-8 h-8 text-[#3BF5C4]" />,
+      icon: <Building2 className="w-8 h-8 text-[#E8A535]" />,
       title: "High-Quality Assets and Managers",
       description:
         "We work exclusively with the world's preeminent asset managers.",
       company: "BlackRock",
     },
     {
-      icon: <Coffee className="w-8 h-8 text-[#3BF5C4]" />,
+      icon: <Coffee className="w-8 h-8 text-[#E8A535]" />,
       title: "Regulated Service Providers",
       description:
         "All partners meet stringent regulatory and compliance standards.",
       company: "",
     },
     {
-      icon: <Building2 className="w-8 h-8 text-[#3BF5C4]" />,
+      icon: <Building2 className="w-8 h-8 text-[#E8A535]" />,
       title: "Experienced Leadership",
       description:
         "Decades of financial services expertise and institutional experience.",
       company: "",
     },
     {
-      icon: <Shield className="w-8 h-8 text-[#3BF5C4]" />,
+      icon: <Shield className="w-8 h-8 text-[#E8A535]" />,
       title: "Third-Party Audited Security",
       description:
         "Independent audits ensure the highest protection standards.",
       company: "",
     },
     {
-      icon: <Scale className="w-8 h-8 text-[#3BF5C4]" />,
+      icon: <Scale className="w-8 h-8 text-[#E8A535]" />,
       title: "Compliance-First Focus",
       description:
         "Built with regulatory alignment and global best practices.",
@@ -112,11 +112,14 @@ const ServicesSection = () => {
             Trust & Transparency
           </p>
 
-          <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-light leading-tight">
+          <h1 className=" text-5xl md:text-6xl lg:text-7xl font-light text-[#E8A535] leading-tight">
             Institutional Grade
             <br />
             In All We Do
           </h1>
+          <p className="text-white">
+            Gain seamless exposure to multi-asset pools with institutional -tier security, 24/7 liquidity and full unchain transparency.
+          </p>
         </div>
 
         {/* Slider */}
@@ -125,20 +128,18 @@ const ServicesSection = () => {
             <div
               className="flex gap-6 transition-transform duration-700 ease-in-out"
               style={{
-                transform: `translateX(-${
-                  scrollPosition * (CARD_WIDTH + GAP)
-                }px)`,
+                transform: `translateX(-${scrollPosition * (CARD_WIDTH + GAP)
+                  }px)`,
               }}
             >
               {services.map((service, index) => (
                 <div
                   key={index}
                   onClick={() => handleCardClick(index)}
-                  className={`flex-shrink-0 w-80 h-72 rounded-2xl p-8 cursor-pointer transition-all duration-500 border ${
-                    expandedCard === index
-                      ? "bg-white/5 border-[#3BF5C4] scale-105 shadow-xl"
-                      : "bg-white/10 border-white/10 hover:bg-[#3BF5C4]/10"
-                  }`}
+                  className={`flex-shrink-0 w-80 h-72 rounded-2xl p-8 cursor-pointer transition-all duration-500 border ${expandedCard === index
+                    ? "bg-white/5 border-[#E8A535] scale-105 shadow-xl"
+                    : "bg-white/10 border-white/10 hover:bg-[#E8A535]/10"
+                    }`}
                 >
                   <div className="text-white">
                     <div className="mb-6">{service.icon}</div>
@@ -172,7 +173,7 @@ const ServicesSection = () => {
             <button
               onClick={scrollLeft}
               disabled={scrollPosition === 0}
-              className="w-12 h-12 rounded-lg bg-[#3BF5C4]/20 hover:bg-[#3BF5C4]/30 disabled:opacity-40 flex items-center justify-center transition"
+              className="w-12 h-12 rounded-lg bg-[#E8A535]/20 hover:bg-[#E8A535]/30 disabled:opacity-40 flex items-center justify-center transition"
             >
               <ChevronLeft className="w-6 h-6 text-white" />
             </button>
@@ -180,7 +181,7 @@ const ServicesSection = () => {
             <button
               onClick={scrollRight}
               disabled={scrollPosition >= maxScroll}
-              className="w-12 h-12 rounded-lg bg-[#3BF5C4]/20 hover:bg-[#3BF5C4]/30 disabled:opacity-40 flex items-center justify-center transition"
+              className="w-12 h-12 rounded-lg bg-[#E8A535]/20 hover:bg-[#E8A535]/30 disabled:opacity-40 flex items-center justify-center transition"
             >
               <ChevronRight className="w-6 h-6 text-white" />
             </button>

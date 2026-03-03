@@ -44,18 +44,18 @@ const TypingIndicator = ({ isDark }) => (
   <div className="flex items-end gap-3 mb-6 animate-fadeIn">
     <div
       className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg
-      ${isDark ? "bg-[#3BF5C4]/20 border border-[#3BF5C4]/40" : "bg-emerald-100 border border-emerald-300"}`}
+      ${isDark ? "bg-[#E8A535]/20 border border-[#E8A535]/40" : "bg-emerald-100 border border-emerald-300"}`}
     >
-      <Bot size={16} className={isDark ? "text-[#3BF5C4]" : "text-emerald-600"} />
+      <Bot size={16} className={isDark ? "text-[#E8A535]" : "text-emerald-600"} />
     </div>
     <div
       className={`px-5 py-3.5 rounded-2xl rounded-bl-sm shadow-sm
         ${isDark ? "bg-[#1E2830] border border-white/5" : "bg-white border border-gray-200"}`}
     >
       <div className="flex items-center gap-1.5 h-5">
-        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#3BF5C4]" : "bg-emerald-500"}`} style={{ animationDelay: "0ms" }} />
-        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#3BF5C4]" : "bg-emerald-500"}`} style={{ animationDelay: "150ms" }} />
-        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#3BF5C4]" : "bg-emerald-500"}`} style={{ animationDelay: "300ms" }} />
+        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#E8A535]" : "bg-emerald-500"}`} style={{ animationDelay: "0ms" }} />
+        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#E8A535]" : "bg-emerald-500"}`} style={{ animationDelay: "150ms" }} />
+        <span className={`w-2 h-2 rounded-full animate-bounce ${isDark ? "bg-[#E8A535]" : "bg-emerald-500"}`} style={{ animationDelay: "300ms" }} />
       </div>
     </div>
   </div>
@@ -78,12 +78,12 @@ const MessageBubble = ({ msg, isDark }) => {
       <div
         className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg
           ${isUser
-            ? isDark ? "bg-[#3BF5C4]/20 border border-[#3BF5C4]/40" : "bg-emerald-100 border border-emerald-300"
+            ? isDark ? "bg-[#E8A535]/20 border border-[#E8A535]/40" : "bg-emerald-100 border border-emerald-300"
             : isDark ? "bg-white/5 border border-white/10" : "bg-gray-100 border border-gray-200"
           }`}
       >
         {isUser
-          ? <User size={15} className={isDark ? "text-[#3BF5C4]" : "text-emerald-600"} />
+          ? <User size={15} className={isDark ? "text-[#E8A535]" : "text-emerald-600"} />
           : <Bot size={15} className={isDark ? "text-gray-400" : "text-gray-500"} />
         }
       </div>
@@ -94,7 +94,7 @@ const MessageBubble = ({ msg, isDark }) => {
           className={`px-5 py-3.5 rounded-2xl shadow-sm leading-relaxed text-sm
             ${isUser
               ? isDark
-                ? "bg-gradient-to-br from-[#3BF5C4] to-emerald-400 text-black rounded-br-sm font-medium"
+                ? "bg-gradient-to-br from-[#E8A535] to-emerald-400 text-black rounded-br-sm font-medium"
                 : "bg-gradient-to-br from-emerald-500 to-teal-400 text-white rounded-br-sm font-medium"
               : isDark
                 ? "bg-[#1E2830] border border-white/5 text-gray-200 rounded-bl-sm"
@@ -187,7 +187,7 @@ const AureaAi = () => {
   const bg = isDark ? "bg-[#161B1F]" : "bg-gray-50";
   const cardBg = isDark ? "bg-[#1A2026]" : "bg-white";
   const border = isDark ? "border-white/5" : "border-gray-200";
-  const accent = isDark ? "#3BF5C4" : "#10b981";
+  const accent = isDark ? "#E8A535" : "#10b981";
   const inputBg = isDark ? "bg-[#1E2830]" : "bg-white";
   const inputBorder = isDark ? "border-white/10" : "border-gray-300";
   const placeholderColor = isDark ? "placeholder:text-gray-600" : "placeholder:text-gray-400";

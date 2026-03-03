@@ -59,7 +59,7 @@ const Form = ({ formData, endpoint }) => {
             <div className="flex items-center gap-4">
                 <PrimaryButton
                     disabled={processing}
-                    className="w-full !bg-[#3AF5C4] !rounded"
+                    className="w-full !bg-[#E8A535] !rounded"
                 >
                     {formData ? "Update" : "Add"}
                 </PrimaryButton>

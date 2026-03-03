@@ -5,65 +5,64 @@ const articles = [
   {
     id: 1,
     image: "/assets/img/Flexible_Governance_Framework.png",
-    title: "Flexible Governance Framework",
+    title: "AI-Driven Asset Selection",
+    hook: "We don't just tokenize; we curate.",
     description:
-      "Define, evolve, and enforce asset rules with precision-grade compliance and transparency.",
+      "Every asset in our digital and commodity pools undergoes rigorous vetting through our proprietary AI models. We ensure only the most resilient, high-potential assets reach our investors.",
     category: "Benefits",
   },
   {
     id: 2,
     image: "/assets/img/Multi_Blockchain_Support.png",
-    title: "Multi-Blockchain Support",
+    title: "Diversified Liquid Exposure",
+    hook: "One token, an entire portfolio.",
     description:
-      "Deploy assets across multiple chains with interoperability and optimal execution layers.",
+      "Gain instant, fractional exposure to diversified pools of Bitcoin, Ethereum, and Solana, or hedge with our AI-managed commodity pools. Achieve broad market reach through a single, liquid entry point.",
     category: "Benefits",
   },
   {
     id: 3,
     image: "/assets/img/Robust_Developer_Offering.png",
-    title: "Robust Developer Offering",
+    title: "Institutional Tokenization Services",
+    hook: "Tailored for fund managers.",
     description:
-      "Institutional APIs, SDKs, and tooling to accelerate secure tokenization workflows.",
+      "We provide end-to-end tokenization as a service for investment professionals looking to modernize their offerings. From regulatory compliance to smart contract issuance, we handle the complexity so you can focus on performance.",
     category: "Benefits",
   },
   {
     id: 4,
     image: "/assets/img/Security_Core_.png",
-    title: "Security at the Core",
+    title: "Security & Compliance at Scale",
+    hook: "Built for the future of finance.",
     description:
-      "Audited smart contracts, encryption, and enterprise-grade security by design.",
+      "Every Aurea Octave pool is backed by audited smart contracts and enterprise-grade encryption. We bridge the gap between traditional asset management and the speed of DeFi with precision-grade transparency.",
     category: "Benefits",
   },
   {
     id: 5,
-    image: "/assets/img/Unified_Platform.png",
-    title: "Unified Platform",
+    image: "/assets/img/pexels-anh-nguyen-517648218-19813340.jpg",
+    title: "AI-Powered Asset Curation",
+    hook: "Precision-Vetted Opportunities",
     description:
-      "Issuance, compliance, analytics, and lifecycle management in one system.",
-    category: "Benefits",
+      "We transcend traditional analysis by integrating proprietary AI models to vet every asset. This ensures that only high-quality, resilient real-world assets are tokenized, providing a superior foundation for your digital portfolio.",
+    category: "Why Us",
   },
   {
     id: 6,
-    image: "/assets/img/pexels-anh-nguyen-517648218-19813340.jpg",
-    title: "Institutional-Grade Tokenization",
+    image: "/assets/img/pexels-cato-s-2151997403-32744592.jpg",
+    title: "End-to-End Managed Tokenization",
+    hook: "Seamless Institutional Infrastructure",
     description:
-      "Purpose-built tokenized investment infrastructure for professional markets.",
+      "Deploy complex investment strategies with ease. Our tokenization-as-a-service handles everything from regulatory compliance to smart contract issuance, allowing fund managers to focus on performance while we manage the digital plumbing.",
     category: "Why Us",
   },
   {
     id: 7,
-    image: "/assets/img/pexels-cato-s-2151997403-32744592.jpg",
-    title: "Tokenization-as-a-Service",
-    description:
-      "Bring real-world assets on-chain with compliance-first execution.",
-    category: "Why Us",
-  },
-  {
-    id: 8,
     image: "/assets/img/pexels-narcissan-32678951.jpg",
-    title: "Clarity-Driven Design",
+    title: "Radical Transparency & Liquidity",
+    hook: "Built for Trust and Velocity",
     description:
-      "A minimalist, trust-oriented interface built for institutions.",
+      "Aurea Octave bridges the gap between traditional finance and DeFi. By providing fractional, liquid exposure to diversified asset pools with real-time on-chain verification, we offer the clarity and speed that modern institutional investors demand.",
     category: "Why Us",
   },
 ];
@@ -124,11 +123,10 @@ export default function Benefits() {
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 py-2 w-[50%] text-sm rounded-full transition-all ${
-                  activeTab === tab
-                    ? "bg-[#3BF5C4] text-black shadow-lg"
-                    : "text-[#9CA3AF] hover:text-white"
-                }`}
+                className={`px-6 py-2 w-[50%] text-sm rounded-full transition-all ${activeTab === tab
+                  ? "bg-[#E8A535] text-black shadow-lg"
+                  : "text-[#9CA3AF] hover:text-white"
+                  }`}
               >
                 {tab}
               </button>
@@ -144,11 +142,10 @@ export default function Benefits() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className={`grid gap-8 ${
-              activeTab === "Benefits"
-                ? "md:grid-cols-2 lg:grid-cols-4"
-                : "md:grid-cols-3"
-            }`}
+            className={`grid gap-8 ${activeTab === "Benefits"
+              ? "md:grid-cols-2 lg:grid-cols-4"
+              : "md:grid-cols-3"
+              }`}
           >
             {filtered.map((article) => (
               <motion.article
@@ -171,12 +168,18 @@ export default function Benefits() {
                     {article.title}
                   </h3>
 
+                  {article.hook && (
+                    <p className="text-[#E8A535] text-sm font-medium mb-2">
+                      {article.hook}
+                    </p>
+                  )}
+
                   <p className="text-[#9CA3AF] text-sm leading-relaxed mb-5">
                     {article.description}
                   </p>
 
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#3BF5C4]">Explore →</span>
+                    <span className="text-[#E8A535]">Explore →</span>
                     <span className="text-white/40 uppercase tracking-wide">
                       {article.category}
                     </span>
@@ -184,7 +187,7 @@ export default function Benefits() {
                 </div>
 
                 {/* Glow */}
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#3BF5C4]/20 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#E8A535]/20 via-transparent to-transparent" />
               </motion.article>
             ))}
           </motion.div>

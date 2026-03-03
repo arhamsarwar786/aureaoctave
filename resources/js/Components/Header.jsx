@@ -162,7 +162,7 @@ const Header = () => {
                     {/* Logo */}
                     <Link
                         href="/"
-                        className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#3BF5C4]" : "text-white"
+                        className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#E8A535]" : "text-white"
                             }`}
                     >
                         <img src="/assets/img/logo1.svg" alt="" className="w-40 h-14" />
@@ -175,7 +175,7 @@ const Header = () => {
                         <Link
                             href="/"
                             className={`transition-colors ${isScrolled ? "text-gray-400" : "text-white"
-                                } hover:text-[#3BF5C4]`}
+                                } hover:text-[#E8A535]`}
                         >
                             Home
                         </Link>
@@ -185,21 +185,21 @@ const Header = () => {
                             <Link
                                 href="/what-we-do"
                                 className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
-                                    } hover:text-[#3BF5C4]`}
+                                    } hover:text-[#E8A535]`}
                             >
                                 What We Do
                             </Link>
 
-                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
+                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#E8A535]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
                                 <Link
                                     href="/services/products"
-                                    className="block px-4 py-2 hover:bg-[#3BF5C4]/10"
+                                    className="block px-4 py-2 hover:bg-[#E8A535]/10"
                                 >
                                     Tokenized Investment Products
                                 </Link>
                                 <Link
                                     href="/services/taas"
-                                    className="block px-4 py-2 hover:bg-[#3BF5C4]/10"
+                                    className="block px-4 py-2 hover:bg-[#E8A535]/10"
                                 >
                                     Tokenization-as-a-Service
                                 </Link>
@@ -209,7 +209,7 @@ const Header = () => {
                         <Link
                             href="/why-ata"
                             className={`transition-colors ${isScrolled ? "text-gray-400" : "text-white"
-                                } hover:text-[#3BF5C4]`}
+                                } hover:text-[#E8A535]`}
                         >
                             WHY ATA
                         </Link>
@@ -218,30 +218,30 @@ const Header = () => {
                         <div className="relative group">
                             <button
                                 className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
-                                    } hover:text-[#3BF5C4]`}
+                                    } hover:text-[#E8A535]`}
                                 onClick={() => window.location.href = "/contact-us"}
                             >
                                 Contact Us
                                 {/* <ChevronDown size={16} /> */}
                             </button>
 
-                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#3BF5C4]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
-                                <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
+                            {/* <div className="absolute top-full left-0 hidden group-hover:block bg-[#0B0F14]/95 border border-[#E8A535]/30 rounded-lg w-64 py-3 backdrop-blur-xl">
+                                <Link className="block px-4 py-2 hover:bg-[#E8A535]/10">
                                     Docs & FAQs
                                 </Link>
                                 <Link
                                     href="/contact-us"
-                                    className="block px-4 py-2 hover:bg-[#3BF5C4]/10"
+                                    className="block px-4 py-2 hover:bg-[#E8A535]/10"
                                 >
                                     Contact Us
                                 </Link>
-                                <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
+                                <Link className="block px-4 py-2 hover:bg-[#E8A535]/10">
                                     Investor Relations
                                 </Link>
-                                <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
+                                <Link className="block px-4 py-2 hover:bg-[#E8A535]/10">
                                     Company
                                 </Link>
-                                <Link className="block px-4 py-2 hover:bg-[#3BF5C4]/10">
+                                <Link className="block px-4 py-2 hover:bg-[#E8A535]/10">
                                     Careers
                                 </Link>
                             </div> */}
@@ -254,7 +254,7 @@ const Header = () => {
                             <Link
                                 href="/dashboard"
                                 className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
-                                    ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
+                                    ? "bg-[#E8A535] text-[#0B0F14] hover:bg-[#2fe6b9]"
                                     : "bg-white text-black hover:bg-gray-100"
                                     }`}
                             >
@@ -265,7 +265,7 @@ const Header = () => {
                                 <Link
                                     href="/register"
                                     className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
-                                        ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
+                                        ? "bg-[#E8A535] text-[#0B0F14] hover:bg-[#2fe6b9]"
                                         : "bg-white text-black hover:bg-gray-100"
                                         }`}
                                 >
@@ -275,7 +275,7 @@ const Header = () => {
                                 <Link
                                     href="/login"
                                     className={`px-6 py-2.5 rounded-full font-medium border transition-colors ${isScrolled
-                                        ? "border-[#3BF5C4] text-[#3BF5C4] hover:bg-[#3BF5C4]/10"
+                                        ? "border-[#E8A535] text-[#E8A535] hover:bg-[#E8A535]/10"
                                         : "border-white text-white hover:bg-white/10"
                                         }`}
                                 >
@@ -303,21 +303,21 @@ const Header = () => {
             {showingNavigationDropdown && (
                 <div className="md:hidden bg-[#0B0F14] px-6 py-4 space-y-3 text-gray-300">
                     <Link href="/" className="block">Home</Link>
-                    <Link href="/what-we-do" className="block hover:text-[#3BF5C4] transition-colors">
+                    <Link href="/what-we-do" className="block hover:text-[#E8A535] transition-colors">
                         What We Do
                     </Link>
-                    <Link href="/why-ata" className="block hover:text-[#3BF5C4] transition-colors">
+                    <Link href="/why-ata" className="block hover:text-[#E8A535] transition-colors">
                         WHY ATA
                     </Link>
-                    <Link href="/contact-us" className="block hover:text-[#3BF5C4] transition-colors">
+                    <Link href="/contact-us" className="block hover:text-[#E8A535] transition-colors">
                         Contact Us
                     </Link>
                     {auth?.user ? (
-                        <Link href="/dashboard" className="block hover:text-[#3BF5C4] transition-colors">Dashboard</Link>
+                        <Link href="/dashboard" className="block hover:text-[#E8A535] transition-colors">Dashboard</Link>
                     ) : (
                         <>
-                            <Link href="/register" className="block hover:text-[#3BF5C4] transition-colors">Sign Up</Link>
-                            <Link href="/login" className="block hover:text-[#3BF5C4] transition-colors">Log In</Link>
+                            <Link href="/register" className="block hover:text-[#E8A535] transition-colors">Sign Up</Link>
+                            <Link href="/login" className="block hover:text-[#E8A535] transition-colors">Log In</Link>
                         </>
                     )}
                 </div>

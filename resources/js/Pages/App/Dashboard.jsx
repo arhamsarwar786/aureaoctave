@@ -69,13 +69,13 @@ export default function Dashboard({ auth, balance }) {
                             <div className="p-6 space-y-4">
                                 <Link
                                     href={route("deposit")}
-                                    className="block w-full text-center py-3 bg-[#3AF5C4] rounded text-black border border-[#3AF5C4] text-lg font-bold hover:bg-[#84f1d4] transition-colors"
+                                    className="block w-full text-center py-3 bg-[#E8A535] rounded text-black border border-[#E8A535] text-lg font-bold hover:bg-[#84f1d4] transition-colors"
                                 >
                                     Deposit
                                 </Link>
                                 <Link
                                     href={route("withdrawal")}
-                                    className="block w-full text-center py-3 bg-black rounded text-[#3AF5C4] border border-[#3AF5C4] text-lg font-bold hover:bg-gray-100 transition-colors"
+                                    className="block w-full text-center py-3 bg-black rounded text-[#E8A535] border border-[#E8A535] text-lg font-bold hover:bg-gray-100 transition-colors"
                                 >
                                     Withdrawal
                                 </Link>

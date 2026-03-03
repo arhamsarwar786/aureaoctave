@@ -161,7 +161,7 @@ const Footer = () => {
                                         documents and{" "}
                                         <Link
                                             href="/"
-                                            className="text-[#3BF5C4] hover:opacity-80 transition"
+                                            className="text-[#E8A535] hover:opacity-80 transition"
                                         >
                                             Aurea Octave
                                         </Link>{" "}
@@ -183,7 +183,7 @@ const Footer = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 1, ease: "easeOut" }}
                         className="text-[6rem] md:text-[10rem] lg:text-[14rem] font-light leading-none tracking-tight
-                                   bg-gradient-to-r from-white via-[#3BF5C4] to-white
+                                   bg-gradient-to-r from-white via-[#E8A535] to-white
                                    bg-clip-text text-transparent select-none"
                     >
                         Aurea Octave
@@ -206,26 +206,26 @@ const Footer = () => {
                         <div className="flex gap-6">
                             <Link
                                 href="/privacy-policy"
-                                className="relative group hover:text-[#3BF5C4] transition"
+                                className="relative group hover:text-[#E8A535] transition"
                             >
                                 Privacy Policy
-                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#3BF5C4] transition-all group-hover:w-full" />
+                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#E8A535] transition-all group-hover:w-full" />
                             </Link>
 
                             <Link
                                 href="/terms-of-service"
-                                className="relative group hover:text-[#3BF5C4] transition"
+                                className="relative group hover:text-[#E8A535] transition"
                             >
                                 Terms of Service
-                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#3BF5C4] transition-all group-hover:w-full" />
+                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#E8A535] transition-all group-hover:w-full" />
                             </Link>
 
                             <Link
                                 href="/cookie-policy"
-                                className="relative group hover:text-[#3BF5C4] transition"
+                                className="relative group hover:text-[#E8A535] transition"
                             >
                                 Cookie Policy
-                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#3BF5C4] transition-all group-hover:w-full" />
+                                <span className="absolute left-0 -bottom-1 h-px w-0 bg-[#E8A535] transition-all group-hover:w-full" />
                             </Link>
                         </div>
                     </motion.div>

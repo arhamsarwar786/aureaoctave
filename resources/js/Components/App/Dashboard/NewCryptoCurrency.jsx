@@ -34,7 +34,7 @@ const NewCryptocurrency = () => {
                     <h1 className="text-xl font-bold text-white ">
                         Newly Cryptocurrency
                     </h1>
-                    <Link className="text-sm text-[#3AF5C4]">See All</Link>
+                    <Link className="text-sm text-[#E8A535]">See All</Link>
                 </header>
                 <main className="space-y-5">
                     {newCoins.map((coin, index) => (

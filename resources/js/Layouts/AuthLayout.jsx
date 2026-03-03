@@ -17,10 +17,10 @@ export default function AuthLayout({ children }) {
 
                 {/* Layered background with online image */}
                 <div className="absolute inset-0">
-                    <img 
-                        src="/assets/img/kevin-matos-Nl_FMFpXo2g-unsplash.jpg" 
-                        alt="Background" 
-                        className="w-full h-full object-cover object-center" 
+                    <img
+                        src="/assets/img/kevin-matos-Nl_FMFpXo2g-unsplash.jpg"
+                        alt="Background"
+                        className="w-full h-full object-cover object-center"
                         style={{ filter: "brightness(0.5) blur(1px)" }}
                     />
                 </div>
@@ -37,9 +37,9 @@ export default function AuthLayout({ children }) {
 
                 {/* Floating orbs */}
                 {/* <div className="absolute top-24 right-20 w-64 h-64 rounded-full opacity-10 blur-3xl"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }} />
+                    style={{ background: "radial-gradient(circle, #E8A535, transparent)" }} />
                 <div className="absolute bottom-32 left-10 w-48 h-48 rounded-full opacity-8 blur-3xl"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)" }} /> */}
+                    style={{ background: "radial-gradient(circle, #E8A535, transparent)" }} /> */}
 
                 {/* Content */}
                 <div className="relative z-10">
@@ -54,7 +54,7 @@ export default function AuthLayout({ children }) {
                         <h2 className="text-5xl font-bold text-white leading-tight mb-4">
                             Intelligent<br />
                             <span style={{
-                                background: "linear-gradient(135deg, #3BF5C4, #10b981)",
+                                background: "linear-gradient(135deg, #E8A535, #E8A535)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                             }}>
@@ -70,8 +70,8 @@ export default function AuthLayout({ children }) {
                         {FEATURES.map(({ icon: Icon, text }) => (
                             <div key={text} className="flex items-center gap-3">
                                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                                    style={{ background: "rgba(59,245,196,0.1)", border: "1px solid rgba(59,245,196,0.2)" }}>
-                                    <Icon size={15} style={{ color: "#3BF5C4" }} />
+                                    style={{ background: "rgba(59,245,196,0.1)", border: "1px solid #E8A535s" }}>
+                                    <Icon size={15} style={{ color: "#E8A535" }} />
                                 </div>
                                 <span className="text-gray-300 text-sm">{text}</span>
                             </div>
@@ -102,7 +102,7 @@ export default function AuthLayout({ children }) {
                     <div className="lg:hidden flex items-center gap-3 mb-10 justify-center">
                         <div className="w-9 h-9 rounded-xl flex items-center justify-center"
                             style={{ background: "rgba(59,245,196,0.1)", border: "1px solid rgba(59,245,196,0.25)" }}>
-                            <Sparkles size={18} style={{ color: "#3BF5C4" }} />
+                            <Sparkles size={18} style={{ color: "#E8A535" }} />
                         </div>
                         <span className="text-lg font-bold text-white">Aurea Octave</span>
                     </div>

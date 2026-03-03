@@ -151,7 +151,7 @@ function FaqItem({ q, a }) {
                 <ChevronDown
                     size={18}
                     className="flex-shrink-0 text-slate-400 transition-transform duration-300"
-                    style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", color: open ? "#3BF5C4" : undefined }}
+                    style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", color: open ? "#E8A535" : undefined }}
                 />
             </div>
             <AnimatePresence>
@@ -174,7 +174,7 @@ function FaqItem({ q, a }) {
 // ── Check / X cell ────────────────────────────────────────────────────────────
 function Cell({ yes }) {
     return yes
-        ? <CheckCircle2 size={18} style={{ color: "#3BF5C4" }} className="mx-auto" />
+        ? <CheckCircle2 size={18} style={{ color: "#E8A535" }} className="mx-auto" />
         : <span className="block text-center text-slate-600 text-lg leading-none">—</span>;
 }
 
@@ -198,7 +198,7 @@ export default function WhyATA() {
                 {/* Glow */}
                 <div
                     className="absolute top-1/3 right-1/4 w-[700px] h-[700px] rounded-full pointer-events-none blur-[140px] opacity-8"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.08 }}
+                    style={{ background: "radial-gradient(circle, #E8A535, transparent)", opacity: 0.08 }}
                 />
 
                 <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -208,14 +208,14 @@ export default function WhyATA() {
                         variants={stagger}
                         className="max-w-3xl"
                     >
-                        <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-6 font-semibold">
+                        <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-6 font-semibold">
                             Why ATA
                         </motion.p>
 
                         <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.06] text-white mb-8">
                             The infrastructure<br />
                             <span style={{
-                                background: "linear-gradient(135deg, #3BF5C4, #67e8f9)",
+                                background: "linear-gradient(135deg, #E8A535, #67e8f9)",
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                             }}>
@@ -231,7 +231,7 @@ export default function WhyATA() {
                             <Link
                                 href="/register"
                                 className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
-                                style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.2)" }}
+                                style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.2)" }}
                             >
                                 Get Started <ArrowRight size={16} />
                             </Link>
@@ -255,7 +255,7 @@ export default function WhyATA() {
                         viewport={{ once: true }}
                         className="text-center mb-20"
                     >
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-4 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-4 font-semibold">
                             Our Advantage
                         </p>
                         <h2 className="text-4xl md:text-5xl font-light text-white mb-5">
@@ -286,10 +286,10 @@ export default function WhyATA() {
                                 >
                                     {/* Icon */}
                                     <div
-                                        className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-[#3BF5C4]/15"
+                                        className="w-11 h-11 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 group-hover:bg-[#E8A535]/15"
                                         style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
                                     >
-                                        <Icon size={20} className="text-[#9CA3AF] group-hover:text-[#3BF5C4] transition-colors" />
+                                        <Icon size={20} className="text-[#9CA3AF] group-hover:text-[#E8A535] transition-colors" />
                                     </div>
 
                                     {/* Stat */}
@@ -297,7 +297,7 @@ export default function WhyATA() {
                                         <span
                                             className="text-2xl font-semibold"
                                             style={{
-                                                background: "linear-gradient(135deg, #3BF5C4, #67e8f9)",
+                                                background: "linear-gradient(135deg, #E8A535, #67e8f9)",
                                                 WebkitBackgroundClip: "text",
                                                 WebkitTextFillColor: "transparent",
                                             }}
@@ -325,7 +325,7 @@ export default function WhyATA() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-4 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-4 font-semibold">
                             ATA vs. The Rest
                         </p>
                         <h2 className="text-4xl md:text-5xl font-light text-white">
@@ -344,7 +344,7 @@ export default function WhyATA() {
                         <div className="grid grid-cols-4 text-center"
                             style={{ background: "rgba(59,245,196,0.06)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
                             <div className="p-5 text-left text-[#9CA3AF] text-xs uppercase tracking-widest font-semibold">Feature</div>
-                            <div className="p-5 text-sm font-bold" style={{ color: "#3BF5C4" }}>ATA</div>
+                            <div className="p-5 text-sm font-bold" style={{ color: "#E8A535" }}>ATA</div>
                             <div className="p-5 text-sm font-medium text-white/50">Traditional Finance</div>
                             <div className="p-5 text-sm font-medium text-white/50">DeFi Protocols</div>
                         </div>
@@ -374,7 +374,7 @@ export default function WhyATA() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-4 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-4 font-semibold">
                             Client Perspectives
                         </p>
                         <h2 className="text-4xl md:text-5xl font-light text-white">
@@ -402,7 +402,7 @@ export default function WhyATA() {
                                 {/* Stars */}
                                 <div className="flex gap-1">
                                     {[...Array(5)].map((_, s) => (
-                                        <Star key={s} size={14} style={{ color: "#3BF5C4", fill: "#3BF5C4" }} />
+                                        <Star key={s} size={14} style={{ color: "#E8A535", fill: "#E8A535" }} />
                                     ))}
                                 </div>
 
@@ -429,7 +429,7 @@ export default function WhyATA() {
                         viewport={{ once: true }}
                         className="text-center mb-16"
                     >
-                        <p className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-4 font-semibold">
+                        <p className="text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-4 font-semibold">
                             FAQ
                         </p>
                         <h2 className="text-4xl font-light text-white">
@@ -464,9 +464,9 @@ export default function WhyATA() {
                 >
                     <div
                         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full pointer-events-none blur-[100px]"
-                        style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.08 }}
+                        style={{ background: "radial-gradient(circle, #E8A535, transparent)", opacity: 0.08 }}
                     />
-                    <p className="relative text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-5 font-semibold">
+                    <p className="relative text-xs uppercase tracking-[0.3em] text-[#E8A535] mb-5 font-semibold">
                         Ready?
                     </p>
                     <h2 className="relative text-4xl md:text-5xl font-light text-white mb-6 leading-tight">
@@ -480,7 +480,7 @@ export default function WhyATA() {
                         <Link
                             href="/register"
                             className="flex items-center gap-2 px-10 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
-                            style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.25)" }}
+                            style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.25)" }}
                         >
                             Create Account <ArrowRight size={16} />
                         </Link>
