@@ -57,7 +57,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/history', [TransactionController::class, 'index'])->name('history');
     Route::resource('investment-package', InvestmentPackageController::class);
     Route::resource('transactions', TransactionController::class);
-    Route::get('/deposit', [DepositController::class, 'index'])->name('deposit');
+    Route::get('/wallet', function () {
+        return Inertia::render('App/Wallet');
+    })->name('deposit');
     Route::post('/deposit/store', [DepositController::class, 'store'])->name('deposit.store');
     Route::get('/withdrawal', [WithdrawalController::class, 'index'])->name('withdrawal');
     Route::post('/withdrawal/store', [WithdrawalController::class, 'store'])->name('withdrawal.store');

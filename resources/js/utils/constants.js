@@ -31,14 +31,8 @@ export const sidebarLinks = [
     },
     {
         routeName: "deposit",
-        icon: ArrowDownToLineIcon,
-        label: "Deposit",
-        roles: ["admin", "user"],
-    },
-    {
-        routeName: "withdrawal",
-        icon: ArrowUpToLineIcon,
-        label: "Withdrawal",
+        icon: WalletIcon,
+        label: "Wallet",
         roles: ["admin", "user"],
     },
     {

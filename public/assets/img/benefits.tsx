@@ -138,7 +138,7 @@ export default function Benefits() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 className={`px-6 py-2 text-sm rounded-full transition-all ${activeTab === tab
-                  ? "bg-[#E8A535] text-black shadow-lg"
+                  ? "bg-[#3BF5C4] text-black shadow-lg"
                   : "text-[#9CA3AF] hover:text-white"
                   }`}
               >
@@ -187,7 +187,7 @@ export default function Benefits() {
                   </p>
 
                   <div className="flex justify-between items-center text-sm">
-                    <span className="text-[#E8A535]">Explore →</span>
+                    <span className="text-[#3BF5C4]">Explore →</span>
                     <span className="text-white/40 uppercase tracking-wide">
                       {article.category}
                     </span>
@@ -195,7 +195,7 @@ export default function Benefits() {
                 </div>
 
                 {/* Glow */}
-                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#E8A535]/20 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-[#3BF5C4]/20 via-transparent to-transparent" />
               </motion.article>
             ))}
           </motion.div>

@@ -11,14 +11,14 @@ const BuySellSection = () => {
             <div className="p-6 space-y-4">
                 <div className="relative grid grid-cols-2 divide-x">
                     <button
-                        className={`${tab === "buy" ? "text-[#E8A535]" : "text-[#A9A9A9]"
+                        className={`${tab === "buy" ? "text-[#3BF5C4]" : "text-[#A9A9A9]"
                             } w-full p-3 text-lg font-semibold transition delay-150`}
                         onClick={() => setTab("buy")}
                     >
                         Buy
                     </button>
                     <button
-                        className={`${tab === "sell" ? "text-[#E8A535]" : "text-[#A9A9A9]"
+                        className={`${tab === "sell" ? "text-[#3BF5C4]" : "text-[#A9A9A9]"
                             } w-full p-3 text-lg font-semibold transition delay-150`}
                         onClick={() => setTab("sell")}
                     >
@@ -78,7 +78,7 @@ const BuySellSection = () => {
                         </div>
                     </div>
                 </div>
-                <button className="relative w-full flex min-h-14 items-center justify-center bg-[#E8A535] rounded text-black border border-[#C58C42]">
+                <button className="relative w-full flex min-h-14 items-center justify-center bg-[#3BF5C4] rounded text-black border border-[#C58C42]">
                     <div className="text-lg font-bold ">Buy ETH</div>
                 </button>
             </div>

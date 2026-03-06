@@ -214,7 +214,7 @@ export default function Hero() {
                 {lineIndex < lines.length && (
                   <div>
                     {currentLine}
-                    <span className="ml-1 animate-pulse text-[#E8A535]">▍</span>
+                    <span className="ml-1 animate-pulse text-[#3BF5C4]">▍</span>
                   </div>
                 )}
               </h2>
@@ -238,14 +238,14 @@ export default function Hero() {
                 className="flex flex-wrap gap-4 pt-4"
               >
                 <button
-                  className="rounded-full bg-[#E8A535] px-8 py-4 text-sm font-semibold tracking-wide text-[#0B0F14] transition hover:scale-[1.04]"
+                  className="rounded-full bg-[#3BF5C4] px-8 py-4 text-sm font-semibold tracking-wide text-[#0B0F14] transition hover:scale-[1.04]"
                   style={{ fontFamily: "var(--font-poppins)" }}
                 >
                   LEARN MORE
                 </button>
 
                 <button
-                  className="rounded-full border border-[#E8A535]/30 px-8 py-4 text-sm font-medium tracking-wide text-[#E8A535] backdrop-blur-md transition hover:bg-[#E8A535]/10"
+                  className="rounded-full border border-[#3BF5C4]/30 px-8 py-4 text-sm font-medium tracking-wide text-[#3BF5C4] backdrop-blur-md transition hover:bg-[#3BF5C4]/10"
                   style={{ fontFamily: "var(--font-poppins)" }}
                 >
                   READ MANIFESTO
@@ -255,7 +255,7 @@ export default function Hero() {
           </div>
 
           {/* Company Marquee */}
-          <div className="absolute bottom-0 inset-x-0 z-10 border-t border-[#E8A535]/20 bg-linear-to-t from-[#0B0F14]/70 to-transparent py-8 backdrop-blur-sm">
+          <div className="absolute bottom-0 inset-x-0 z-10 border-t border-[#3BF5C4]/20 bg-linear-to-t from-[#0B0F14]/70 to-transparent py-8 backdrop-blur-sm">
             <motion.div
               animate={{ x: ["0%", "-50%"] }}
               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
@@ -264,7 +264,7 @@ export default function Hero() {
               {[...companies, ...companies].map((company, index) => (
                 <div key={index} className="px-12">
                   <span
-                    className="cursor-default text-sm md:text-base font-medium tracking-widest uppercase text-[#9CA3AF] transition hover:text-[#E8A535]"
+                    className="cursor-default text-sm md:text-base font-medium tracking-widest uppercase text-[#9CA3AF] transition hover:text-[#3BF5C4]"
                     style={{ fontFamily: "var(--font-poppins)" }}
                   >
                     {company}

@@ -19,7 +19,7 @@ function AuthInput({ icon: Icon, ...props }) {
                 {...props}
                 className={`w-full h-12 rounded-xl text-sm text-white placeholder:text-gray-600 outline-none transition-all duration-200
                     ${Icon ? "pl-10 pr-4" : "px-4"}
-                    bg-white/5 border border-white/8 focus:border-[#E8A535]/50 focus:ring-2 focus:ring-[#E8A535]/10
+                    bg-white/5 border border-white/8 focus:border-[#3BF5C4]/50 focus:ring-2 focus:ring-[#3BF5C4]/10
                     ${props.className || ""}`}
             />
         </div>
@@ -38,7 +38,7 @@ export default function ForgotPassword({ status }) {
             {/* Icon */}
             <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-2"
                 style={{ background: "rgba(59,245,196,0.1)", border: "1px solid rgba(59,245,196,0.2)" }}>
-                <Mail size={26} style={{ color: "#E8A535" }} />
+                <Mail size={26} style={{ color: "#3BF5C4" }} />
             </div>
 
             <div className="text-center">
@@ -74,7 +74,7 @@ export default function ForgotPassword({ status }) {
                     disabled={processing}
                     className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
                         ${processing ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
-                    style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+                    style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
                 >
                     <Send size={15} />
                     {processing ? "Sending link…" : "Send reset link"}

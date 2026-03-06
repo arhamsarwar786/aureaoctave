@@ -562,14 +562,14 @@
 }
 
 /* Preserve teal accent buttons */
-.theme-root[data-theme="light"] .bg-\[\#E8A535\],
-.theme-root[data-theme="light"] .bg-\[\#E8A535\] {
-    background-color: #E8A535 !important;
+.theme-root[data-theme="light"] .bg-\[\#3BF5C4\],
+.theme-root[data-theme="light"] .bg-\[\#3BF5C4\] {
+    background-color: #3BF5C4 !important;
     color: #0b1117 !important;
 }
 
-.theme-root[data-theme="light"] .text-\[\#E8A535\],
-.theme-root[data-theme="light"] .text-\[\#E8A535\] {
+.theme-root[data-theme="light"] .text-\[\#3BF5C4\],
+.theme-root[data-theme="light"] .text-\[\#3BF5C4\] {
     color: #0e9f6e !important;
 }
 

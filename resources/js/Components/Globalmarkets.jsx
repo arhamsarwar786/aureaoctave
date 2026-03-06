@@ -50,7 +50,7 @@ const TokenizedAssetsSection = () => {
 
                     <div className="mt-10 flex items-center justify-center gap-4">
                         <span className="h-px w-24 bg-white/20" />
-                        <span className="w-2 h-2 rounded-full bg-[#E8A535]" />
+                        <span className="w-2 h-2 rounded-full bg-[#3BF5C4]" />
                         <span className="h-px w-24 bg-white/20" />
                     </div>
                 </motion.div>
@@ -67,7 +67,7 @@ const TokenizedAssetsSection = () => {
                             whileHover={{ y: -6 }}
                             className="group relative rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-md"
                         >
-                            <stat.icon className="w-5 h-5 text-[#E8A535] mb-6" />
+                            <stat.icon className="w-5 h-5 text-[#3BF5C4] mb-6" />
 
                             <div className="text-4xl md:text-5xl font-light mb-1">
                                 {stat.value}
@@ -77,7 +77,7 @@ const TokenizedAssetsSection = () => {
                                 {stat.label}
                             </p>
 
-                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#E8A535]/10 to-transparent pointer-events-none" />
+                            <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#3BF5C4]/10 to-transparent pointer-events-none" />
                         </motion.div>
                     ))}
                 </div>
@@ -85,7 +85,7 @@ const TokenizedAssetsSection = () => {
                 {/* Cash Management Section */}
                 <div className="mb-16">
                     <div className="flex gap-6 items-start mb-10">
-                        <div className="hidden sm:block w-1 h-24 bg-gradient-to-b from-[#E8A535] to-transparent rounded-full" />
+                        <div className="hidden sm:block w-1 h-24 bg-gradient-to-b from-[#3BF5C4] to-transparent rounded-full" />
                         <div>
                             <h2 className="text-3xl md:text-4xl font-light mb-3">
                                 Institutional-Grade
@@ -128,7 +128,7 @@ const TokenizedAssetsSection = () => {
 
                                 {product.apy && (
                                     <div className="mb-10">
-                                        <div className="text-6xl font-light">
+                                        <div className="text-2xl font-light">
                                             {product.apy}
                                         </div>
                                         <span className="text-sm text-[#9CA3AF]">
@@ -138,12 +138,12 @@ const TokenizedAssetsSection = () => {
                                 )}
 
                                 <div className="absolute bottom-6 right-6">
-                                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#E8A535] transition">
-                                        <ArrowRight className="w-5 h-5 text-white group-hover:text-[#E8A535]" />
+                                    <div className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:border-[#3BF5C4] transition">
+                                        <ArrowRight className="w-5 h-5 text-white group-hover:text-[#3BF5C4]" />
                                     </div>
                                 </div>
 
-                                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#E8A535]/10 to-transparent pointer-events-none" />
+                                <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition bg-gradient-to-br from-[#3BF5C4]/10 to-transparent pointer-events-none" />
                             </motion.div>
                         ))}
                     </div>

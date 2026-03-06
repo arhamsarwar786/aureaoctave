@@ -167,7 +167,7 @@ export default function PerspectivesCarousel() {
       </div>
 
       {/* Accent Glow */}
-      <div className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#E8A535]/10 blur-[120px] rounded-full" />
+      <div className="pointer-events-none absolute -bottom-40 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#3BF5C4]/10 blur-[120px] rounded-full" />
     </section>
   );
 }

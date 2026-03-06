@@ -36,7 +36,7 @@ export default function UpdateProfileInformation({
             <div className="max-w-4xl mx-auto bg-white dark:bg-[#111827] rounded-2xl shadow-xl p-8 space-y-8">
                 {/* Header */}
                 <header className="flex items-center gap-3 text-gray-900 dark:text-white mb-6">
-                    <UserRoundIcon className="w-6 h-6 text-[#E8A535]" />
+                    <UserRoundIcon className="w-6 h-6 text-[#3BF5C4]" />
                     <h2 className="text-2xl font-semibold">Account Details</h2>
                 </header>
 
@@ -44,7 +44,7 @@ export default function UpdateProfileInformation({
                     <div className="grid sm:grid-cols-2 gap-8 divide-y sm:divide-y-0 sm:divide-x-2 divide-gray-200 dark:divide-gray-700">
                         {/* General Information */}
                         <div className="space-y-6 sm:pr-5 pb-6 sm:pb-0">
-                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#E8A535]">
+                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#3BF5C4]">
                                 General Information
                             </h3>
 
@@ -55,11 +55,11 @@ export default function UpdateProfileInformation({
                                     src={user.avatar || ""}
                                     fallback={user.name?.[0] || "A"}
                                     radius="full"
-                                    className="border-2 border-[#1D9D8E] dark:border-[#E8A535]"
+                                    className="border-2 border-[#1D9D8E] dark:border-[#3BF5C4]"
                                 />
                                 <button
                                     type="button"
-                                    className="absolute bottom-0 right-0 bg-[#E8A535] p-1 rounded-full shadow hover:bg-[#2dd9b0] transition"
+                                    className="absolute bottom-0 right-0 bg-[#3BF5C4] p-1 rounded-full shadow hover:bg-[#2dd9b0] transition"
                                 >
                                     <CameraIcon className="w-4 h-4 text-black" />
                                 </button>
@@ -71,7 +71,7 @@ export default function UpdateProfileInformation({
                                 <TextInput
                                     id="name"
                                     type="text"
-                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E8A535] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3BF5C4] focus:border-transparent"
                                     value={data.name}
                                     onChange={(e) =>
                                         setData("name", e.target.value)
@@ -92,7 +92,7 @@ export default function UpdateProfileInformation({
                                 <TextInput
                                     id="email"
                                     type="email"
-                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E8A535] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3BF5C4] focus:border-transparent"
                                     value={data.email}
                                     onChange={(e) =>
                                         setData("email", e.target.value)
@@ -116,7 +116,7 @@ export default function UpdateProfileInformation({
                                 <TextInput
                                     id="phone_number"
                                     type="tel"
-                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E8A535] focus:border-transparent"
+                                    className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3BF5C4] focus:border-transparent"
                                     value={data.phone_number}
                                     onChange={(e) =>
                                         setData("phone_number", e.target.value)
@@ -147,7 +147,7 @@ export default function UpdateProfileInformation({
 
                         {/* Address Information */}
                         <div className="space-y-6 sm:pl-5 pt-6 sm:pt-0">
-                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#E8A535]">
+                            <h3 className="text-xl font-semibold text-[#1D9D8E] dark:text-[#3BF5C4]">
                                 Address Information
                             </h3>
 
@@ -167,7 +167,7 @@ export default function UpdateProfileInformation({
                                     <TextInput
                                         id={field.id}
                                         type="text"
-                                        className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#E8A535] focus:border-transparent"
+                                        className="mt-1 block w-full bg-gray-50 dark:bg-[#1F2937] border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3BF5C4] focus:border-transparent"
                                         value={data[field.id]}
                                         onChange={(e) =>
                                             setData(field.id, e.target.value)
@@ -187,7 +187,7 @@ export default function UpdateProfileInformation({
                     <div className="space-y-4">
                         <PrimaryButton
                             disabled={processing}
-                            className="w-full bg-gradient-to-r from-[#1D9D8E] to-[#147065] dark:from-[#E8A535] dark:to-[#1D9D8E] hover:from-[#1b9183] hover:to-[#126157] dark:hover:from-[#32eab0] dark:hover:to-[#1b9c88] text-white dark:text-black font-bold rounded-xl py-3 transition flex justify-center"
+                            className="w-full bg-gradient-to-r from-[#1D9D8E] to-[#147065] dark:from-[#3BF5C4] dark:to-[#1D9D8E] hover:from-[#1b9183] hover:to-[#126157] dark:hover:from-[#32eab0] dark:hover:to-[#1b9c88] text-white dark:text-black font-bold rounded-xl py-3 transition flex justify-center"
                         >
                             Update
                         </PrimaryButton>
@@ -207,7 +207,7 @@ export default function UpdateProfileInformation({
 
                         <Link
                             href={route("settings")}
-                            className="inline-flex items-center justify-center w-full text-center py-3 rounded-xl border-2 border-[#1D9D8E] dark:border-[#E8A535] text-[#1D9D8E] dark:text-[#E8A535] font-semibold uppercase hover:bg-gray-50 dark:hover:bg-[#1F2937] transition"
+                            className="inline-flex items-center justify-center w-full text-center py-3 rounded-xl border-2 border-[#1D9D8E] dark:border-[#3BF5C4] text-[#1D9D8E] dark:text-[#3BF5C4] font-semibold uppercase hover:bg-gray-50 dark:hover:bg-[#1F2937] transition"
                         >
                             Cancel
                         </Link>

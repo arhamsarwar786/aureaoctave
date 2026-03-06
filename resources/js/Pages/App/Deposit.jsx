@@ -83,7 +83,7 @@ export default function Dashboard({ auth, btcAddress: btc_address }) {
                                     >
                                         <button
                                             type="button"
-                                            className="px-4 py-3 bg-[#E8A535]/10 text-[#E8A535] hover:bg-[#E8A535]/20 transition font-medium"
+                                            className="px-4 py-3 bg-[#3BF5C4]/10 text-[#3BF5C4] hover:bg-[#3BF5C4]/20 transition font-medium"
                                         >
                                             {copySuccess ? "Copied" : "Copy"}
                                         </button>
@@ -109,7 +109,7 @@ export default function Dashboard({ auth, btcAddress: btc_address }) {
                                     required
                                     className="mt-2 w-full bg-[#0B141B] border border-slate-700 
                                        text-white rounded-xl px-4 py-3 
-                                       focus:border-[#E8A535] focus:ring-0 
+                                       focus:border-[#3BF5C4] focus:ring-0 
                                        transition"
                                     placeholder="Enter amount"
                                 />
@@ -136,7 +136,7 @@ export default function Dashboard({ auth, btcAddress: btc_address }) {
                                     required
                                     className="mt-2 w-full bg-[#0B141B] border border-slate-700 
                                        text-white rounded-xl px-4 py-3 
-                                       focus:border-[#E8A535] focus:ring-0 
+                                       focus:border-[#3BF5C4] focus:ring-0 
                                        transition"
                                     placeholder="Paste transaction hash"
                                 />
@@ -150,7 +150,7 @@ export default function Dashboard({ auth, btcAddress: btc_address }) {
                             <button
                                 disabled={processing}
                                 className="w-full py-4 rounded-xl 
-                                   bg-gradient-to-r from-[#E8A535] to-[#12BED3]
+                                   bg-gradient-to-r from-[#3BF5C4] to-[#12BED3]
                                    text-black font-semibold tracking-wide
                                    hover:scale-[1.02] hover:shadow-lg
                                    transition-all duration-300"

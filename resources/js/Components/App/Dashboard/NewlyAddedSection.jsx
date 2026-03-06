@@ -40,7 +40,7 @@ const NewlyAddedSection = () => {
                     </h1>
                     <Link
                         href="/newly-added"
-                        className="text-sm text-[#E8A535] hover:underline"
+                        className="text-sm text-[#3BF5C4] hover:underline"
                     >
                         See All
                     </Link>

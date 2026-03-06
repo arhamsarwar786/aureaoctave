@@ -22,7 +22,7 @@ export default function Dashboard({ auth, balance }) {
                 {/* TradingView Ticker Tape */}
                 <TradingViewTickerTape />
 
-                <div className="grid grid-cols-1 lg:grid-cols-6 gap-5">
+                <div className="grid grid-cols-1  gap-5">
                     {/* Left Column (4 columns on desktop) */}
                     <div className="lg:col-span-4 space-y-5">
                         {/* Investment Cards */}
@@ -63,37 +63,37 @@ export default function Dashboard({ auth, balance }) {
                     </div>
 
                     {/* Right Column (2 columns on desktop) */}
-                    <div className="lg:col-span-2 space-y-5">
+                    {/* <div className="lg:col-span-2 space-y-5"> */}
                         {/* Deposit and Withdrawal Buttons */}
-                        <div className="bg-[#0E151D] border border-gray-500 overflow-hidden shadow-sm sm:rounded-lg">
+                        {/* <div className="bg-[#0E151D] border border-gray-500 overflow-hidden shadow-sm sm:rounded-lg">
                             <div className="p-6 space-y-4">
                                 <Link
                                     href={route("deposit")}
-                                    className="block w-full text-center py-3 bg-[#E8A535] rounded text-black border border-[#E8A535] text-lg font-bold hover:bg-[#84f1d4] transition-colors"
+                                    className="block w-full text-center py-3 bg-[#3BF5C4] rounded text-black border border-[#3BF5C4] text-lg font-bold hover:bg-[#84f1d4] transition-colors"
                                 >
                                     Deposit
                                 </Link>
                                 <Link
                                     href={route("withdrawal")}
-                                    className="block w-full text-center py-3 bg-black rounded text-[#E8A535] border border-[#E8A535] text-lg font-bold hover:bg-gray-100 transition-colors"
+                                    className="block w-full text-center py-3 bg-black rounded text-[#3BF5C4] border border-[#3BF5C4] text-lg font-bold hover:bg-gray-100 transition-colors"
                                 >
                                     Withdrawal
                                 </Link>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* Buy/Sell Section */}
-                        <BuySellSection />
+                        {/* <BuySellSection /> */}
 
                         {/* New Cryptocurrency Section */}
-                        <NewCryptocurrency />
+                        {/* <NewCryptocurrency /> */}
 
                         {/* Newly Added Section */}
-                        <NewlyAddedSection />
+                        {/* <NewlyAddedSection /> */}
 
                         {/* TradingView Widget 1 */}
-                        <TradingViewWidget1 />
-                    </div>
+                        {/* <TradingViewWidget1 /> */}
+                    {/* </div> */}
                 </div>
             </div>
         </AuthenticatedLayout>

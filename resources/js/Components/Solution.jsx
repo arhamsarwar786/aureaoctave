@@ -88,14 +88,14 @@ export default function TaaS2() {
 
                 <Link
                   href={item.link}
-                  className="flex items-center gap-2 text-sm text-[#E8A535] hover:gap-3 transition-all"
+                  className="flex items-center gap-2 text-sm text-[#3BF5C4] hover:gap-3 transition-all"
                 >
                   Learn More <ArrowRight size={16} />
                 </Link>
               </div>
 
               {/* Hover Glow */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none bg-gradient-to-br from-[#E8A535]/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none bg-gradient-to-br from-[#3BF5C4]/20 via-transparent to-transparent" />
             </motion.div>
           ))}
         </motion.div>
@@ -108,7 +108,7 @@ export default function TaaS2() {
           transition={{ duration: 0.9 }}
           className="lg:pl-12 pt-6"
         >
-          <p className="text-sm uppercase tracking-widest text-[#E8A535] mb-6">
+          <p className="text-sm uppercase tracking-widest text-[#3BF5C4] mb-6">
             Solutions
           </p>
 
@@ -120,7 +120,7 @@ export default function TaaS2() {
             {lineIndex < lines.length && (
               <div>
                 {currentLine}
-                <span className="ml-1 animate-pulse text-[#E8A535]">▍</span>
+                <span className="ml-1 animate-pulse text-[#3BF5C4]">▍</span>
               </div>
             )}
           </h2>

@@ -47,7 +47,7 @@ export default function Newsletter() {
       </motion.div>
 
       {/* Accent Glow */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-[#E8A535]/10 blur-[140px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-[#3BF5C4]/10 blur-[140px]" />
 
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center px-6">
@@ -58,7 +58,7 @@ export default function Newsletter() {
           transition={{ duration: 0.9 }}
           className="text-center max-w-3xl"
         >
-          <p className="text-sm uppercase tracking-widest text-[#E8A535] mb-6">
+          <p className="text-sm uppercase tracking-widest text-[#3BF5C4] mb-6">
             Newsletter
           </p>
 
@@ -92,7 +92,7 @@ export default function Newsletter() {
                 bg-white/[0.06] border border-white/10
                 text-white placeholder-[#9CA3AF]
                 backdrop-blur-md
-                focus:outline-none focus:ring-2 focus:ring-[#E8A535]/40
+                focus:outline-none focus:ring-2 focus:ring-[#3BF5C4]/40
                 transition
               "
             />
@@ -104,7 +104,7 @@ export default function Newsletter() {
               disabled={loading}
               className="
                 px-8 py-4 rounded-xl
-                bg-[#E8A535] text-black font-medium
+                bg-[#3BF5C4] text-black font-medium
                 hover:opacity-90 transition
                 whitespace-nowrap
                 disabled:opacity-50

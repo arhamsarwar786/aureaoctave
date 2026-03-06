@@ -13,7 +13,7 @@ import {
     XIcon,
 } from "lucide-react";
 
-const ACCENT = "#E8A535";
+const ACCENT = "#3BF5C4";
 
 const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false);

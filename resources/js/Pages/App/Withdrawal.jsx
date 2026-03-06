@@ -51,7 +51,7 @@ export default function Dashboard({ auth }) {
                                 "For first USDT withdrawals, upload wallet QR & ID.",
                             ].map((text, index) => (
                                 <div key={index} className="flex gap-4 items-start">
-                                    <CheckCheckIcon className="text-[#E8A535] mt-1 shrink-0" />
+                                    <CheckCheckIcon className="text-[#3BF5C4] mt-1 shrink-0" />
                                     <p className="leading-relaxed">{text}</p>
                                 </div>
                             ))}
@@ -92,7 +92,7 @@ export default function Dashboard({ auth }) {
                                     className="mt-2 w-full bg-[#0B141B]
                                        border border-slate-700
                                        text-white rounded-xl px-4 py-3
-                                       focus:border-[#E8A535]
+                                       focus:border-[#3BF5C4]
                                        focus:ring-0 transition"
                                 />
 
@@ -119,7 +119,7 @@ export default function Dashboard({ auth }) {
                                     className="mt-2 w-full bg-[#0B141B]
                                        border border-slate-700
                                        text-white rounded-xl px-4 py-3
-                                       focus:border-[#E8A535]
+                                       focus:border-[#3BF5C4]
                                        focus:ring-0 transition"
                                 />
 
@@ -133,7 +133,7 @@ export default function Dashboard({ auth }) {
                             <button
                                 disabled={processing}
                                 className="w-full py-4 rounded-xl
-                                   bg-gradient-to-r from-[#E8A535] to-[#2DD4BF]
+                                   bg-gradient-to-r from-[#3BF5C4] to-[#2DD4BF]
                                    text-black font-semibold tracking-wide
                                    hover:scale-[1.02]
                                    hover:shadow-lg

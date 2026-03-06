@@ -1528,7 +1528,7 @@ select {
     border-color: rgb(39 82 231 / var(--tw-border-opacity))
 }
 
-.border-\[\#E8A535\] {
+.border-\[\#3BF5C4\] {
     --tw-border-opacity: 1;
     border-color: rgb(59 79 228 / var(--tw-border-opacity))
 }
@@ -1582,7 +1582,7 @@ select {
     border-bottom-color: rgb(208 213 221 / var(--tw-border-opacity))
 }
 
-.\!bg-\[\#E8A535\] {
+.\!bg-\[\#3BF5C4\] {
     --tw-bg-opacity: 1 !important;
     background-color: rgb(59 79 228 / var(--tw-bg-opacity)) !important
 }
@@ -1628,8 +1628,8 @@ select {
     background-color: rgb(51 51 51 / var(--tw-bg-opacity))
 }
 
-.bg-\[\#E8A53526\] {
-    background-color: #E8A53526
+.bg-\[\#3BF5C426\] {
+    background-color: #3BF5C426
 }
 
 .bg-\[\#444\] {
@@ -2142,7 +2142,7 @@ select {
     color: rgb(51 51 51 / var(--tw-text-opacity))
 }
 
-.text-\[\#E8A535\] {
+.text-\[\#3BF5C4\] {
     --tw-text-opacity: 1;
     color: rgb(59 79 228 / var(--tw-text-opacity))
 }

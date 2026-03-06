@@ -168,7 +168,7 @@ export default function CreateInvestmentPackage({ auth }) {
                         <div className="flex items-center gap-4">
                             <PrimaryButton
                                 disabled={processing}
-                                className="w-full !bg-[#E8A535] !rounded"
+                                className="w-full !bg-[#3BF5C4] !rounded"
                             >
                                 Add
                             </PrimaryButton>

@@ -14,7 +14,7 @@ export default function VerifyEmail({ status }) {
             {/* Icon */}
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-2"
                 style={{ background: "rgba(59,245,196,0.1)", border: "1px solid rgba(59,245,196,0.2)" }}>
-                <MailCheck size={30} style={{ color: "#E8A535" }} />
+                <MailCheck size={30} style={{ color: "#3BF5C4" }} />
             </div>
 
             <div className="text-center">
@@ -36,7 +36,7 @@ export default function VerifyEmail({ status }) {
                     disabled={processing}
                     className={`w-full h-12 rounded-xl font-semibold text-sm text-black flex items-center justify-center gap-2 transition-all duration-200
                         ${processing ? "opacity-40 cursor-not-allowed" : "hover:brightness-110 active:scale-[0.98]"}`}
-                    style={{ background: "linear-gradient(135deg, #E8A535, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
+                    style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 24px rgba(59,245,196,0.2)" }}
                 >
                     <RefreshCw size={15} className={processing ? "animate-spin" : ""} />
                     {processing ? "Resending…" : "Resend verification email"}
