@@ -37,6 +37,8 @@ const INFO_CARDS = [
         icon: MailIcon,
         label: "Email",
         text: "Nanaabban@aureaoctave.com",
+        href: "mailto:Nanaabban@aureaoctave.com",
+        wide: true,
     },
     {
         icon: ClockIcon,
@@ -174,10 +176,10 @@ export default function ContactPage() {
 
                     {/* ── Info cards ── */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                        {INFO_CARDS.map(({ icon: Icon, label, text }) => (
+                        {INFO_CARDS.map(({ icon: Icon, label, text, href, wide }) => (
                             <div
                                 key={label}
-                                className="flex items-start gap-4 p-6 rounded-2xl transition-all duration-200"
+                                className={`flex items-start gap-4 rounded-2xl p-6 transition-all duration-200 ${wide ? "sm:col-span-2" : ""}`}
                                 style={{
                                     background: "rgba(255,255,255,0.03)",
                                     border: "1px solid rgba(255,255,255,0.06)",
@@ -192,11 +194,22 @@ export default function ContactPage() {
                                 >
                                     <Icon size={20} style={{ color: "#3BF5C4" }} />
                                 </div>
-                                <div>
+                                <div className="min-w-0 flex-1">
                                     <p className="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-1">
                                         {label}
                                     </p>
-                                    <p className="text-sm text-white/80 leading-relaxed">{text}</p>
+                                    {href ? (
+                                        <a
+                                            href={href}
+                                            className="block break-all text-sm leading-relaxed text-white/80 transition-colors duration-200 hover:text-[#3BF5C4]"
+                                        >
+                                            {text}
+                                        </a>
+                                    ) : (
+                                        <p className="text-sm text-white/80 leading-relaxed">
+                                            {text}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         ))}

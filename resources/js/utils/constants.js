@@ -38,7 +38,7 @@ export const sidebarLinks = [
     {
         routeName: "portfolio",
         icon: ClipboardMinusIcon,
-        label: "My Portfolio",
+        label: "Portfolio",
         roles: ["admin", "user"],
     },
     {
@@ -50,7 +50,7 @@ export const sidebarLinks = [
     {
         routeName: "investment-package.index",
         icon: LineChartIcon,
-        label: "Investment Packages",
+        label: "Investment",
         roles: ["admin", "user"],
     },
 ];

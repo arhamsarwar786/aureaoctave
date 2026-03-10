@@ -2,7 +2,6 @@ import {
     CogIcon,
     LogOutIcon,
     SparklesIcon,
-    ShieldCheckIcon,
 } from "lucide-react";
 
 import NavLink from "./NavLink";
@@ -16,7 +15,7 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
     return (
         <NavLink
             href={href}
-            className={`relative flex items-center justify-center w-14 h-14 rounded-xl transition-all duration-300 group
+            className={`relative flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4
             ${isActive ? "text-white" : "text-slate-400 hover:text-white"}
             `}
         >
@@ -47,8 +46,7 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
                 `}
             />
 
-            {/* Tooltip */}
-            <span className="absolute left-16 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+            <span className="relative z-10 max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
                 {label}
             </span>
         </NavLink>
@@ -62,7 +60,7 @@ const Sidebar = ({ user }) => {
 
     return (
         <aside
-            className="sticky left-0 top-0 h-screen w-20 flex flex-col items-center max-md:hidden"
+            className="group/sidebar sticky left-0 top-0 flex h-screen w-20 flex-col items-stretch overflow-hidden px-3 transition-all duration-300 hover:w-80 max-md:hidden"
             style={{
                 background:
                     "linear-gradient(180deg,#0d1117 0%,#111820 50%,#0d1117 100%)",
@@ -71,7 +69,7 @@ const Sidebar = ({ user }) => {
             }}
         >
             {/* Logo */}
-            <div className="flex justify-center py-6">
+            <div className="flex justify-center px-2 py-6 group-hover/sidebar:justify-start group-hover/sidebar:px-4">
                 <Link href="/dashboard">
                     <img
                         src="/assets/img/logo4.png"
@@ -81,10 +79,13 @@ const Sidebar = ({ user }) => {
             </div>
 
             {/* Divider */}
-            <div className="w-10 h-px mb-6" style={{ background: ACCENT }} />
+            <div
+                className="mb-6 h-px w-10 shrink-0 self-center transition-all duration-300 group-hover/sidebar:w-full"
+                style={{ background: ACCENT }}
+            />
 
             {/* Main Navigation */}
-            <nav className="flex-1 flex flex-col items-center gap-4">
+            <nav className="flex flex-1 flex-col gap-4">
 
                 {sidebarLinks.map((item) => {
                     if (!item.roles.some((r) => roles.includes(r))) return null;
@@ -127,40 +128,48 @@ const Sidebar = ({ user }) => {
             </nav>
 
             {/* Bottom Section */}
-            <div className="flex flex-col items-center gap-4 pb-6">
+            <div className="flex flex-col gap-4 pb-6">
 
                 {/* Aurea AI */}
                 <NavLink
                     href={route("aurea-ai")}
-                    className="relative flex items-center justify-center w-14 h-14 rounded-xl group"
+                    className="relative flex h-24 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
                 >
                     <SparklesIcon size={22} color={ACCENT} />
 
-                    <span className="absolute left-16 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
-                        Aurea AI
+                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
+                        Aurea-AI
                     </span>
                 </NavLink>
 
                 {/* Settings */}
                 <NavLink
                     href={route("settings")}
-                    className="relative flex items-center justify-center w-14 h-14 rounded-xl group text-slate-400 hover:text-white"
+                    className="relative flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 text-slate-400 transition-all duration-300 hover:text-white group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
                 >
                     <CogIcon size={22} />
 
-                    <span className="absolute left-16 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap">
+                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
                         Settings
                     </span>
                 </NavLink>
 
                 {/* User Avatar */}
                 <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-black font-bold"
-                    style={{
-                        background: `linear-gradient(135deg, ${ACCENT}, #3BF5C4)`,
-                    }}
+                    className="flex h-20 w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:px-4"
                 >
-                    {user?.name?.[0]?.toUpperCase() ?? "U"}
+                    <div
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-black font-bold"
+                        style={{
+                            background: `linear-gradient(135deg, ${ACCENT}, #3BF5C4)`,
+                        }}
+                    >
+                        {user?.name?.[0]?.toUpperCase() ?? "U"}
+                    </div>
+
+                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words text-slate-300 transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap group-hover/sidebar:truncate">
+                        {user?.name ?? "User"}
+                    </span>
                 </div>
 
                 {/* Logout */}
@@ -168,9 +177,13 @@ const Sidebar = ({ user }) => {
                     href={route("logout")}
                     method="post"
                     as="button"
-                    className="flex items-center justify-center w-10 h-10 text-slate-400 hover:text-red-400"
+                    className="flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 text-slate-400 transition-all duration-300 hover:text-red-400 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
                 >
                     <LogOutIcon size={18} />
+
+                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
+                        Logout
+                    </span>
                 </NavLink>
             </div>
         </aside>
