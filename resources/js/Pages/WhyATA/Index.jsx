@@ -184,7 +184,7 @@ export default function WhyATA() {
         <GuestLayout title="Why ATA">
 
             {/* ── HERO ─────────────────────────────────────────────────────── */}
-            <section className="relative min-h-[92vh] bg-[#0B0F14] overflow-hidden flex flex-col justify-center pt-28 pb-20 px-6">
+            <section className="relative min-h-screen bg-[#0B0F14] overflow-hidden flex flex-col justify-center pt-28 pb-20 px-6">
 
                 {/* Grid bg */}
                 <div
@@ -195,54 +195,147 @@ export default function WhyATA() {
                         backgroundSize: "64px 64px",
                     }}
                 />
-                {/* Glow */}
-                <div
-                    className="absolute top-1/3 right-1/4 w-[700px] h-[700px] rounded-full pointer-events-none blur-[140px] opacity-8"
-                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.08 }}
-                />
+
+                {/* Multiple layered glows */}
+                <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full pointer-events-none blur-[160px]"
+                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.07 }} />
+                <div className="absolute bottom-1/4 left-1/3 w-[400px] h-[400px] rounded-full pointer-events-none blur-[120px]"
+                    style={{ background: "radial-gradient(circle, #67e8f9, transparent)", opacity: 0.05 }} />
+                <div className="absolute top-1/2 left-0 w-[300px] h-[300px] rounded-full pointer-events-none blur-[100px]"
+                    style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.04 }} />
 
                 <div className="relative z-10 max-w-7xl mx-auto w-full">
-                    <motion.div
-                        initial="hidden"
-                        animate="show"
-                        variants={stagger}
-                        className="max-w-3xl"
-                    >
-                        <motion.p variants={fadeUp} className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] mb-6 font-semibold">
-                            Why ATA
-                        </motion.p>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                        <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-7xl font-light leading-[1.06] text-white mb-8">
-                            The infrastructure<br />
-                            <span style={{
-                                background: "linear-gradient(135deg, #3BF5C4, #67e8f9)",
-                                WebkitBackgroundClip: "text",
-                                WebkitTextFillColor: "transparent",
-                            }}>
-                                institutions trust.
-                            </span>
-                        </motion.h1>
+                        {/* ── Left: Text ── */}
+                        <motion.div initial="hidden" animate="show" variants={stagger}>
 
-                        <motion.p variants={fadeUp} className="text-xl text-[#9CA3AF] leading-relaxed max-w-2xl mb-12">
-                            Aurea Tokenized Assets (ATA) is built at the intersection of compliance, custody, and code — the only platform that combines full-lifecycle tokenization with institutional-grade security and real-time AI intelligence.
-                        </motion.p>
+                            {/* Badge */}
+                            <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-8">
+                                <span className="flex h-2 w-2 rounded-full bg-[#3BF5C4] animate-pulse" />
+                                <span className="text-xs uppercase tracking-[0.3em] text-[#3BF5C4] font-semibold">
+                                    Why ATA
+                                </span>
+                            </motion.div>
 
-                        <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
-                            <Link
-                                href="/register"
-                                className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
-                                style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 30px rgba(59,245,196,0.2)" }}
-                            >
-                                Get Started <ArrowRight size={16} />
-                            </Link>
-                            <Link
-                                href="/contact-us"
-                                className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium text-white border border-white/15 hover:bg-white/5 transition"
-                            >
-                                Talk to an Expert <ArrowRight size={16} />
-                            </Link>
+                            <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl lg:text-[4.25rem] font-light leading-[1.06] text-white mb-8">
+                                The infrastructure<br />
+                                <span style={{
+                                    background: "linear-gradient(135deg, #3BF5C4, #67e8f9)",
+                                    WebkitBackgroundClip: "text",
+                                    WebkitTextFillColor: "transparent",
+                                }}>
+                                    institutions trust.
+                                </span>
+                            </motion.h1>
+
+                            <motion.p variants={fadeUp} className="text-lg text-[#9CA3AF] leading-relaxed max-w-xl mb-10">
+                                Aurea Tokenized Assets (ATA) is built at the intersection of compliance, custody, and code — the only platform that combines full-lifecycle tokenization with institutional-grade security and real-time AI intelligence.
+                            </motion.p>
+
+                            {/* Key highlights row */}
+                            <motion.div variants={fadeUp} className="flex flex-wrap gap-3 mb-10">
+                                {[
+                                    { icon: ShieldCheck, label: "SEC & FINRA Compliant" },
+                                    { icon: Lock, label: "AICPA Audited" },
+                                    { icon: Globe, label: "10+ Chains" },
+                                ].map(({ icon: Icon, label }) => (
+                                    <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium text-white/70 border"
+                                        style={{ background: "rgba(59,245,196,0.04)", borderColor: "rgba(59,245,196,0.15)" }}>
+                                        <Icon size={13} className="text-[#3BF5C4]" />
+                                        {label}
+                                    </div>
+                                ))}
+                            </motion.div>
+
+                            <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
+                                <Link
+                                    href="/register"
+                                    className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-semibold text-[#0B0F14] transition hover:brightness-110 hover:scale-[1.03]"
+                                    style={{ background: "linear-gradient(135deg, #3BF5C4, #10b981)", boxShadow: "0 0 40px rgba(59,245,196,0.25)" }}
+                                >
+                                    Get Started <ArrowRight size={16} />
+                                </Link>
+                                <Link
+                                    href="/contact-us"
+                                    className="flex items-center gap-2 px-8 py-4 rounded-full text-sm font-medium text-white border border-white/15 hover:bg-white/5 transition"
+                                >
+                                    Talk to an Expert <ArrowRight size={16} />
+                                </Link>
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
+
+                        {/* ── Right: Visual stats panel ── */}
+                        <motion.div
+                            initial={{ opacity: 0, x: 40 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.9, delay: 0.3 }}
+                            className="hidden lg:flex flex-col gap-4"
+                        >
+                            {/* Top stat cards row */}
+                            <div className="grid grid-cols-2 gap-4">
+                                {[
+                                    { value: "$2.4B+", label: "Assets Tokenized", sub: "↑ 38% this quarter" },
+                                    { value: "10+", label: "Blockchain Networks", sub: "Full interoperability" },
+                                ].map((s) => (
+                                    <div key={s.label} className="rounded-2xl p-6 relative overflow-hidden"
+                                        style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                                        <div className="absolute top-0 right-0 w-20 h-20 rounded-full blur-2xl"
+                                            style={{ background: "radial-gradient(circle, #3BF5C4, transparent)", opacity: 0.12 }} />
+                                        <p className="text-3xl font-semibold mb-1"
+                                            style={{ background: "linear-gradient(135deg, #3BF5C4, #67e8f9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                                            {s.value}
+                                        </p>
+                                        <p className="text-white text-sm font-medium">{s.label}</p>
+                                        <p className="text-[#3BF5C4]/60 text-xs mt-1">{s.sub}</p>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Wide middle card */}
+                            <div className="rounded-2xl p-6 relative overflow-hidden"
+                                style={{ background: "rgba(59,245,196,0.04)", border: "1px solid rgba(59,245,196,0.12)" }}>
+                                <div className="flex items-center justify-between mb-4">
+                                    <p className="text-white text-sm font-semibold">Platform Performance</p>
+                                    <span className="text-xs px-2.5 py-1 rounded-full font-medium"
+                                        style={{ background: "rgba(59,245,196,0.15)", color: "#3BF5C4" }}>Live</span>
+                                </div>
+                                {/* Mini bar chart */}
+                                <div className="flex items-end gap-1.5 h-16">
+                                    {[40, 55, 45, 70, 60, 80, 65, 90, 75, 95, 85, 100].map((h, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ height: 0 }}
+                                            animate={{ height: `${h}%` }}
+                                            transition={{ duration: 0.6, delay: 0.5 + i * 0.05 }}
+                                            className="flex-1 rounded-sm"
+                                            style={{ background: i === 11 ? "linear-gradient(180deg,#3BF5C4,#10b981)" : "rgba(59,245,196,0.2)" }}
+                                        />
+                                    ))}
+                                </div>
+                                <p className="text-[#9CA3AF] text-xs mt-3">Monthly tokenization volume — 12 months</p>
+                            </div>
+
+                            {/* Bottom row */}
+                            <div className="grid grid-cols-3 gap-4">
+                                {[
+                                    { value: "99.98%", label: "Uptime SLA" },
+                                    { value: "<2s", label: "Settlement" },
+                                    { value: "60+", label: "Countries" },
+                                ].map((s) => (
+                                    <div key={s.label} className="rounded-2xl p-5 text-center"
+                                        style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                                        <p className="text-xl font-semibold mb-0.5"
+                                            style={{ background: "linear-gradient(135deg, #3BF5C4, #67e8f9)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+                                            {s.value}
+                                        </p>
+                                        <p className="text-[#9CA3AF] text-xs">{s.label}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+
+                    </div>
                 </div>
             </section>
 

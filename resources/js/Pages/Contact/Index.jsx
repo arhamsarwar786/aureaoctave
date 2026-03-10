@@ -202,7 +202,7 @@ export default function ContactPage() {
                         ))}
 
                         {/* Domain badge */}
-                        <div
+                        {/* <div
                             className="sm:col-span-2 flex items-center gap-3 px-5 py-3 rounded-xl"
                             style={{
                                 background: "rgba(59,245,196,0.05)",
@@ -222,7 +222,7 @@ export default function ContactPage() {
                                     {PAGE_URL}
                                 </a>
                             </p>
-                        </div>
+                        </div> */}
                     </div>
 
                     {/* ── Contact form ── */}
