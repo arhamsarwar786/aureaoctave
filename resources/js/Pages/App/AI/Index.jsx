@@ -45,7 +45,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ArrowUpCircleIcon, Loader } from "lucide-react";
 import { marked } from "marked";
-const AI_BASE_API_URL = "https://beta.aureaoctave.com";
 
 const AureaAI = () => {
     // State management
@@ -60,9 +59,9 @@ const AureaAI = () => {
 
     // Profile data
     const [clientProfile, setClientProfile] = useState({
-        risk_profile: "",
-        account_type: "",
-        goals: "",
+        risk_profile: "moderate",
+        account_type: "individual",
+        goals: "wealth",
         additional_context: "",
     });
 
@@ -202,11 +201,17 @@ const AureaAI = () => {
             ];
             setMessages(newMessages);
 
-            const result = await axios.post(`${AI_BASE_API_URL}/api/ask`, {
+            // Call Laravel backend API proxy (no CORS issues)
+            const result = await axios.post('/api/aurea-ai/ask', {
                 question: question,
                 risk_profile: clientProfile.risk_profile,
                 account_type: clientProfile.account_type,
                 goals: clientProfile.goals,
+            }, {
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
+                    'Accept': 'application/json',
+                }
             });
 
             setMessages([
@@ -221,17 +226,14 @@ const AureaAI = () => {
             setQuestion("");
         } catch (err) {
             console.error("Error:", err);
-            if (err.response?.status === 401) {
-                const redirectUrl = err.response?.data?.detail?.redirect;
-                if (redirectUrl) {
-                    window.location.href = redirectUrl;
-                    return;
-                }
-            }
-            setError(
-                err.response?.data?.detail?.message ||
-                    "Error processing your request."
-            );
+            // Remove the optimistic user message we added
+            setMessages(messages);
+
+            const errMsg =
+                err.response?.data?.error ||
+                err.response?.data?.message ||
+                "Unable to reach the AI service. Please try again.";
+            setError(errMsg);
         } finally {
             setLoading(false);
         }
@@ -476,11 +478,11 @@ const AureaAI = () => {
                                             key={index}
                                             className={`br2 pa3 mb2 ${
                                                 msg.role === "user"
-                                                    ? "bg-light-blue ml4"
-                                                    : "bg-white mr4"
+                                                    ? "bg-light-blue ml-4"
+                                                    : "bg-[#36DBB6] mr-4 rounded-md text-black-2"
                                             }`}
                                         >
-                                            <div className="flex justify-between items-start">
+                                            <div className="flex justify-between text-start p-5 items-start">
                                                 <div
                                                     className="ma0 markdown-content"
                                                     dangerouslySetInnerHTML={{

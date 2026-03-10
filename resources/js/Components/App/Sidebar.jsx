@@ -131,7 +131,7 @@ const Sidebar = ({ user }) => {
 
                 {/* Aurea AI */}
                 <NavLink
-                    href={route("aurea-ai")}
+                    href={route("ai")}
                     className="relative flex items-center justify-center w-14 h-14 rounded-xl group"
                 >
                     <SparklesIcon size={22} color={ACCENT} />

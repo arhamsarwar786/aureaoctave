@@ -40,11 +40,16 @@ Route::get('/why-ata', function () {
 })->name('why-ata');
 
 Route::get('/ai', function () {
-    return Inertia::render('AI/Index');
+    return Inertia::render('App/AI/Index');
 })->name('ai');
 Route::get('/aurea-ai', function () {
     return Inertia::render('App/aurea-ai/index');
 })->name('aurea-ai');
+
+// AI API proxy route - uses web middleware for CSRF protection
+Route::post('/api/aurea-ai/ask', [App\Http\Controllers\AureaAIController::class, 'ask'])
+    ->middleware('web')
+    ->name('aurea-ai.ask');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
