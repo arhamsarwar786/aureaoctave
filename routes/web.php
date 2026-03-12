@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\AureaAiController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ForexController;
@@ -45,6 +46,9 @@ Route::get('/ai', function () {
 Route::get('/aurea-ai', function () {
     return Inertia::render('App/aurea-ai/index');
 })->name('aurea-ai');
+Route::post('/aurea-ai/chat', [AureaAiController::class, 'chat'])
+    ->middleware('throttle:30,1')
+    ->name('aurea-ai.chat');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {

@@ -1,1 +1,0 @@
-import{j as s,Y as t}from"./app-C4nDK9B-.js";import{H as a,F as i}from"./Footer-Cx9CpW72.js";function m({title:e,children:r}){return s.jsxs(s.Fragment,{children:[s.jsx(t,{title:e}),s.jsxs("div",{className:"bg-[#0B0F14] min-h-screen relative",children:[s.jsx(a,{}),s.jsx("main",{children:r}),s.jsx(i,{})]})]})}export{m as G};
