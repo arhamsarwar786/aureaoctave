@@ -15,38 +15,35 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
     return (
         <NavLink
             href={href}
-            className={`relative flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4
-            ${isActive ? "text-white" : "text-slate-400 hover:text-white"}
-            `}
+            className={`relative flex  w-full flex-col items-center justify-center  overflow-hidden rounded-xl px-2 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4 ${isActive ? "text-white scale-105 z-20" : "text-slate-400 hover:text-white"}`}
         >
             {/* Active Glow */}
             {isActive && (
                 <div
                     className="absolute inset-0 rounded-xl"
                     style={{
-                        background: "linear-gradient(180deg,#3BF5C4 0%, transparent 100%)",
-                        opacity: 0.25,
-                        filter: "blur(10px)",
+                        background: "linear-gradient(180deg, rgba(59,245,196,0.18) 0%, rgba(59,245,196,0.04) 40%, transparent 100%)",
+                        filter: "blur(14px)",
                     }}
                 />
             )}
 
             {/* Active Indicator */}
-            {isActive && (
+            {/* {isActive && (
                 <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full"
-                    style={{ background: ACCENT }}
+                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-10 rounded-r-full"
+                    style={{ background: "linear-gradient(180deg, #3BF5C4, rgba(59,245,196,0.4))" }}
                 />
-            )}
+            )} */}
 
-            <Icon
-                size={22}
-                className={`relative z-10 transition-all duration-200
-                ${isActive ? "text-[#3BF5C4]" : "text-slate-400 group-hover:text-white"}
-                `}
-            />
+            <div className={`relative z-10 transition-all duration-200 flex items-center justify-center ${isActive ? 'bg-white/5 p-2 rounded-full shadow-md' : ''}`}>
+                <Icon
+                    size={22}
+                    className={`${isActive ? "text-[#06d6a3]" : "text-slate-400 group-hover:text-white"}`}
+                />
+            </div>
 
-            <span className="relative z-10 max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
+            <span className={`relative z-10 max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap ${isActive ? 'font-bold' : ''}`}>
                 {label}
             </span>
         </NavLink>
@@ -60,7 +57,7 @@ const Sidebar = ({ user }) => {
 
     return (
         <aside
-            className="group/sidebar sticky left-0 top-0 flex h-screen w-20 flex-col items-stretch overflow-hidden px-3 transition-all duration-300 hover:w-80 max-md:hidden"
+            className="group/sidebar sticky left-0 top-0 flex h-screen w-24 flex-col items-stretch overflow-hidden px-3 transition-all duration-300 hover:w-80 max-md:hidden"
             style={{
                 background:
                     "linear-gradient(180deg,#0d1117 0%,#111820 50%,#0d1117 100%)",
@@ -70,10 +67,19 @@ const Sidebar = ({ user }) => {
         >
             {/* Logo */}
             <div className="flex justify-center px-2 py-6 group-hover/sidebar:justify-start group-hover/sidebar:px-4">
-                <Link href="/dashboard">
+                <Link href="/dashboard" className="flex items-center">
+                    {/* Collapsed logo (shown when w-24) */}
                     <img
                         src="/assets/img/logo4.png"
-                        className="w-10 h-10 object-contain"
+                        alt="Logo compact"
+                        className="w-10 h-10 object-contain block group-hover/sidebar:hidden"
+                    />
+
+                    {/* Expanded logo (shown when w-80) */}
+                    <img
+                        src="/assets/img/logo3.png"
+                        alt="Logo full"
+                        className="w-full h-12 object-contain hidden group-hover/sidebar:block transition-all duration-200"
                     />
                 </Link>
             </div>

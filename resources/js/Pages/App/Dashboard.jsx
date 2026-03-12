@@ -20,7 +20,7 @@ export default function Dashboard({ auth, balance }) {
             {/* Main Content Grid */}
             <div className="container mx-auto py-4 px-2">
                 {/* TradingView Ticker Tape */}
-                <TradingViewTickerTape />
+                {/* <TradingViewTickerTape /> */}
 
                 <div className="grid grid-cols-1  gap-5">
                     {/* Left Column (4 columns on desktop) */}
