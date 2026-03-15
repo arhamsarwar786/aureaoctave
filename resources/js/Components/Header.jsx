@@ -165,7 +165,7 @@ const Header = () => {
                         className={`text-2xl flex items-center gap-2 font-light tracking-wide transition-colors ${isScrolled ? "text-[#3BF5C4]" : "text-white"
                             }`}
                     >
-                        <img src="/assets/img/logo3.png" alt="" className="w-40 h-14" />
+                        <img src="/assets/img/logo3.png" alt="" className="w-57 h-14" />
 
                     </Link>
 
