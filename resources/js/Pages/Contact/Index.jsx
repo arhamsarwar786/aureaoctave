@@ -26,7 +26,7 @@ const INFO_CARDS = [
     {
         icon: MapPinIcon,
         label: "Address",
-        text: "1250 Connecticut Ave NW, Washington, DC 20038",
+        text: "New York, USA",
     },
     {
         icon: PhoneIcon,
@@ -36,8 +36,8 @@ const INFO_CARDS = [
     {
         icon: MailIcon,
         label: "Email",
-        text: "Nanaabban@aureaoctave.com",
-        href: "mailto:Nanaabban@aureaoctave.com",
+        text: "support@aureaoctave.com",
+        href: "mailto:support@aureaoctave.com",
         wide: true,
     },
     {
