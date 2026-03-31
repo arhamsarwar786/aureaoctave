@@ -266,7 +266,7 @@ const Header = () => {
                                     href="/register"
                                     className={`px-6 py-2.5 rounded-full font-medium transition-colors ${isScrolled
                                         ? "bg-[#3BF5C4] text-[#0B0F14] hover:bg-[#2fe6b9]"
-                                        : "bg-white text-black hover:bg-gray-100"
+                                        : "bg-white text-[#000000] hover:bg-gray-100"
                                         }`}
                                 >
                                     Sign Up
