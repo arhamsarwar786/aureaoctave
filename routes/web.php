@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\TransactionController as AdminTransactionControll
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\AureaAiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MarketDataController;
 use App\Http\Controllers\ProductTourController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ForexController;
@@ -50,6 +51,9 @@ Route::get('/aurea-ai', function () {
 Route::post('/aurea-ai/chat', [AureaAiController::class, 'chat'])
     ->middleware('throttle:30,1')
     ->name('aurea-ai.chat');
+
+Route::get('/market-data/trending', [MarketDataController::class, 'trending'])
+    ->name('market-data.trending');
 
 
 Route::middleware(['auth', 'verified'])->group(function () {
