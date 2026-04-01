@@ -57,6 +57,7 @@ const Sidebar = ({ user }) => {
 
     return (
         <aside
+            data-tour-sidebar
             className="group/sidebar sticky left-0 top-0 flex h-screen w-24 flex-col items-stretch overflow-hidden px-3 transition-all duration-300 hover:w-80 max-md:hidden"
             style={{
                 background:

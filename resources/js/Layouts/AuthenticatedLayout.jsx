@@ -7,6 +7,7 @@ import { Head, Link } from "@inertiajs/react";
 import AuthLogo from "@/assets/img/auth-logo.png";
 import Sidebar from "@/Components/App/Sidebar";
 import Navigation from "@/Components/App/Navigation";
+import ProductTour from "@/Components/App/ProductTour";
 import { Toaster } from "sonner";
 import FlashNotification, {
     useFlashMessages,
@@ -16,6 +17,8 @@ import { useTheme } from "@/Components/App/ThemeContext";
 export default function Authenticated({ user, title, children }) {
     useFlashMessages();
     const { theme } = useTheme();
+    const [tourCompleted, setTourCompleted] = useState(false);
+
     return (
         <>
             <Head title={title} />
@@ -29,7 +32,7 @@ export default function Authenticated({ user, title, children }) {
                     <div className="flex size-full flex-col">
                         <Navigation user={user} />
 
-                        <div className="">
+                        <div className="" data-tour-content>
                             <div className="relative max-w-7xl pb-6 mx-auto px-4  sm:px-6 lg:px-8 space-y-6">
                                 <FlashNotification />
                                 {children}
@@ -38,6 +41,7 @@ export default function Authenticated({ user, title, children }) {
                     </div>
                 </section>
             </main>
+            <ProductTour user={user} onComplete={() => setTourCompleted(true)} />
             <Toaster richColors position="top-right" closeButton />
         </>
     );

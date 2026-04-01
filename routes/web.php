@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\TransactionController as AdminTransactionControll
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\AureaAiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductTourController;
 use App\Http\Controllers\DepositController;
 use App\Http\Controllers\ForexController;
 use App\Http\Controllers\InvestmentPackageController;
@@ -110,6 +111,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::resource('system-settings', SystemSettingController::class)->except(['show']);
+
+    // Product Tour
+    Route::post('/product-tour/mark-shown', [ProductTourController::class, 'markTourAsShown'])->name('product-tour.mark-shown');
 });
 
 

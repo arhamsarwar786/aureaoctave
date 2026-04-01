@@ -83,7 +83,7 @@ const TokenizedAssetsSection = () => {
                 </div>
 
                 {/* Cash Management Section */}
-                <div className="mb-16">
+                {/* <div className="mb-16">
                     <div className="flex gap-6 items-start mb-10">
                         <div className="hidden sm:block w-1 h-24 bg-gradient-to-b from-[#3BF5C4] to-transparent rounded-full" />
                         <div>
@@ -99,7 +99,6 @@ const TokenizedAssetsSection = () => {
                         </div>
                     </div>
 
-                    {/* Products */}
                     <div className="grid lg:grid-cols-2 gap-6">
                         {products.map((product, i) => (
                             <motion.div
@@ -147,13 +146,13 @@ const TokenizedAssetsSection = () => {
                             </motion.div>
                         ))}
                     </div>
-                </div>
+                </div> */}
 
                 {/* Footnote */}
-                <p className="text-center text-xs text-[#9CA3AF]">
+                {/* <p className="text-center text-xs text-[#9CA3AF]">
                     * Annual Percentage Yield. Past performance does not
                     guarantee future results.
-                </p>
+                </p> */}
             </div>
         </section>
     );

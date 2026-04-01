@@ -112,11 +112,11 @@ import Newsletter from "@/Components/Newsletter";
 
 const companies = [
   "Ethereum Foundation",
-  "BlackRock",
+  // "BlackRock",
   "Ripple",
-  "Franklin Templeton",
+  // "Franklin Templeton",
   "Sui",
-  "Aptos",
+  // "Aptos",
   "Jupiter",
   "Aon",
   "SECP",
@@ -275,7 +275,7 @@ export default function Hero() {
           </div>
         </section>
         {/* <WhatSetUsApart /> */}
-        <TokenizedAssetsSection />
+        {/* <TokenizedAssetsSection /> */}
         <Benefits />
         <ServicesSection />
         <TaaS2 />
