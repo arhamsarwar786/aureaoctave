@@ -84,12 +84,12 @@ const PILLARS = [
     },
 ];
 
-const STATS = [
-    { value: "10+", label: "Blockchain Networks" },
-    { value: "149", label: "Integrated Projects" },
-    { value: "$1.47B", label: "Total Value Locked" },
-    { value: "80%", label: "Yieldcoin Market Share" },
-];
+// const STATS = [
+//     { value: "10+", label: "Blockchain Networks" },
+//     { value: "149", label: "Integrated Projects" },
+//     { value: "$1.47B", label: "Total Value Locked" },
+//     { value: "80%", label: "Yieldcoin Market Share" },
+// ];
 
 // ── Fade-in variants ──────────────────────────────────────────────────────────
 const fadeUp = {
@@ -213,7 +213,7 @@ export default function WhatWeDo() {
             </section>
 
             {/* ── STATS BAR ────────────────────────────────────────────────── */}
-            <section
+            {/* <section
                 className="w-full py-8 px-6"
                 style={{
                     background: "rgba(59,245,196,0.04)",
@@ -229,7 +229,7 @@ export default function WhatWeDo() {
                         </div>
                     ))}
                 </div>
-            </section>
+            </section> */}
 
             {/* ── PILLARS GRID ─────────────────────────────────────────────── */}
             <section className="bg-[#0B0F14] py-28 px-6">

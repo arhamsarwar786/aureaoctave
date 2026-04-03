@@ -227,7 +227,7 @@ export default function Hero() {
                 className="max-w-xl text-base md:text-xl font-light leading-relaxed text-[#9CA3AF]"
                 style={{ fontFamily: "var(--font-poppins)" }}
               >
-                Unleashing the future of finance through  Ai vetted  tokenized assets and comprehensive investment strategies for digital assets.
+                Unleashing the future of finance through AI vetted  tokenized assets and comprehensive investment strategies for digital assets.
               </motion.p>
 
               {/* CTAs */}

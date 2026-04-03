@@ -15,7 +15,7 @@ export default function AccountDetails({ auth, mustVerifyEmail, status }) {
                         </p>
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white/95 dark:bg-[#0E151D] border border-[#e5efed] dark:border-[#1b2a35] shadow-xl sm:rounded-2xl">
+                    <div className=" bg-white/95 dark:bg-[#0E151D] border border-[#e5efed] dark:border-[#1b2a35] shadow-xl sm:rounded-2xl">
                         <UploadDocument
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
