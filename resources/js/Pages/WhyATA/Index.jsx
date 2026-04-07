@@ -187,14 +187,14 @@ export default function WhyATA() {
             <section className="relative min-h-screen bg-[#0B0F14] overflow-hidden flex flex-col justify-center pt-28 pb-20 px-6">
 
                 {/* Grid bg */}
-                <div
+                {/* <div
                     className="absolute inset-0 opacity-[0.03]"
                     style={{
                         backgroundImage:
                             "linear-gradient(rgba(59,245,196,1) 1px, transparent 1px), linear-gradient(90deg, rgba(59,245,196,1) 1px, transparent 1px)",
                         backgroundSize: "64px 64px",
                     }}
-                />
+                /> */}
 
                 {/* Multiple layered glows */}
                 <div className="absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full pointer-events-none blur-[160px]"

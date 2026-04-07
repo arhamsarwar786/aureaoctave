@@ -26,14 +26,14 @@ export default function AuthLayout({ children }) {
                 </div>
 
                 {/* Decorative grid */}
-                <div
+                {/* <div
                     className="absolute inset-0 opacity-[0.04]"
                     style={{
                         backgroundImage:
                             "linear-gradient(rgba(59,245,196,1) 1px, transparent 1px), linear-gradient(90deg, rgba(59,245,196,1) 1px, transparent 1px)",
                         backgroundSize: "60px 60px",
                     }}
-                />
+                /> */}
 
                 {/* Floating orbs */}
                 {/* <div className="absolute top-24 right-20 w-64 h-64 rounded-full opacity-10 blur-3xl"

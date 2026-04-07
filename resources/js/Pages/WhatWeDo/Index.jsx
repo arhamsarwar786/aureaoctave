@@ -113,14 +113,14 @@ export default function WhatWeDo() {
             <section className="relative min-h-screen bg-[#0B0F14] overflow-hidden flex flex-col justify-center pt-24 pb-16 px-6">
 
                 {/* Grid bg */}
-                <div
+                {/* <div
                     className="absolute inset-0 opacity-[0.035]"
                     style={{
                         backgroundImage:
                             "linear-gradient(rgba(59,245,196,1) 1px, transparent 1px), linear-gradient(90deg, rgba(59,245,196,1) 1px, transparent 1px)",
                         backgroundSize: "72px 72px",
                     }}
-                />
+                /> */}
 
                 {/* Glow */}
                 <div
