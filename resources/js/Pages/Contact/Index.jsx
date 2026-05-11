@@ -36,8 +36,8 @@ const INFO_CARDS = [
     {
         icon: MailIcon,
         label: "Email",
-        text: "support@aureaoctave.com",
-        href: "mailto:support@aureaoctave.com",
+        text: "info@aureaoctave.com",
+        href: "mailto:info@aureaoctave.com",
         wide: true,
     },
     {
