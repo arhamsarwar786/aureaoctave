@@ -18,6 +18,7 @@ import {
     LogOutIcon,
     MonitorCogIcon,
     WalletIcon,
+    MessageSquareIcon,
 } from "lucide-react";
 
 export const DEFAULT_PROFILE =
@@ -85,6 +86,12 @@ export const adminSidebarLinks = [
         routeName: "blog-posts.index",
         icon: BookOpenIcon,
         label: "Blog Posts",
+        roles: ["admin"],
+    },
+    {
+        routeName: "admin.community-questions.index",
+        icon: MessageSquareIcon,
+        label: "Community Forum",
         roles: ["admin"],
     },
 ];

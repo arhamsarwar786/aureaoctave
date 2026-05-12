@@ -53,7 +53,7 @@ export default function AdminUsers({
 
     return (
         <AuthenticatedLayout user={auth.user} title="User Management">
-            <div className={`mb-8 space-y-2 ${pageBg}`}>
+            <div className={`mb-8 space-y-2 p-6 ${pageBg}`}>
                 <header className="w-full">
                     <h1 className={`text-xl font-bold ${headingClass}`}>
                         User Management

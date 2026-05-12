@@ -67,7 +67,7 @@ export default function AdminInvestmentPackage({
 
     return (
         <AuthenticatedLayout user={auth.user} title="Admin Investment Packages">
-            <div className={`mb-8 space-y-2 ${pageBg}`}>
+            <div className={`mb-8 space-y-2 p-4 ${pageBg}`}>
                 <div className="transactions-header">
                     <HeaderBox
                         subtext={"Investment Packages"}

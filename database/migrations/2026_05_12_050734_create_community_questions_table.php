@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('community_questions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('body');
+            $table->boolean('is_published')->default(true);
+            $table->unsignedBigInteger('views_count')->default(0);
             $table->timestamps();
         });
     }

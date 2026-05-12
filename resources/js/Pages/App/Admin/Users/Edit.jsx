@@ -13,7 +13,7 @@ export default function EditSystemSettings({ auth, user }) {
 
     return (
         <AuthenticatedLayout user={auth.user} title="Transaction Details">
-            <div className="mb-8 space-y-2">
+            <div className="mb-8 space-y-2 p-6">
                 <header className="w-full">
                     <h1 className="text-xl font-bold text-black">
                         Edit User Details({userData.name})

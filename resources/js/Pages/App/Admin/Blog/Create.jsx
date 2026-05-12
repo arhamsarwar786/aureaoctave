@@ -5,7 +5,7 @@ import BlogForm from "./Partials/Form";
 export default function Create({ auth, categories }) {
     return (
         <AuthenticatedLayout user={auth.user} title="Create Blog Post">
-            <div className="mb-8 space-y-6 bg-transparent">
+            <div className="mb-8 space-y-6 p-6">
                 <HeaderBox
                     title="Create Blog Post"
                     subtext="Publish updates, articles, and announcements for the blog."

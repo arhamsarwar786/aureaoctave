@@ -49,7 +49,7 @@ export default function Index({ auth, posts, queryParams = null }) {
         <AuthenticatedLayout user={auth.user} title="Blog Posts">
             <Head title="Blog Posts" />
 
-            <div className={`mb-8 space-y-6 ${pageBg}`}>
+            <div className={`mb-8 space-y-6 p-6 ${pageBg}`}>
                 <HeaderBox
                     title="Blog Posts"
                     subtext="Create, edit, publish, and delete posts for the public blog."
@@ -143,7 +143,7 @@ export default function Index({ auth, posts, queryParams = null }) {
                                 ) : (
                                     <Table.Row>
                                         <Table.Cell colSpan={5}>
-                                                <p className={`py-10 text-center text-sm font-medium ${mutedTextClass}`}>
+                                            <p className={`py-10 text-center text-sm font-medium ${mutedTextClass}`}>
                                                 No blog posts found.
                                             </p>
                                         </Table.Cell>

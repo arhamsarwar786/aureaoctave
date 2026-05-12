@@ -61,4 +61,14 @@ class User extends Authenticatable implements AuthMustVerifyEmail
 
         return $credit - $debit;
     }
+
+    public function communityQuestions()
+    {
+        return $this->hasMany(CommunityQuestion::class);
+    }
+
+    public function communityAnswers()
+    {
+        return $this->hasMany(CommunityAnswer::class);
+    }
 }

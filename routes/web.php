@@ -43,9 +43,8 @@ Route::get('/what-we-do', function () {
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{blogPost}', [BlogController::class, 'show'])->name('blog.show');
 
-Route::get('/community', function () {
-    return Inertia::render('Resources/Community/Index');
-})->name('community.index');
+Route::get('/community', [\App\Http\Controllers\CommunityForumController::class, 'index'])->name('community.index');
+Route::get('/community/{question:slug}', [\App\Http\Controllers\CommunityForumController::class, 'show'])->name('community.show');
 
 Route::redirect('/resources/blog', '/blog');
 Route::redirect('/resources/community', '/community');
@@ -126,12 +125,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('blog-posts', AdminBlogPostController::class);
 
         Route::get('/investment-package', [InvestmentPackageController::class, 'adminIndex'])->name('admin.investment-package');
+        Route::resource('community-questions', \App\Http\Controllers\Admin\CommunityQuestionController::class, [
+            'as' => 'admin'
+        ]);
     });
 
     Route::resource('system-settings', SystemSettingController::class)->except(['show']);
 
     // Product Tour
     Route::post('/product-tour/mark-shown', [ProductTourController::class, 'markTourAsShown'])->name('product-tour.mark-shown');
+
+    // Community Actions
+    Route::post('/community/{question:slug}/answers', [\App\Http\Controllers\CommunityForumController::class, 'storeAnswer'])->name('community.answers.store');
+    Route::post('/community/vote', [\App\Http\Controllers\CommunityForumController::class, 'vote'])->name('community.vote');
 });
 
 
@@ -146,4 +152,5 @@ Route::get('check-auth', function () {
         'user' => auth()->user(),
     ]);
 })->middleware('auth:sanctum');
+
 
