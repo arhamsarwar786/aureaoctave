@@ -4,7 +4,7 @@ import RichTextEditor from "@/Components/App/RichTextEditor";
 import { useForm } from "@inertiajs/react";
 
 const baseFieldClass =
-    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#3BF5C4] focus:ring-2 focus:ring-[#3BF5C4]/20";
+    "w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-[#3BF5C4] focus:ring-2 focus:ring-[#3BF5C4]/20 dark:border-white/10 dark:bg-[#0B0F14] dark:text-white dark:focus:ring-[#3BF5C4]/10";
 
 function FieldError({ message }) {
     if (!message) return null;
@@ -64,7 +64,7 @@ export default function BlogForm({ post = null, categories = [], mode = "create"
                         onChange={(event) => form.setData("slug", event.target.value)}
                     />
                     <FieldError message={form.errors.slug} />
-                    <p className="text-xs text-slate-500">Leave blank to generate automatically from the title.</p>
+                    <p className="text-xs text-slate-500 dark:text-white/50">Leave blank to generate automatically from the title.</p>
                 </div>
 
                 <div className="space-y-2 lg:col-span-2">
@@ -135,7 +135,7 @@ export default function BlogForm({ post = null, categories = [], mode = "create"
                     )}
                 </div>
 
-                <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 lg:col-span-2">
+                <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 dark:border-white/10 dark:bg-[#0B0F14] lg:col-span-2">
                     <input
                         id="is_published"
                         type="checkbox"
@@ -143,7 +143,7 @@ export default function BlogForm({ post = null, categories = [], mode = "create"
                         checked={form.data.is_published}
                         onChange={(event) => form.setData("is_published", event.target.checked)}
                     />
-                    <label htmlFor="is_published" className="text-sm font-medium text-slate-700">
+                    <label htmlFor="is_published" className="text-sm font-medium text-slate-700 dark:text-white">
                         Publish this post
                     </label>
                 </div>
@@ -195,7 +195,7 @@ export default function BlogForm({ post = null, categories = [], mode = "create"
                 <button
                     type="submit"
                     disabled={form.processing}
-                    className="rounded-xl bg-[#0B0F14] px-5 py-3 text-sm font-semibold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60"
+                    className="rounded-xl bg-[#0B0F14] px-5 py-3 text-sm font-semibold text-white transition hover:bg-black disabled:cursor-not-allowed disabled:opacity-60 dark:bg-[#3BF5C4] dark:text-[#0B0F14] dark:hover:brightness-110"
                 >
                     {mode === "edit" ? "Update Post" : "Create Post"}
                 </button>

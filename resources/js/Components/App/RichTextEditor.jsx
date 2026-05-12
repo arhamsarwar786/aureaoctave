@@ -41,7 +41,7 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
 
     return (
         <div className="space-y-2">
-            <div className="flex flex-wrap gap-2 rounded-xl border border-white/10 bg-white/5 p-2">
+            <div className="flex flex-wrap gap-2 rounded-xl border border-slate-200 bg-white dark:border-white/10 dark:bg-[#111820] p-2">
                 {TOOLBAR_ACTIONS.map((action) => (
                     <button
                         key={action.command}
@@ -49,7 +49,7 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                         title={action.title}
                         onMouseDown={(event) => event.preventDefault()}
                         onClick={() => applyCommand(action.command)}
-                        className="min-w-10 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                        className="min-w-10 rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold text-slate-900/80 transition-colors hover:bg-white/10 hover:text-slate-900/80"
                     >
                         {action.label}
                     </button>
@@ -60,7 +60,7 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                     title="Insert link"
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => applyCommand("createLink")}
-                    className="rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold text-slate-900/80 transition-colors hover:bg-white/10 hover:text-slate-900/80"
                 >
                     Link
                 </button>
@@ -70,7 +70,7 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                     title="Clear formatting"
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => applyCommand("removeFormat")}
-                    className="rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold text-slate-900/80 transition-colors hover:bg-white/10 hover:text-slate-900/80"
                 >
                     Clear
                 </button>
@@ -82,7 +82,7 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                 suppressContentEditableWarning
                 onInput={syncValue}
                 data-placeholder={placeholder}
-                className="min-h-[280px] rounded-2xl border border-white/10 bg-[#0f141a] px-4 py-4 text-sm leading-7 text-white outline-none transition focus:border-[#3BF5C4]/50"
+                className="min-h-[280px] rounded-2xl border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-4 py-4 text-sm leading-7 text-slate-900/80 outline-none transition focus:border-[#3BF5C4]/50"
                 style={{
                     fontFamily: "Poppins, sans-serif",
                 }}

@@ -11,7 +11,7 @@ export default function Edit({ auth, post, categories }) {
                     subtext={`Updating ${post.title}`}
                 />
 
-                <div className="rounded-3xl bg-white p-6 shadow-sm">
+                <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-[#111820]">
                     <BlogForm post={post} categories={categories} mode="edit" />
                 </div>
             </div>
