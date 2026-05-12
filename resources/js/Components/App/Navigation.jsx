@@ -18,7 +18,8 @@ const ACCENT = "#3BF5C4";
 const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false);
     const { url } = usePage();
-    const roles = usePage().props.auth.roles;
+    const pageProps = usePage().props;
+    const roles = pageProps?.auth?.roles ?? (pageProps?.auth?.user ? ['user'] : []);
 
     // Get the label of the current active page for breadcrumb
     const allLinks = [...sidebarLinks, ...adminSidebarLinks];

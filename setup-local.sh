@@ -14,7 +14,8 @@ sed -i '' 's|DB_USERNAME=aureaoctave|# DB_USERNAME=aureaoctave|g' .env
 sed -i '' 's|DB_PASSWORD=password|# DB_PASSWORD=password|g' .env
 
 # Add SQLite database path
-echo "DB_DATABASE=database/database.sqlite" >> .env
+echo "DB_DATABASE=database/
+.sqlite" >> .env
 
 echo "Running migrations..."
 php artisan migrate

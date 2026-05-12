@@ -1,5 +1,6 @@
 import {
     BarChartBigIcon,
+    BookOpenIcon,
     HandCoinsIcon,
     LandmarkIcon,
     ScrollTextIcon,
@@ -78,6 +79,12 @@ export const adminSidebarLinks = [
         routeName: "system-settings.index",
         icon: MonitorCogIcon,
         label: "System Settings",
+        roles: ["admin"],
+    },
+    {
+        routeName: "blog-posts.index",
+        icon: BookOpenIcon,
+        label: "Blog Posts",
         roles: ["admin"],
     },
 ];

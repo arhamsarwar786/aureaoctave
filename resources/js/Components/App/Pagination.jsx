@@ -1,6 +1,8 @@
 import { Link } from "@inertiajs/react";
 
-export const Pagination = ({ links }) => {
+export const Pagination = ({ links = [] }) => {
+    if (!Array.isArray(links) || links.length === 0) return null;
+
     return (
         <nav className="text-center mt-4 space-x-2">
             {links.map((link, index) => (

@@ -136,6 +136,8 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
+    const [showingResourcesDropdown, setShowingResourcesDropdown] =
+        useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -214,7 +216,6 @@ const Header = () => {
                             WHY ATA
                         </Link>
 
-                        {/* About Dropdown */}
                         <div className="relative group">
                             <button
                                 className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
@@ -245,6 +246,34 @@ const Header = () => {
                                     Careers
                                 </Link>
                             </div> */}
+                        </div>
+
+                        <div className="relative group">
+                            <button
+                                className={`flex items-center gap-1 transition-colors ${isScrolled ? "text-gray-400" : "text-white"
+                                    } hover:text-[#3BF5C4]`}
+                                type="button"
+                            >
+                                Resources
+                                <ChevronDown size={16} />
+                            </button>
+
+                            <div className="absolute top-full left-0 hidden group-hover:block pt-4">
+                                <div className="w-56 rounded-2xl border border-white/10 bg-[#0B0F14]/95 p-2 shadow-2xl backdrop-blur-xl">
+                                    <Link
+                                        href={route("blog.index")}
+                                        className="block rounded-xl px-4 py-3 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-[#3BF5C4]"
+                                    >
+                                        Blog
+                                    </Link>
+                                    <Link
+                                        href={route("community.index")}
+                                        className="block rounded-xl px-4 py-3 text-sm text-gray-300 transition-colors hover:bg-white/5 hover:text-[#3BF5C4]"
+                                    >
+                                        Community
+                                    </Link>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -309,6 +338,33 @@ const Header = () => {
                     <Link href="/why-ata" className="block hover:text-[#3BF5C4] transition-colors">
                         WHY ATA
                     </Link>
+                    <button
+                        type="button"
+                        onClick={() => setShowingResourcesDropdown((previousState) => !previousState)}
+                        className="flex w-full items-center justify-between py-1 text-left hover:text-[#3BF5C4] transition-colors"
+                    >
+                        <span>Resources</span>
+                        <ChevronDown
+                            size={16}
+                            className={`transition-transform duration-200 ${showingResourcesDropdown ? "rotate-180" : ""}`}
+                        />
+                    </button>
+                    {showingResourcesDropdown && (
+                        <div className="ml-4 space-y-2 border-l border-white/10 pl-4">
+                            <Link
+                                href={route("blog.index")}
+                                className="block hover:text-[#3BF5C4] transition-colors"
+                            >
+                                Blog
+                            </Link>
+                            <Link
+                                href={route("community.index")}
+                                className="block hover:text-[#3BF5C4] transition-colors"
+                            >
+                                Community
+                            </Link>
+                        </div>
+                    )}
                     <Link href="/contact-us" className="block hover:text-[#3BF5C4] transition-colors">
                         Contact Us
                     </Link>

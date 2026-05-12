@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\AureaAiController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MarketDataController;
 use App\Http\Controllers\ProductTourController;
@@ -37,6 +39,16 @@ Route::get('/become-our-client', function () {
 Route::get('/what-we-do', function () {
     return Inertia::render('WhatWeDo/Index');
 })->name('what-we-do');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{blogPost}', [BlogController::class, 'show'])->name('blog.show');
+
+Route::get('/community', function () {
+    return Inertia::render('Resources/Community/Index');
+})->name('community.index');
+
+Route::redirect('/resources/blog', '/blog');
+Route::redirect('/resources/community', '/community');
 
 Route::get('/why-ata', function () {
     return Inertia::render('WhyATA/Index');
@@ -110,6 +122,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::get('/{transaction}', [AdminTransactionController::class, 'show'])->name('admin.transactions.show');
             Route::put('/{transaction}/update-status', [AdminTransactionController::class, 'updateStatus'])->name('admin.transactions.update-status');
         });
+
+        Route::resource('blog-posts', AdminBlogPostController::class);
 
         Route::get('/investment-package', [InvestmentPackageController::class, 'adminIndex'])->name('admin.investment-package');
     });

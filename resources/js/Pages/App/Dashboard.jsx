@@ -14,11 +14,44 @@ import { formatAmount } from "@/libs/utils";
 import { Head, Link } from "@inertiajs/react";
 import { CornerDownRightIcon, HandCoinsIcon, WalletIcon } from "lucide-react";
 
+const quickLinks = [
+    { label: "Dashboard", href: route("dashboard") },
+    { label: "Wallet", href: route("deposit") },
+    { label: "Portfolio", href: route("portfolio") },
+    { label: "History", href: route("history") },
+    { label: "Investment", href: route("investment-package.index") },
+];
+
 export default function Dashboard({ auth, balance }) {
     return (
         <AuthenticatedLayout user={auth.user} title="Dashboard">
             {/* Main Content Grid */}
             <div className="container mx-auto py-4 px-2">
+                <div className="mb-6 rounded-2xl border border-white/10 bg-[#0E151D] p-4 sm:p-5">
+                    <div className="mb-4 flex items-center justify-between gap-3 flex-wrap">
+                        <div>
+                            <h2 className="text-lg font-semibold text-white">
+                                Quick Access
+                            </h2>
+                            <p className="mt-1 text-sm text-white/60">
+                                Jump straight to the pages available in your account.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+                        {quickLinks.map((item) => (
+                            <Link
+                                key={item.label}
+                                href={item.href}
+                                className="flex items-center justify-center rounded-xl border border-white/10 bg-white/5 px-4 py-4 text-center text-sm font-medium text-white transition-colors hover:border-[#3BF5C4]/40 hover:bg-[#3BF5C4]/10 hover:text-[#3BF5C4]"
+                            >
+                                {item.label}
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
                 {/* TradingView Ticker Tape */}
                 {/* <TradingViewTickerTape /> */}
 

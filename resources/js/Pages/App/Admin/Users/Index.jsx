@@ -1,5 +1,6 @@
 import { Pagination } from "@/Components/App/Pagination";
 import TextInput from "@/Components/App/TextInput";
+import { useTheme } from "@/Components/App/ThemeContext";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { formatAmount } from "@/libs/utils";
 import { Head, Link, router } from "@inertiajs/react";
@@ -12,7 +13,12 @@ export default function AdminUsers({
     queryParams = null,
     success,
 }) {
-    const { data: usersData, meta } = users;
+    const { data: usersData = [], meta = { links: [] } } = users || {};
+    const { theme } = useTheme();
+    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "bg-slate-50";
+    const cardBg = theme === "dark" ? "bg-[#111820] border-white/10" : "bg-white border-slate-200";
+    const headingClass = theme === "dark" ? "text-white" : "text-slate-900";
+    const mutedTextClass = theme === "dark" ? "text-white/65" : "text-slate-500";
 
     queryParams = queryParams || {};
     const searchFieldChanged = (name, value) => {
@@ -47,13 +53,13 @@ export default function AdminUsers({
 
     return (
         <AuthenticatedLayout user={auth.user} title="User Management">
-            <div className="mb-8 space-y-2">
+            <div className={`mb-8 space-y-2 ${pageBg}`}>
                 <header className="w-full">
-                    <h1 className="text-xl font-bold text-black">
+                    <h1 className={`text-xl font-bold ${headingClass}`}>
                         User Management
                     </h1>
                 </header>
-                <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg min-h-56">
+                <div className={`overflow-hidden shadow-sm sm:rounded-lg min-h-56 border ${cardBg}`}>
                     <div className="p-6 space-y-4">
                         <main>
                             <div className="md:flex justify-end">
@@ -73,19 +79,19 @@ export default function AdminUsers({
                             <Table.Root>
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Name
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Email
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Account Balance
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Joined Date
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Action
                                         </Table.ColumnHeaderCell>
                                     </Table.Row>
@@ -96,18 +102,18 @@ export default function AdminUsers({
                                         usersData.map((user, indx) => {
                                             return (
                                                 <Table.Row key={indx}>
-                                                    <Table.Cell>
+                                                    <Table.Cell className={headingClass}>
                                                         {user.name}
                                                     </Table.Cell>
-                                                    <Table.Cell>
+                                                    <Table.Cell className={mutedTextClass}>
                                                         {user.email}
                                                     </Table.Cell>
-                                                    <Table.Cell>
+                                                    <Table.Cell className={headingClass}>
                                                         {formatAmount(
                                                             user.balance
                                                         )}
                                                     </Table.Cell>
-                                                    <Table.Cell>
+                                                    <Table.Cell className={mutedTextClass}>
                                                         {user.created_at}
                                                     </Table.Cell>
                                                     <Table.Cell className="space-x-1">
@@ -136,7 +142,7 @@ export default function AdminUsers({
                                     ) : (
                                         <Table.Row>
                                             <td colSpan="5">
-                                                <p className="text-center w-full py-5 font-bold">
+                                                <p className={`text-center w-full py-5 font-bold ${mutedTextClass}`}>
                                                     No data available in the
                                                     table
                                                 </p>

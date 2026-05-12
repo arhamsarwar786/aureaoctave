@@ -1,6 +1,7 @@
 import HeaderBox from "@/Components/App/HeaderBox";
 import { Pagination } from "@/Components/App/Pagination";
 import TextInput from "@/Components/App/TextInput";
+import { useTheme } from "@/Components/App/ThemeContext";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { formatAmount } from "@/libs/utils";
 import { Head, Link, router } from "@inertiajs/react";
@@ -13,7 +14,12 @@ export default function AdminInvestmentPackage({
     queryParams = null,
     success,
 }) {
-    const { data: investmentPackagesData, meta } = investmentPackages;
+    const { data: investmentPackagesData = [], meta = { links: [] } } = investmentPackages || {};
+    const { theme } = useTheme();
+    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "bg-slate-50";
+    const cardBg = theme === "dark" ? "bg-[#111820] border-white/10" : "bg-white border-slate-200";
+    const headingClass = theme === "dark" ? "text-white" : "text-slate-900";
+    const mutedTextClass = theme === "dark" ? "text-white/65" : "text-slate-500";
 
     const deleteInvestmentPackage = (id) => {
         console.log(id);
@@ -61,7 +67,7 @@ export default function AdminInvestmentPackage({
 
     return (
         <AuthenticatedLayout user={auth.user} title="Admin Investment Packages">
-            <div className="mb-8 space-y-2">
+            <div className={`mb-8 space-y-2 ${pageBg}`}>
                 <div className="transactions-header">
                     <HeaderBox
                         subtext={"Investment Packages"}
@@ -77,7 +83,7 @@ export default function AdminInvestmentPackage({
                     />
                 </div>
 
-                <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg min-h-56">
+                <div className={`overflow-hidden shadow-sm sm:rounded-lg min-h-56 border ${cardBg}`}>
                     <div className="p-6 space-y-4">
                         <main>
                             <div className="md:flex justify-end">
@@ -97,25 +103,25 @@ export default function AdminInvestmentPackage({
                             <Table.Root>
                                 <Table.Header>
                                     <Table.Row>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Name
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Expense Ratio
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Sec Yield
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             YTD
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             One Year
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Fund Price
                                         </Table.ColumnHeaderCell>
-                                        <Table.ColumnHeaderCell>
+                                        <Table.ColumnHeaderCell className={headingClass}>
                                             Action
                                         </Table.ColumnHeaderCell>
                                     </Table.Row>
@@ -127,34 +133,34 @@ export default function AdminInvestmentPackage({
                                             (investmentPackage, indx) => {
                                                 return (
                                                     <Table.Row key={indx}>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {`${investmentPackage.name} (${investmentPackage.code})`}
                                                         </Table.Cell>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {
                                                                 investmentPackage.expense_ratio
                                                             }
                                                             %
                                                         </Table.Cell>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {
                                                                 investmentPackage.sec_yield
                                                             }
                                                             %
                                                         </Table.Cell>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {
                                                                 investmentPackage.ytd
                                                             }
                                                             %
                                                         </Table.Cell>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {
                                                                 investmentPackage.one_year
                                                             }
                                                             %
                                                         </Table.Cell>
-                                                        <Table.Cell>
+                                                        <Table.Cell className={headingClass}>
                                                             {
                                                                 investmentPackage.fund_price
                                                             }
@@ -188,7 +194,7 @@ export default function AdminInvestmentPackage({
                                     ) : (
                                         <Table.Row>
                                             <td colSpan="5">
-                                                <p className="text-center w-full py-5 font-bold">
+                                                <p className={`text-center w-full py-5 font-bold ${mutedTextClass}`}>
                                                     No data available in the
                                                     table
                                                 </p>

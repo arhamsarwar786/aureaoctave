@@ -1,0 +1,92 @@
+import { useEffect, useRef } from "react";
+
+const TOOLBAR_ACTIONS = [
+    { label: "B", command: "bold", title: "Bold" },
+    { label: "I", command: "italic", title: "Italic" },
+    { label: "U", command: "underline", title: "Underline" },
+    { label: "•", command: "insertUnorderedList", title: "Bulleted list" },
+    { label: "1.", command: "insertOrderedList", title: "Numbered list" },
+];
+
+export default function RichTextEditor({ value = "", onChange, placeholder = "Write your article here..." }) {
+    const editorRef = useRef(null);
+
+    useEffect(() => {
+        if (editorRef.current && editorRef.current.innerHTML !== value) {
+            editorRef.current.innerHTML = value || "";
+        }
+    }, [value]);
+
+    const syncValue = () => {
+        if (!editorRef.current) return;
+        onChange?.(editorRef.current.innerHTML);
+    };
+
+    const applyCommand = (command) => {
+        editorRef.current?.focus();
+
+        if (command === "createLink") {
+            const url = window.prompt("Enter the link URL");
+
+            if (!url) return;
+
+            document.execCommand(command, false, url);
+            syncValue();
+            return;
+        }
+
+        document.execCommand(command, false, null);
+        syncValue();
+    };
+
+    return (
+        <div className="space-y-2">
+            <div className="flex flex-wrap gap-2 rounded-xl border border-white/10 bg-white/5 p-2">
+                {TOOLBAR_ACTIONS.map((action) => (
+                    <button
+                        key={action.command}
+                        type="button"
+                        title={action.title}
+                        onMouseDown={(event) => event.preventDefault()}
+                        onClick={() => applyCommand(action.command)}
+                        className="min-w-10 rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    >
+                        {action.label}
+                    </button>
+                ))}
+
+                <button
+                    type="button"
+                    title="Insert link"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => applyCommand("createLink")}
+                    className="rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                    Link
+                </button>
+
+                <button
+                    type="button"
+                    title="Clear formatting"
+                    onMouseDown={(event) => event.preventDefault()}
+                    onClick={() => applyCommand("removeFormat")}
+                    className="rounded-lg border border-white/10 px-3 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                    Clear
+                </button>
+            </div>
+
+            <div
+                ref={editorRef}
+                contentEditable
+                suppressContentEditableWarning
+                onInput={syncValue}
+                data-placeholder={placeholder}
+                className="min-h-[280px] rounded-2xl border border-white/10 bg-[#0f141a] px-4 py-4 text-sm leading-7 text-white outline-none transition focus:border-[#3BF5C4]/50"
+                style={{
+                    fontFamily: "Poppins, sans-serif",
+                }}
+            />
+        </div>
+    );
+}

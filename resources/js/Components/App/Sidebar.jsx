@@ -52,7 +52,8 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
 
 const Sidebar = ({ user }) => {
     const { url } = usePage();
-    const roles = usePage().props.auth.roles;
+    const pageProps = usePage().props;
+    const roles = pageProps?.auth?.roles ?? (pageProps?.auth?.user ? ['user'] : []);
     const isAdmin = roles.includes("admin");
 
     return (

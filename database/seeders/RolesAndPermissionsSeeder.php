@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -20,32 +18,22 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         // Create permissions
-        Permission::create(['name' => 'manage users']);
-        Permission::create(['name' => 'manage investment packages']);
-        Permission::create(['name' => 'manage transactions']);
-        Permission::create(['name' => 'view transactions']);
-        Permission::create(['name' => 'manage system settings']);
+        Permission::firstOrCreate(['name' => 'manage users', 'guard_name' => 'web']);
+        Permission::firstOrCreate(['name' => 'manage investment packages', 'guard_name' => 'web']);
+        Permission::firstOrCreate(['name' => 'manage transactions', 'guard_name' => 'web']);
+        Permission::firstOrCreate(['name' => 'view transactions', 'guard_name' => 'web']);
+        Permission::firstOrCreate(['name' => 'manage system settings', 'guard_name' => 'web']);
 
         // Create roles and assign permissions
-        $role = Role::create(['name' => 'admin']);
+        $role = Role::firstOrCreate(['name' => 'admin', 'guard_name' => 'web']);
         $role->givePermissionTo('manage users');
         $role->givePermissionTo('manage transactions');
         $role->givePermissionTo('manage system settings');
         $role->givePermissionTo('manage investment packages');
 
-        $role = Role::create(['name' => 'user']);
+        $role = Role::firstOrCreate(['name' => 'user', 'guard_name' => 'web']);
         $role->givePermissionTo('view transactions');
 
-        // Find the user by ID or any other attribute
-        $user = User::find(1); // Replace with the actual user ID or other logic
-        // Assign the 'admin' role to the user
-        $user->assignRole('admin');
-
-        // Fetch all users whose ID is not 1 and assign them the 'user' role
-        $users = User::where('id', '!=', 1)->get();
-
-        foreach ($users as $user) {
-            $user->assignRole('user');
-        }
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
     }
 }

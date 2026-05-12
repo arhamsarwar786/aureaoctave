@@ -40,7 +40,7 @@ export default function Newsletter() {
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage:
-              "url('/Images/pexels-suzyhazelwood-1329645.jpg')",
+              "url('/assets/img/pexels-suzyhazelwood-1329645.jpg')",
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
