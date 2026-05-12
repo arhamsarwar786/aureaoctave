@@ -146,3 +146,4 @@ Route::get('check-auth', function () {
         'user' => auth()->user(),
     ]);
 })->middleware('auth:sanctum');
+

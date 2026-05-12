@@ -35,7 +35,7 @@ class TransactionFactory extends Factory
             'balance_before' => $balanceBefore,
             'balance_after' => $balanceAfter,
             'transaction_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'status' => $this->faker->boolean,
+            'status' => $this->faker->randomElement(['approved', 'processing', 'declined']),
         ];
     }
 }
