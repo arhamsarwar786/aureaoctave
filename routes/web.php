@@ -44,6 +44,9 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog-images/{path}', [BlogController::class, 'image'])
     ->where('path', '.*')
     ->name('blog.images.show');
+Route::get('/storage/{path}', [BlogController::class, 'image'])
+    ->where('path', '.*')
+    ->name('storage.images.fallback');
 Route::get('/blog/{blogPost:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/community', [\App\Http\Controllers\CommunityForumController::class, 'index'])->name('community.index');

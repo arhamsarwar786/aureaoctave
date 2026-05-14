@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -64,14 +65,32 @@ class BlogController extends Controller
     {
         abort_if(str_contains($path, '..'), 404);
 
-        abort_unless(Storage::disk('public')->exists($path), 404);
+        $filePath = $this->resolvePublicStoragePath($path);
 
-        $filePath = Storage::disk('public')->path($path);
-        $mimeType = Storage::disk('public')->mimeType($path) ?: 'application/octet-stream';
+        abort_unless($filePath, 404);
 
         return response()->file($filePath, [
-            'Content-Type' => $mimeType,
+            'Content-Type' => File::mimeType($filePath) ?: 'application/octet-stream',
             'Cache-Control' => 'public, max-age=31536000',
         ]);
+    }
+
+    private function resolvePublicStoragePath(string $path): ?string
+    {
+        $normalizedPath = ltrim($path, '/');
+
+        $candidates = [
+            storage_path('app/public/' . $normalizedPath),
+            public_path('storage/' . $normalizedPath),
+            base_path('public_html/storage/' . $normalizedPath),
+        ];
+
+        foreach ($candidates as $candidate) {
+            if (is_file($candidate) && is_readable($candidate)) {
+                return $candidate;
+            }
+        }
+
+        return null;
     }
 }

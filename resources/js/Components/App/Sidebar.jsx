@@ -20,27 +20,21 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
     return (
         <NavLink
             href={href}
-            className={`relative flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-400 transition-all duration-200 hover:bg-white/[0.06] hover:text-white group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4 ${
-                isActive ? "bg-[#3BF5C4]/10 text-white ring-1 ring-[#3BF5C4]/20" : ""
+            className={`group/link relative flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium transition-all duration-200 ${
+                isActive
+                    ? "bg-[#3BF5C4]/12 text-white shadow-[inset_0_0_0_1px_rgba(59,245,196,0.18)]"
+                    : "text-slate-400 hover:bg-white/[0.06] hover:text-white"
             }`}
         >
-            {isActive && (
-                <span
-                    className="absolute left-0 top-1/2 h-7 w-1 -translate-y-1/2 rounded-r-full"
-                    style={{ background: ACCENT }}
-                />
-            )}
-
-            <span className={`relative z-10 flex size-9 shrink-0 items-center justify-center rounded-lg ${isActive ? "bg-white/10" : ""}`}>
-                <Icon
-                    size={20}
-                    className={isActive ? "text-[#3BF5C4]" : "text-slate-400"}
-                />
+            <span
+                className={`flex size-8 shrink-0 items-center justify-center rounded-md transition ${
+                    isActive ? "bg-[#3BF5C4]/15" : "bg-white/[0.04] group-hover/link:bg-white/[0.08]"
+                }`}
+            >
+                <Icon size={18} className={isActive ? "text-[#3BF5C4]" : "text-slate-400"} />
             </span>
-
-            <span className={`relative z-10 hidden min-w-0 truncate text-sm group-hover/sidebar:block ${isActive ? "font-semibold" : "font-medium"}`}>
-                {label}
-            </span>
+            <span className="min-w-0 flex-1 truncate">{label}</span>
+            {isActive && <span className="size-1.5 rounded-full bg-[#3BF5C4]" />}
         </NavLink>
     );
 }
@@ -58,17 +52,16 @@ function SidebarSection({ section, roles, url }) {
     }
 
     return (
-        <div className="space-y-1">
+        <section className="space-y-1.5">
             <button
                 type="button"
                 onClick={() => setIsOpen((current) => !current)}
-                className="flex min-h-9 w-full items-center justify-center rounded-lg px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:bg-white/[0.04] hover:text-slate-300 group-hover/sidebar:justify-between group-hover/sidebar:px-4"
+                className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:bg-white/[0.04] hover:text-slate-300"
             >
-                <span className="hidden group-hover/sidebar:block">{section.label}</span>
-                <span className="group-hover/sidebar:hidden">{section.label.slice(0, 1)}</span>
+                <span>{section.label}</span>
                 <ChevronDownIcon
                     size={14}
-                    className={`hidden transition group-hover/sidebar:block ${isOpen ? "rotate-180" : ""}`}
+                    className={`transition ${isOpen ? "rotate-180" : ""}`}
                 />
             </button>
 
@@ -85,7 +78,7 @@ function SidebarSection({ section, roles, url }) {
                     ))}
                 </div>
             )}
-        </div>
+        </section>
     );
 }
 
@@ -95,16 +88,18 @@ function UtilityLink({ href, icon: Icon, label, isActive = false, method, as, da
             href={href}
             method={method}
             as={as}
-            className={`flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-400 transition-all duration-200 hover:bg-white/[0.06] group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4 ${
-                danger ? "hover:text-red-400" : "hover:text-white"
-            } ${isActive ? "bg-white/[0.06] text-white" : ""}`}
+            className={`flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium transition ${
+                danger
+                    ? "text-slate-400 hover:bg-red-500/10 hover:text-red-300"
+                    : isActive
+                        ? "bg-white/[0.06] text-white"
+                        : "text-slate-400 hover:bg-white/[0.06] hover:text-white"
+            }`}
         >
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-lg">
-                <Icon size={20} color={label === "Aurea AI" ? ACCENT : undefined} />
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-md bg-white/[0.04]">
+                <Icon size={18} color={label === "Aurea AI" ? ACCENT : undefined} />
             </span>
-            <span className="hidden min-w-0 truncate text-sm font-medium group-hover/sidebar:block">
-                {label}
-            </span>
+            <span className="min-w-0 flex-1 truncate">{label}</span>
         </NavLink>
     );
 }
@@ -118,28 +113,35 @@ const Sidebar = ({ user }) => {
     return (
         <aside
             data-tour-sidebar
-            className="group/sidebar sticky left-0 top-0 hidden h-screen w-24 flex-col overflow-hidden border-r border-white/5 bg-[#0d1117] px-3 transition-all duration-300 hover:w-80 md:flex"
-            style={{ boxShadow: "4px 0 24px rgba(0,0,0,0.35)" }}
+            className="sticky left-0 top-0 hidden h-screen w-72 shrink-0 flex-col border-r border-white/5 bg-[#0b1016] md:flex"
+            style={{ boxShadow: "4px 0 24px rgba(0,0,0,0.28)" }}
         >
-            <div className="flex h-20 shrink-0 items-center justify-center px-2 group-hover/sidebar:justify-start group-hover/sidebar:px-4">
+            <div className="flex h-20 shrink-0 items-center border-b border-white/5 px-5">
                 <Link href="/dashboard" className="flex min-w-0 items-center">
                     <img
-                        src="/assets/img/logo4.png"
-                        alt="Logo compact"
-                        className="size-10 object-contain group-hover/sidebar:hidden"
-                    />
-                    <img
                         src="/assets/img/logo3.png"
-                        alt="Logo full"
-                        className="hidden h-11 max-w-48 object-contain group-hover/sidebar:block"
+                        alt="Aurea Octave"
+                        className="h-11 max-w-48 object-contain"
                     />
                 </Link>
             </div>
 
-            <div className="mb-4 h-px w-10 shrink-0 self-center bg-[#3BF5C4]/70 transition-all group-hover/sidebar:w-full" />
+            <div className="px-4 py-4">
+                <div className="rounded-xl border border-white/6 bg-white/[0.035] px-4 py-3">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        Workspace
+                    </p>
+                    <p className="mt-1 truncate text-sm font-semibold text-white">
+                        Aurea Octave
+                    </p>
+                </div>
+            </div>
 
-            <nav className="flex flex-1 flex-col gap-4 overflow-y-auto pb-4 pr-1">
-                <div className="space-y-1">
+            <nav className="flex flex-1 flex-col gap-5 overflow-y-auto px-4 pb-4">
+                <section className="space-y-1">
+                    <p className="px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
+                        Main
+                    </p>
                     {sidebarLinks.map((item) => {
                         if (!item.roles.some((role) => roles.includes(role))) return null;
 
@@ -153,10 +155,10 @@ const Sidebar = ({ user }) => {
                             />
                         );
                     })}
-                </div>
+                </section>
 
                 {isAdmin && (
-                    <div className="space-y-3 border-t border-white/5 pt-4">
+                    <div className="space-y-4 border-t border-white/5 pt-4">
                         {adminSidebarSections.map((section) => (
                             <SidebarSection
                                 key={section.label}
@@ -169,28 +171,15 @@ const Sidebar = ({ user }) => {
                 )}
             </nav>
 
-            <div className="shrink-0 space-y-2 border-t border-white/5 py-4">
-                <UtilityLink
-                    href={route("aurea-ai")}
-                    icon={SparklesIcon}
-                    label="Aurea AI"
-                    isActive={route().current("aurea-ai")}
-                />
-                <UtilityLink
-                    href={route("settings")}
-                    icon={CogIcon}
-                    label="Settings"
-                    isActive={route().current("settings")}
-                />
-
-                <div className="flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-300 transition-all group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4">
+            <div className="shrink-0 border-t border-white/5 p-4">
+                <div className="mb-3 flex items-center gap-3 rounded-xl bg-white/[0.035] px-3 py-3">
                     <div
-                        className="flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-black"
+                        className="flex size-10 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-black"
                         style={{ background: `linear-gradient(135deg, ${ACCENT}, #10b981)` }}
                     >
                         {user?.name?.[0]?.toUpperCase() ?? "U"}
                     </div>
-                    <div className="hidden min-w-0 group-hover/sidebar:block">
+                    <div className="min-w-0">
                         <p className="truncate text-sm font-semibold text-white">
                             {user?.name ?? "User"}
                         </p>
@@ -200,14 +189,28 @@ const Sidebar = ({ user }) => {
                     </div>
                 </div>
 
-                <UtilityLink
-                    href={route("logout")}
-                    method="post"
-                    as="button"
-                    icon={LogOutIcon}
-                    label="Logout"
-                    danger
-                />
+                <div className="grid gap-1">
+                    <UtilityLink
+                        href={route("aurea-ai")}
+                        icon={SparklesIcon}
+                        label="Aurea AI"
+                        isActive={route().current("aurea-ai")}
+                    />
+                    <UtilityLink
+                        href={route("settings")}
+                        icon={CogIcon}
+                        label="Settings"
+                        isActive={route().current("settings")}
+                    />
+                    <UtilityLink
+                        href={route("logout")}
+                        method="post"
+                        as="button"
+                        icon={LogOutIcon}
+                        label="Logout"
+                        danger
+                    />
+                </div>
             </div>
         </aside>
     );
