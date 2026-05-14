@@ -11,7 +11,7 @@ export const Pagination = ({ links = [] }) => {
                     preserveScroll
                     href={link.url || ""}
                     className={
-                        "inline-block py-2 px-3 rounded-lg text-gray-900 text-sm hover:text-white border  " +
+                        "inline-block py-2 px-3 rounded-lg  bg-slate-50 dark:bg-[#111820] text-gray-900 dark:text-white text-sm hover:text-white border  " +
                         (link.active ? "bg-gray-950 text-white " : " ") +
                         (!link.url
                             ? "!text-gray-500 cursor-not-allowed "

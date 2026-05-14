@@ -13,7 +13,7 @@ import { useTheme } from "@/Components/App/ThemeContext";
 export default function Settings({ auth }) {
     const { user } = auth;
     const { theme, toggleTheme } = useTheme();
-    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "bg-slate-50";
+    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "";
     const headingClass = theme === "dark" ? "text-white" : "text-slate-900";
     const mutedTextClass = theme === "dark" ? "text-white/65" : "text-slate-600";
     const panelClass = theme === "dark" ? "bg-[#111820] border-white/10" : "bg-white border-slate-200";

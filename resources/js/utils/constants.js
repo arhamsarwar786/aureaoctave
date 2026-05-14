@@ -96,6 +96,60 @@ export const adminSidebarLinks = [
     },
 ];
 
+export const adminSidebarSections = [
+    {
+        label: "Admin",
+        links: [
+            {
+                routeName: "admin.users.index",
+                icon: UsersIcon,
+                label: "Users",
+                roles: ["admin"],
+            },
+            {
+                routeName: "admin.transactions",
+                icon: WalletIcon,
+                label: "Transactions",
+                roles: ["admin"],
+            },
+        ],
+    },
+    {
+        label: "Content",
+        links: [
+            {
+                routeName: "blog-posts.index",
+                icon: BookOpenIcon,
+                label: "Blog Posts",
+                roles: ["admin"],
+            },
+            {
+                routeName: "admin.community-questions.index",
+                icon: MessageSquareIcon,
+                label: "Community Forum",
+                roles: ["admin"],
+            },
+        ],
+    },
+    {
+        label: "Platform",
+        links: [
+            {
+                routeName: "admin.investment-package",
+                icon: ChartNoAxesCombinedIcon,
+                label: "Investment Packages",
+                roles: ["admin"],
+            },
+            {
+                routeName: "system-settings.index",
+                icon: MonitorCogIcon,
+                label: "System Settings",
+                roles: ["admin"],
+            },
+        ],
+    },
+];
+
 export const navLinks = [
     {
         routeName: "home",

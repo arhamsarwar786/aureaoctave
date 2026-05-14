@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Dropdown from "./Dropdown";
 import ResponsiveNavLink from "@/Components/App/ResponsiveNavLink";
 import { Link, usePage } from "@inertiajs/react";
-import { sidebarLinks, adminSidebarLinks } from "@/utils/constants";
+import { sidebarLinks, adminSidebarSections } from "@/utils/constants";
 import {
     SparklesIcon,
     BellIcon,
@@ -22,7 +22,10 @@ const Navigation = ({ user }) => {
     const roles = pageProps?.auth?.roles ?? (pageProps?.auth?.user ? ['user'] : []);
 
     // Get the label of the current active page for breadcrumb
-    const allLinks = [...sidebarLinks, ...adminSidebarLinks];
+    const allLinks = [
+        ...sidebarLinks,
+        ...adminSidebarSections.flatMap((section) => section.links),
+    ];
     const activePage = allLinks.find(
         (item) =>
             route().current(item.routeName) ||
@@ -217,6 +220,48 @@ const Navigation = ({ user }) => {
                                     <Icon size={16} className={isActive ? "text-black" : ""} />
                                     {item.label}
                                 </ResponsiveNavLink>
+                            );
+                        })}
+
+                        <div
+                            className="my-3 h-px"
+                            style={{ background: "rgba(255,255,255,0.05)" }}
+                        />
+
+                        {roles.includes("admin") && adminSidebarSections.map((section) => {
+                            const visibleLinks = section.links.filter((item) =>
+                                item.roles.some((role) => roles.includes(role))
+                            );
+
+                            if (visibleLinks.length === 0) return null;
+
+                            return (
+                                <div key={section.label} className="space-y-1">
+                                    <p className="px-3 pt-2 text-[10px] font-semibold uppercase tracking-widest text-slate-500">
+                                        {section.label}
+                                    </p>
+                                    {visibleLinks.map((item) => {
+                                        const Icon = item.icon;
+                                        const isActive = route().current(item.routeName) || url.startsWith(`/${item.routeName}`);
+
+                                        return (
+                                            <ResponsiveNavLink
+                                                key={item.label}
+                                                href={route(item.routeName)}
+                                                className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-all duration-200
+                                                    ${isActive
+                                                        ? "text-black font-semibold"
+                                                        : "text-slate-400 hover:text-white hover:bg-white/5"}`}
+                                                style={isActive ? {
+                                                    background: `linear-gradient(135deg, ${ACCENT}, #10b981)`,
+                                                } : {}}
+                                            >
+                                                <Icon size={16} className={isActive ? "text-black" : ""} />
+                                                {item.label}
+                                            </ResponsiveNavLink>
+                                        );
+                                    })}
+                                </div>
                             );
                         })}
 

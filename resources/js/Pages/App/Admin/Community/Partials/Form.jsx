@@ -69,7 +69,7 @@ export default function QuestionForm({ question = null, mode = "create" }) {
                 </div>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-2 dark:text-white ">
                 <InputLabel value="Body" />
                 <RichTextEditor
                     value={form.data.body}

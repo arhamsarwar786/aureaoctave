@@ -21,7 +21,7 @@ export default function Index({ auth, posts, queryParams = null }) {
     const { data, meta, links } = posts;
     const paginationLinks = links ?? meta?.links ?? [];
     const { theme } = useTheme();
-    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "bg-slate-50";
+    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "";
     const cardBg = theme === "dark" ? "bg-[#111820] border-white/10" : "bg-white border-slate-200";
     const headingClass = theme === "dark" ? "text-white" : "text-slate-900";
     const mutedTextClass = theme === "dark" ? "text-white/65" : "text-slate-500";
@@ -87,6 +87,7 @@ export default function Index({ auth, posts, queryParams = null }) {
                         <Table.Root>
                             <Table.Header>
                                 <Table.Row>
+                                    <Table.ColumnHeaderCell className={headingClass}>Image</Table.ColumnHeaderCell>
                                     <Table.ColumnHeaderCell className={headingClass}>Title</Table.ColumnHeaderCell>
                                     <Table.ColumnHeaderCell className={headingClass}>Category</Table.ColumnHeaderCell>
                                     <Table.ColumnHeaderCell className={headingClass}>Status</Table.ColumnHeaderCell>
@@ -98,6 +99,19 @@ export default function Index({ auth, posts, queryParams = null }) {
                                 {data.length > 0 ? (
                                     data.map((post) => (
                                         <Table.Row key={post.id}>
+                                            <Table.Cell>
+                                                {post.featured_image_url ? (
+                                                    <img
+                                                        src={post.featured_image_url}
+                                                        alt={post.title}
+                                                        className="h-12 w-16 rounded-lg object-cover"
+                                                    />
+                                                ) : (
+                                                    <div className="flex h-12 w-16 items-center justify-center rounded-lg border border-dashed border-slate-300 text-xs text-slate-400 dark:border-white/10">
+                                                        —
+                                                    </div>
+                                                )}
+                                            </Table.Cell>
                                             <Table.Cell>
                                                 <div className="space-y-1">
                                                     <p className={`font-semibold ${headingClass}`}>
@@ -142,7 +156,7 @@ export default function Index({ auth, posts, queryParams = null }) {
                                     ))
                                 ) : (
                                     <Table.Row>
-                                        <Table.Cell colSpan={5}>
+                                        <Table.Cell colSpan={6}>
                                             <p className={`py-10 text-center text-sm font-medium ${mutedTextClass}`}>
                                                 No blog posts found.
                                             </p>

@@ -41,7 +41,10 @@ Route::get('/what-we-do', function () {
 })->name('what-we-do');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{blogPost}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog-images/{path}', [BlogController::class, 'image'])
+    ->where('path', '.*')
+    ->name('blog.images.show');
+Route::get('/blog/{blogPost:slug}', [BlogController::class, 'show'])->name('blog.show');
 
 Route::get('/community', [\App\Http\Controllers\CommunityForumController::class, 'index'])->name('community.index');
 Route::get('/community/{question:slug}', [\App\Http\Controllers\CommunityForumController::class, 'show'])->name('community.show');
@@ -152,5 +155,3 @@ Route::get('check-auth', function () {
         'user' => auth()->user(),
     ]);
 })->middleware('auth:sanctum');
-
-

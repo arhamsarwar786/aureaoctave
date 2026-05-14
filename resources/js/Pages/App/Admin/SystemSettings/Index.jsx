@@ -9,7 +9,7 @@ import { BookOpenIcon, PenSquareIcon } from "lucide-react";
 
 export default function systemSettings({ auth, settings: systemSettings }) {
     const { theme } = useTheme();
-    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "bg-slate-50";
+    const pageBg = theme === "dark" ? "bg-[#0F141B]" : "";
     const cardBg = theme === "dark" ? "bg-[#111820] border-white/10" : "bg-white border-slate-200";
     const headingClass = theme === "dark" ? "text-white" : "text-slate-900";
     const mutedTextClass = theme === "dark" ? "text-white/65" : "text-slate-500";

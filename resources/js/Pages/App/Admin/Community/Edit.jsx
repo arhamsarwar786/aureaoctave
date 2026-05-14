@@ -5,7 +5,7 @@ import QuestionForm from "./Partials/Form";
 export default function Edit({ auth, question }) {
     return (
         <AuthenticatedLayout user={auth.user} title="Edit Question">
-            <div className="mb-8 space-y-6 bg-slate-50 p-6 dark:bg-[#0F141B]">
+            <div className="mb-8 space-y-6  p-6 ">
                 <HeaderBox
                     title="Edit Community Question"
                     subtext={`Updating ${question.title}`}

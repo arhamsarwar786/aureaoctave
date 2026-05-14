@@ -51,14 +51,29 @@ class BlogPost extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getRouteKeyName(): string
-    {
-        return 'slug';
-    }
-
     public function getFeaturedImageUrlAttribute(): ?string
     {
-        return $this->featured_image ? Storage::disk('public')->url($this->featured_image) : null;
+        if (blank($this->featured_image)) {
+            return null;
+        }
+
+        if (Str::startsWith($this->featured_image, ['http://', 'https://'])) {
+            $path = parse_url($this->featured_image, PHP_URL_PATH);
+
+            if (is_string($path) && Str::startsWith($path, '/storage/')) {
+                return route('blog.images.show', ['path' => Str::after($path, '/storage/')]);
+            }
+
+            return $this->featured_image;
+        }
+
+        if (Str::startsWith($this->featured_image, ['/storage/', 'storage/'])) {
+            return route('blog.images.show', [
+                'path' => Str::after(ltrim($this->featured_image, '/'), 'storage/'),
+            ]);
+        }
+
+        return route('blog.images.show', ['path' => ltrim($this->featured_image, '/')]);
     }
 
     public function getExcerptPreviewAttribute(): string

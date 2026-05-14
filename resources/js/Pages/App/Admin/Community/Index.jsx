@@ -44,7 +44,7 @@ export default function Index({ auth, questions, queryParams = null }) {
         <AuthenticatedLayout user={auth.user} title="Community Questions">
             <Head title="Community Questions" />
 
-            <div className="mb-8 space-y-6 bg-slate-50 p-6 dark:bg-[#0F141B]">
+            <div className="mb-8 space-y-6  p-6 ">
                 <HeaderBox
                     title="Community Questions"
                     subtext="Manage community questions and discussions."

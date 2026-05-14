@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
 class BlogController extends Controller
@@ -56,6 +57,21 @@ class BlogController extends Controller
         return Inertia::render('Resources/Blog/Show', [
             'post' => $blogPost,
             'relatedPosts' => $relatedPosts,
+        ]);
+    }
+
+    public function image(string $path)
+    {
+        abort_if(str_contains($path, '..'), 404);
+
+        abort_unless(Storage::disk('public')->exists($path), 404);
+
+        $filePath = Storage::disk('public')->path($path);
+        $mimeType = Storage::disk('public')->mimeType($path) ?: 'application/octet-stream';
+
+        return response()->file($filePath, [
+            'Content-Type' => $mimeType,
+            'Cache-Control' => 'public, max-age=31536000',
         ]);
     }
 }
