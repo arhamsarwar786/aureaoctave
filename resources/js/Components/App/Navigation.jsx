@@ -5,7 +5,6 @@ import { Link, usePage } from "@inertiajs/react";
 import { sidebarLinks, adminSidebarSections } from "@/utils/constants";
 import {
     SparklesIcon,
-    BellIcon,
     ChevronDownIcon,
     LogOutIcon,
     UserCircleIcon,
@@ -14,6 +13,10 @@ import {
 } from "lucide-react";
 
 const ACCENT = "#3BF5C4";
+
+function isRouteActive(item, url) {
+    return route().current(item.routeName) || url.startsWith(route(item.routeName, {}, false));
+}
 
 const Navigation = ({ user }) => {
     const [open, setOpen] = useState(false);
@@ -27,9 +30,7 @@ const Navigation = ({ user }) => {
         ...adminSidebarSections.flatMap((section) => section.links),
     ];
     const activePage = allLinks.find(
-        (item) =>
-            route().current(item.routeName) ||
-            url.startsWith(`/${item.routeName}`)
+        (item) => isRouteActive(item, url)
     );
 
     return (
@@ -204,7 +205,7 @@ const Navigation = ({ user }) => {
                         {sidebarLinks.map((item) => {
                             if (!item.roles.some((r) => roles.includes(r))) return null;
                             const Icon = item.icon;
-                            const isActive = route().current(item.routeName) || url.startsWith(`/${item.routeName}`);
+                            const isActive = isRouteActive(item, url);
                             return (
                                 <ResponsiveNavLink
                                     key={item.label}
@@ -242,7 +243,7 @@ const Navigation = ({ user }) => {
                                     </p>
                                     {visibleLinks.map((item) => {
                                         const Icon = item.icon;
-                                        const isActive = route().current(item.routeName) || url.startsWith(`/${item.routeName}`);
+                                        const isActive = isRouteActive(item, url);
 
                                         return (
                                             <ResponsiveNavLink

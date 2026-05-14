@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class BlogPost extends Model
@@ -61,7 +60,7 @@ class BlogPost extends Model
             $path = parse_url($this->featured_image, PHP_URL_PATH);
 
             if (is_string($path) && Str::startsWith($path, '/storage/')) {
-                return route('blog.images.show', ['path' => Str::after($path, '/storage/')]);
+                return route('blog.images.show', ['path' => Str::after($path, '/storage/')], false);
             }
 
             return $this->featured_image;
@@ -70,10 +69,10 @@ class BlogPost extends Model
         if (Str::startsWith($this->featured_image, ['/storage/', 'storage/'])) {
             return route('blog.images.show', [
                 'path' => Str::after(ltrim($this->featured_image, '/'), 'storage/'),
-            ]);
+            ], false);
         }
 
-        return route('blog.images.show', ['path' => ltrim($this->featured_image, '/')]);
+        return route('blog.images.show', ['path' => ltrim($this->featured_image, '/')], false);
     }
 
     public function getExcerptPreviewAttribute(): string

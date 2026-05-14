@@ -125,6 +125,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::put('/{transaction}/update-status', [AdminTransactionController::class, 'updateStatus'])->name('admin.transactions.update-status');
         });
 
+        Route::post('blog-posts/{blogPost}/update', [AdminBlogPostController::class, 'update'])
+            ->name('blog-posts.update.post');
         Route::resource('blog-posts', AdminBlogPostController::class);
 
         Route::get('/investment-package', [InvestmentPackageController::class, 'adminIndex'])->name('admin.investment-package');

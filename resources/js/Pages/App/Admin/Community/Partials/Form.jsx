@@ -59,7 +59,7 @@ export default function QuestionForm({ question = null, mode = "create" }) {
                     <input
                         id="is_published"
                         type="checkbox"
-                        className="h-4 w-4 rounded border-slate-300 text-[#3BF5C4] focus:ring-[#3BF5C4] dark:border-slate-600 dark:bg-slate-700"
+                        className="h-4 w-4 rounded "
                         checked={form.data.is_published}
                         onChange={(event) => form.setData("is_published", event.target.checked)}
                     />

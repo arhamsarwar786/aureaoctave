@@ -1,4 +1,6 @@
+import { useMemo, useState } from "react";
 import {
+    ChevronDownIcon,
     CogIcon,
     LogOutIcon,
     SparklesIcon,
@@ -6,44 +8,101 @@ import {
 
 import NavLink from "./NavLink";
 import { Link, usePage } from "@inertiajs/react";
-import { adminSidebarLinks, sidebarLinks } from "@/utils/constants";
+import { adminSidebarSections, sidebarLinks } from "@/utils/constants";
 
 const ACCENT = "#3BF5C4";
 
-/* Sidebar Item */
+function isRouteActive(item, url) {
+    return route().current(item.routeName) || url.startsWith(route(item.routeName, {}, false));
+}
+
 function SidebarLink({ href, icon: Icon, label, isActive }) {
     return (
         <NavLink
             href={href}
-            className={`relative flex  w-full flex-col items-center justify-center  overflow-hidden rounded-xl px-2 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4 ${isActive ? "text-white scale-105 z-20" : "text-slate-400 hover:text-white"}`}
+            className={`relative flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-400 transition-all duration-200 hover:bg-white/[0.06] hover:text-white group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4 ${
+                isActive ? "bg-[#3BF5C4]/10 text-white ring-1 ring-[#3BF5C4]/20" : ""
+            }`}
         >
-            {/* Active Glow */}
             {isActive && (
-                <div
-                    className="absolute inset-0 rounded-xl"
-                    style={{
-                        background: "linear-gradient(180deg, rgba(59,245,196,0.18) 0%, rgba(59,245,196,0.04) 40%, transparent 100%)",
-                        filter: "blur(14px)",
-                    }}
+                <span
+                    className="absolute left-0 top-1/2 h-7 w-1 -translate-y-1/2 rounded-r-full"
+                    style={{ background: ACCENT }}
                 />
             )}
 
-            {/* Active Indicator */}
-            {/* {isActive && (
-                <span
-                    className="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-10 rounded-r-full"
-                    style={{ background: "linear-gradient(180deg, #3BF5C4, rgba(59,245,196,0.4))" }}
-                />
-            )} */}
-
-            <div className={`relative z-10 transition-all duration-200 flex items-center justify-center ${isActive ? 'bg-white/5 p-2 rounded-full shadow-md' : ''}`}>
+            <span className={`relative z-10 flex size-9 shrink-0 items-center justify-center rounded-lg ${isActive ? "bg-white/10" : ""}`}>
                 <Icon
-                    size={22}
-                    className={`${isActive ? "text-[#06d6a3]" : "text-slate-400 group-hover:text-white"}`}
+                    size={20}
+                    className={isActive ? "text-[#3BF5C4]" : "text-slate-400"}
                 />
-            </div>
+            </span>
 
-            <span className={`relative z-10 max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap ${isActive ? 'font-bold' : ''}`}>
+            <span className={`relative z-10 hidden min-w-0 truncate text-sm group-hover/sidebar:block ${isActive ? "font-semibold" : "font-medium"}`}>
+                {label}
+            </span>
+        </NavLink>
+    );
+}
+
+function SidebarSection({ section, roles, url }) {
+    const visibleLinks = useMemo(
+        () => section.links.filter((item) => item.roles.some((role) => roles.includes(role))),
+        [roles, section.links]
+    );
+    const hasActiveLink = visibleLinks.some((item) => isRouteActive(item, url));
+    const [isOpen, setIsOpen] = useState(hasActiveLink);
+
+    if (visibleLinks.length === 0) {
+        return null;
+    }
+
+    return (
+        <div className="space-y-1">
+            <button
+                type="button"
+                onClick={() => setIsOpen((current) => !current)}
+                className="flex min-h-9 w-full items-center justify-center rounded-lg px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:bg-white/[0.04] hover:text-slate-300 group-hover/sidebar:justify-between group-hover/sidebar:px-4"
+            >
+                <span className="hidden group-hover/sidebar:block">{section.label}</span>
+                <span className="group-hover/sidebar:hidden">{section.label.slice(0, 1)}</span>
+                <ChevronDownIcon
+                    size={14}
+                    className={`hidden transition group-hover/sidebar:block ${isOpen ? "rotate-180" : ""}`}
+                />
+            </button>
+
+            {isOpen && (
+                <div className="space-y-1">
+                    {visibleLinks.map((item) => (
+                        <SidebarLink
+                            key={item.label}
+                            href={route(item.routeName)}
+                            icon={item.icon}
+                            label={item.label}
+                            isActive={isRouteActive(item, url)}
+                        />
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function UtilityLink({ href, icon: Icon, label, isActive = false, method, as, danger = false }) {
+    return (
+        <NavLink
+            href={href}
+            method={method}
+            as={as}
+            className={`flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-400 transition-all duration-200 hover:bg-white/[0.06] group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4 ${
+                danger ? "hover:text-red-400" : "hover:text-white"
+            } ${isActive ? "bg-white/[0.06] text-white" : ""}`}
+        >
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-lg">
+                <Icon size={20} color={label === "Aurea AI" ? ACCENT : undefined} />
+            </span>
+            <span className="hidden min-w-0 truncate text-sm font-medium group-hover/sidebar:block">
                 {label}
             </span>
         </NavLink>
@@ -53,75 +112,36 @@ function SidebarLink({ href, icon: Icon, label, isActive }) {
 const Sidebar = ({ user }) => {
     const { url } = usePage();
     const pageProps = usePage().props;
-    const roles = pageProps?.auth?.roles ?? (pageProps?.auth?.user ? ['user'] : []);
+    const roles = pageProps?.auth?.roles ?? (pageProps?.auth?.user ? ["user"] : []);
     const isAdmin = roles.includes("admin");
 
     return (
         <aside
             data-tour-sidebar
-            className="group/sidebar sticky left-0 top-0 flex h-screen w-24 flex-col items-stretch overflow-hidden px-3 transition-all duration-300 hover:w-80 max-md:hidden"
-            style={{
-                background:
-                    "linear-gradient(180deg,#0d1117 0%,#111820 50%,#0d1117 100%)",
-                borderRight: "1px solid rgba(255,255,255,0.05)",
-                boxShadow: "4px 0 24px rgba(0,0,0,0.4)",
-            }}
+            className="group/sidebar sticky left-0 top-0 hidden h-screen w-24 flex-col overflow-hidden border-r border-white/5 bg-[#0d1117] px-3 transition-all duration-300 hover:w-80 md:flex"
+            style={{ boxShadow: "4px 0 24px rgba(0,0,0,0.35)" }}
         >
-            {/* Logo */}
-            <div className="flex justify-center px-2 py-6 group-hover/sidebar:justify-start group-hover/sidebar:px-4">
-                <Link href="/dashboard" className="flex items-center">
-                    {/* Collapsed logo (shown when w-24) */}
+            <div className="flex h-20 shrink-0 items-center justify-center px-2 group-hover/sidebar:justify-start group-hover/sidebar:px-4">
+                <Link href="/dashboard" className="flex min-w-0 items-center">
                     <img
                         src="/assets/img/logo4.png"
                         alt="Logo compact"
-                        className="w-10 h-10 object-contain block group-hover/sidebar:hidden"
+                        className="size-10 object-contain group-hover/sidebar:hidden"
                     />
-
-                    {/* Expanded logo (shown when w-80) */}
                     <img
                         src="/assets/img/logo3.png"
                         alt="Logo full"
-                        className="w-full h-12 object-contain hidden group-hover/sidebar:block transition-all duration-200"
+                        className="hidden h-11 max-w-48 object-contain group-hover/sidebar:block"
                     />
                 </Link>
             </div>
 
-            {/* Divider */}
-            <div
-                className="mb-6 h-px w-10 shrink-0 self-center transition-all duration-300 group-hover/sidebar:w-full"
-                style={{ background: ACCENT }}
-            />
+            <div className="mb-4 h-px w-10 shrink-0 self-center bg-[#3BF5C4]/70 transition-all group-hover/sidebar:w-full" />
 
-            {/* Main Navigation */}
-            <nav className="flex flex-1 flex-col gap-4">
-
-                {sidebarLinks.map((item) => {
-                    if (!item.roles.some((r) => roles.includes(r))) return null;
-
-                    const isActive =
-                        route().current(item.routeName) ||
-                        url.startsWith(`/${item.routeName}`);
-
-                    return (
-                        <SidebarLink
-                            key={item.label}
-                            href={route(item.routeName)}
-                            icon={item.icon}
-                            label={item.label}
-                            isActive={isActive}
-                        />
-                    );
-                })}
-
-                {/* Admin Section */}
-                {isAdmin &&
-                    adminSidebarLinks.map((item) => {
-                        if (!item.roles.some((r) => roles.includes(r)))
-                            return null;
-
-                        const isActive =
-                            route().current(item.routeName) ||
-                            url.startsWith(`/${item.routeName}`);
+            <nav className="flex flex-1 flex-col gap-4 overflow-y-auto pb-4 pr-1">
+                <div className="space-y-1">
+                    {sidebarLinks.map((item) => {
+                        if (!item.roles.some((role) => roles.includes(role))) return null;
 
                         return (
                             <SidebarLink
@@ -129,70 +149,65 @@ const Sidebar = ({ user }) => {
                                 href={route(item.routeName)}
                                 icon={item.icon}
                                 label={item.label}
-                                isActive={isActive}
+                                isActive={isRouteActive(item, url)}
                             />
                         );
                     })}
+                </div>
+
+                {isAdmin && (
+                    <div className="space-y-3 border-t border-white/5 pt-4">
+                        {adminSidebarSections.map((section) => (
+                            <SidebarSection
+                                key={section.label}
+                                section={section}
+                                roles={roles}
+                                url={url}
+                            />
+                        ))}
+                    </div>
+                )}
             </nav>
 
-            {/* Bottom Section */}
-            <div className="flex flex-col gap-4 pb-6">
-
-                {/* Aurea AI */}
-                <NavLink
+            <div className="shrink-0 space-y-2 border-t border-white/5 py-4">
+                <UtilityLink
                     href={route("aurea-ai")}
-                    className="relative flex h-24 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
-                >
-                    <SparklesIcon size={22} color={ACCENT} />
-
-                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
-                        Aurea-AI
-                    </span>
-                </NavLink>
-
-                {/* Settings */}
-                <NavLink
+                    icon={SparklesIcon}
+                    label="Aurea AI"
+                    isActive={route().current("aurea-ai")}
+                />
+                <UtilityLink
                     href={route("settings")}
-                    className="relative flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 text-slate-400 transition-all duration-300 hover:text-white group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
-                >
-                    <CogIcon size={22} />
+                    icon={CogIcon}
+                    label="Settings"
+                    isActive={route().current("settings")}
+                />
 
-                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
-                        Settings
-                    </span>
-                </NavLink>
-
-                {/* User Avatar */}
-                <div
-                    className="flex h-20 w-full flex-col items-center justify-center gap-2 overflow-hidden rounded-xl px-2 py-3 transition-all duration-300 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:px-4"
-                >
+                <div className="flex min-h-12 w-full items-center justify-center overflow-hidden rounded-xl px-3 text-slate-300 transition-all group-hover/sidebar:justify-start group-hover/sidebar:gap-3 group-hover/sidebar:px-4">
                     <div
-                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-black font-bold"
-                        style={{
-                            background: `linear-gradient(135deg, ${ACCENT}, #3BF5C4)`,
-                        }}
+                        className="flex size-9 shrink-0 items-center justify-center rounded-lg text-sm font-bold text-black"
+                        style={{ background: `linear-gradient(135deg, ${ACCENT}, #10b981)` }}
                     >
                         {user?.name?.[0]?.toUpperCase() ?? "U"}
                     </div>
-
-                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words text-slate-300 transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap group-hover/sidebar:truncate">
-                        {user?.name ?? "User"}
-                    </span>
+                    <div className="hidden min-w-0 group-hover/sidebar:block">
+                        <p className="truncate text-sm font-semibold text-white">
+                            {user?.name ?? "User"}
+                        </p>
+                        <p className="truncate text-xs text-slate-500">
+                            {user?.email ?? ""}
+                        </p>
+                    </div>
                 </div>
 
-                {/* Logout */}
-                <NavLink
+                <UtilityLink
                     href={route("logout")}
                     method="post"
                     as="button"
-                    className="flex h-20 w-full flex-col items-center justify-center gap-1.5 overflow-hidden rounded-xl px-2 py-3 text-slate-400 transition-all duration-300 hover:text-red-400 group-hover/sidebar:h-14 group-hover/sidebar:flex-row group-hover/sidebar:justify-start group-hover/sidebar:gap-0 group-hover/sidebar:px-4"
-                >
-                    <LogOutIcon size={18} />
-
-                    <span className="max-w-[4rem] text-center text-[11px] leading-[1.05rem] break-words transition-all duration-300 group-hover/sidebar:ml-3 group-hover/sidebar:max-w-[12rem] group-hover/sidebar:text-left group-hover/sidebar:text-sm group-hover/sidebar:leading-none group-hover/sidebar:whitespace-nowrap">
-                        Logout
-                    </span>
-                </NavLink>
+                    icon={LogOutIcon}
+                    label="Logout"
+                    danger
+                />
             </div>
         </aside>
     );

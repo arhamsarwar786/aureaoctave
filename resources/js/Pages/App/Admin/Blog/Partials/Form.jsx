@@ -36,7 +36,7 @@ export default function BlogForm({ post = null, categories = [], mode = "create"
         };
 
         if (mode === "edit" && post) {
-            form.put(route("blog-posts.update", post.id), options);
+            form.post(route("blog-posts.update.post", post.id), options);
             return;
         }
 
