@@ -52,6 +52,15 @@ Route::get('/blog/{blogPost:slug}', [BlogController::class, 'show'])->name('blog
 Route::get('/community', [\App\Http\Controllers\CommunityForumController::class, 'index'])->name('community.index');
 Route::get('/community/{question:slug}', [\App\Http\Controllers\CommunityForumController::class, 'show'])->name('community.show');
 
+// FAQ pages
+Route::get('/faq/blog', function () {
+    return Inertia::render('FAQ/Blog');
+})->name('faq.blog');
+
+Route::get('/faq/community', function () {
+    return Inertia::render('FAQ/Community');
+})->name('faq.community');
+
 Route::redirect('/resources/blog', '/blog');
 Route::redirect('/resources/community', '/community');
 

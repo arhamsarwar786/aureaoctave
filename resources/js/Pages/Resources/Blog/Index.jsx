@@ -1,5 +1,6 @@
 import GuestLayout from "@/Layouts/GuestLayout";
 import { Head, Link } from "@inertiajs/react";
+import { blogFaqs } from "@/data/faqs";
 import { Pagination } from "@/Components/App/Pagination";
 
 function formatDate(value) {
@@ -26,7 +27,7 @@ export default function BlogIndex({ posts }) {
 
             <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
                 <div className="max-w-3xl">
-                    <p className="mb-4 text-sm uppercase tracking-[0.3em] text-[#3BF5C4]">
+                    <p className="py-4 text-sm uppercase tracking-[0.3em] text-[#3BF5C4]">
                         Resources
                     </p>
                     <h1 className="text-4xl font-bold text-white md:text-6xl">
@@ -36,6 +37,7 @@ export default function BlogIndex({ posts }) {
                         Read updates, commentary, and practical insights from the
                         Aurea Octave team.
                     </p>
+              
                 </div>
 
                 <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -101,6 +103,19 @@ export default function BlogIndex({ posts }) {
                         <Pagination links={meta.links} />
                     </div>
                 )}
+                    {/* FAQ accordion for Blog page (first few items) */}
+                    <div className="mt-8 max-w-2xl mx-auto">
+                        <h3 className="text-sm font-semibold text-white mb-3">Frequently Asked Questions</h3>
+                        <div className="space-y-3">
+                            {/** Render all blog faqs as <details> */}
+                            {blogFaqs.map((f, i) => (
+                                <details key={i} className="rounded-xl border border-white/8 bg-white/3 p-4">
+                                    <summary className="cursor-pointer font-medium text-white">{f.q}</summary>
+                                    <div className="mt-2 text-white/70">{f.a}</div>
+                                </details>
+                            ))}
+                        </div>
+                    </div>
             </section>
         </GuestLayout>
     );

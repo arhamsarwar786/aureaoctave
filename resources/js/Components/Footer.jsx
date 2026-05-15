@@ -80,7 +80,7 @@
 
 // export default Footer;
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@inertiajs/react";
 
@@ -98,81 +98,91 @@ const fadeUp = {
 };
 
 const Footer = () => {
+    const [showLegal, setShowLegal] = useState(true);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+        const p = window.location.pathname || "";
+        // Hide legal block on blog and community pages
+        const hide = /^\/(blog|community)(\/|$)/i.test(p);
+        setShowLegal(!hide);
+    }, []);
     return (
         <footer className="bg-[#0B0F14] text-[#9CA3AF]" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            {/* Legal Content */}
-            <div className="max-w-[1400px] mx-auto px-6 py-20">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-xs leading-relaxed">
-                    {[0, 1, 2].map((index) => (
-                        <motion.div
-                            key={index}
-                            custom={index}
-                            variants={fadeUp}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                        >
-                            {index === 0 && (
-                                <>
-                                    <p className="mb-4">
-                                        * The tokenized assets referenced herein
-                                        Aurea Octave have not been registered under
-                                        the US Securities Act of 1933 or the
-                                        securities laws of any other jurisdiction.
-                                        Tokens may not be offered in restricted
-                                        jurisdictions.
-                                    </p>
-                                    <p>
-                                        Token Markets may provide economic exposure
-                                        to underlying assets, but Tokens are not
-                                        stocks, ETFs, or ownership interests.
-                                    </p>
-                                </>
-                            )}
+            {showLegal && (
+                <div className="max-w-[1400px] mx-auto px-6 py-20">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-xs leading-relaxed">
+                        {[0, 1, 2].map((index) => (
+                            <motion.div
+                                key={index}
+                                custom={index}
+                                variants={fadeUp}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                            >
+                                {index === 0 && (
+                                    <>
+                                        <p className="mb-4">
+                                            * The tokenized assets referenced herein
+                                            Aurea Octave have not been registered under
+                                            the US Securities Act of 1933 or the
+                                            securities laws of any other jurisdiction.
+                                            Tokens may not be offered in restricted
+                                            jurisdictions.
+                                        </p>
+                                        <p>
+                                            Token Markets may provide economic exposure
+                                            to underlying assets, but Tokens are not
+                                            stocks, ETFs, or ownership interests.
+                                        </p>
+                                    </>
+                                )}
 
-                            {index === 1 && (
-                                <>
-                                    <p className="mb-4">
-                                        This website is intended solely for
-                                        business relationships and integrations.
-                                        Nothing herein constitutes investment
-                                        advice.
-                                    </p>
-                                    <p>
-                                        Aurea Octave assumes no liability for
-                                        third-party services or technologies
-                                        referenced on this platform.
-                                    </p>
-                                </>
-                            )}
+                                {index === 1 && (
+                                    <>
+                                        <p className="mb-4">
+                                            This website is intended solely for
+                                            business relationships and integrations.
+                                            Nothing herein constitutes investment
+                                            advice.
+                                        </p>
+                                        <p>
+                                            Aurea Octave assumes no liability for
+                                            third-party services or technologies
+                                            referenced on this platform.
+                                        </p>
+                                    </>
+                                )}
 
-                            {index === 2 && (
-                                <>
-                                    <p className="mb-4">
-                                        † Market share reflects blockchain
-                                        addresses holding Aurea-issued tokens.
-                                    </p>
-                                    <p className="mb-4">
-                                        § Example rates only. Actual returns may
-                                        vary.
-                                    </p>
-                                    <p>
-                                        Additional terms apply. Refer to official
-                                        documents and{" "}
-                                        <Link
-                                            href="/"
-                                            className="text-[#3BF5C4] hover:opacity-80 transition"
-                                        >
-                                            Aurea Octave
-                                        </Link>{" "}
-                                        materials for disclosures.
-                                    </p>
-                                </>
-                            )}
-                        </motion.div>
-                    ))}
+                                {index === 2 && (
+                                    <>
+                                        <p className="mb-4">
+                                            † Market share reflects blockchain
+                                            addresses holding Aurea-issued tokens.
+                                        </p>
+                                        <p className="mb-4">
+                                            § Example rates only. Actual returns may
+                                            vary.
+                                        </p>
+                                        <p>
+                                            Additional terms apply. Refer to official
+                                            documents and{" "}
+                                            <Link
+                                                href="/"
+                                                className="text-[#3BF5C4] hover:opacity-80 transition"
+                                            >
+                                                Aurea Octave
+                                            </Link>{" "}
+                                            materials for disclosures.
+                                        </p>
+                                    </>
+                                )}
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
 
             {/* Brand Statement */}
             <div className="relative overflow-hidden py-28">

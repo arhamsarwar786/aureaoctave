@@ -8,7 +8,7 @@ const TOOLBAR_ACTIONS = [
     { label: "1.", command: "insertOrderedList", title: "Numbered list" },
 ];
 
-export default function RichTextEditor({ value = "", onChange, placeholder = "Write your article here..." }) {
+export default function RichTextEditor({ value = "", onChange, placeholder = "Write your article here...", disabled = false }) {
     const editorRef = useRef(null);
 
     useEffect(() => {
@@ -23,6 +23,8 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
     };
 
     const applyCommand = (command) => {
+        if (disabled) return;
+
         editorRef.current?.focus();
 
         if (command === "createLink") {
@@ -47,9 +49,10 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                         key={action.command}
                         type="button"
                         title={action.title}
+                        disabled={disabled}
                         onMouseDown={(event) => event.preventDefault()}
                         onClick={() => applyCommand(action.command)}
-                        className="min-w-10 rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] dark:text-white px-3 py-2 text-sm font-semibold text-slate-900/80 transition-colors hover:bg-white/10 hover:text-slate-900/80"
+                        className="min-w-10 rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] dark:text-white px-3 py-2 text-sm font-semibold text-slate-900/80 transition-colors hover:bg-white/10 hover:text-slate-900/80 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {action.label}
                     </button>
@@ -58,9 +61,10 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                 <button
                     type="button"
                     title="Insert link"
+                    disabled={disabled}
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => applyCommand("createLink")}
-                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold dark:text-white transition-colors hover:bg-white/10 hover:text-slate-900/80"
+                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold dark:text-white transition-colors hover:bg-white/10 hover:text-slate-900/80 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     Link
                 </button>
@@ -68,9 +72,10 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
                 <button
                     type="button"
                     title="Clear formatting"
+                    disabled={disabled}
                     onMouseDown={(event) => event.preventDefault()}
                     onClick={() => applyCommand("removeFormat")}
-                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold text-slate-900/80 dark:text-white transition-colors hover:bg-white/10 hover:text-slate-900/80"
+                    className="rounded-lg border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-3 py-2 text-sm font-semibold text-slate-900/80 dark:text-white transition-colors hover:bg-white/10 hover:text-slate-900/80 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     Clear
                 </button>
@@ -78,11 +83,12 @@ export default function RichTextEditor({ value = "", onChange, placeholder = "Wr
 
             <div
                 ref={editorRef}
-                contentEditable
+                contentEditable={!disabled}
                 suppressContentEditableWarning
                 onInput={syncValue}
+                aria-disabled={disabled}
                 data-placeholder={placeholder}
-                className="min-h-[280px] rounded-2xl border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-4 py-4 text-sm leading-7 text-slate-900/80 dark:text-white outline-none transition focus:border-[#3BF5C4]/50"
+                className="min-h-[280px] rounded-2xl border border-slate-200 dark:border-white/10 dark:bg-[#111820] px-4 py-4 text-sm leading-7 text-slate-900/80 dark:text-white outline-none transition focus:border-[#3BF5C4]/50 aria-disabled:cursor-not-allowed aria-disabled:opacity-70"
                 style={{
                     fontFamily: "Poppins, sans-serif",
                 }}

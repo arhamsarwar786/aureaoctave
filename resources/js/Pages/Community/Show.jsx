@@ -81,23 +81,24 @@ export default function CommunityShow({ question, answers }) {
                     <div className="mt-6 space-y-6">
                         {answers.map((answer) => (
                             <div key={answer.id} className="flex gap-4 rounded-3xl border border-white/10 bg-white/5 p-6">
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex min-w-16 flex-col items-center gap-3">
                                     <button
                                         type="button"
                                         onClick={() => handleVote(answer.id, 1)}
-                                        className={`rounded-full p-2 transition ${answer.user_vote === 1 ? "bg-[#3BF5C4]/20 text-[#3BF5C4]" : "text-white/50 hover:bg-white/10 hover:text-white"}`}
+                                        className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold transition ${answer.user_vote === 1 ? "bg-[#3BF5C4]/20 text-[#3BF5C4]" : "text-white/50 hover:bg-white/10 hover:text-white"}`}
+                                        aria-label={`${answer.upvotes_count} likes`}
                                     >
                                         <ThumbsUpIcon className="size-5" />
+                                        <span>{answer.upvotes_count}</span>
                                     </button>
-                                    <span className="text-lg font-bold text-white">
-                                        {answer.upvotes_count - answer.downvotes_count}
-                                    </span>
                                     <button
                                         type="button"
                                         onClick={() => handleVote(answer.id, -1)}
-                                        className={`rounded-full p-2 transition ${answer.user_vote === -1 ? "bg-red-500/20 text-red-500" : "text-white/50 hover:bg-white/10 hover:text-white"}`}
+                                        className={`inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-bold transition ${answer.user_vote === -1 ? "bg-red-500/20 text-red-500" : "text-white/50 hover:bg-white/10 hover:text-white"}`}
+                                        aria-label={`${answer.downvotes_count} dislikes`}
                                     >
                                         <ThumbsDownIcon className="size-5" />
+                                        <span>{answer.downvotes_count}</span>
                                     </button>
                                 </div>
 

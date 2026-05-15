@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CommunityQuestion;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Inertia\Inertia;
 
@@ -39,18 +42,29 @@ class CommunityQuestionController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:community_questions,slug',
             'body' => 'required|string',
-            'is_published' => 'boolean',
+            'is_published' => 'nullable|boolean',
         ]);
 
-        if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+        try {
+            DB::beginTransaction();
+
+            $validated['slug'] = $this->makeUniqueSlug($validated['slug'] ?? $validated['title']);
+            $validated['is_published'] = (bool) ($validated['is_published'] ?? false);
+            $validated['user_id'] = auth()->id();
+
+            CommunityQuestion::create($validated);
+
+            DB::commit();
+
+            return redirect()->route('admin.community-questions.index')->with('success', 'Question created successfully.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            Log::error('Error creating community question: ' . $e->getMessage());
+
+            return back()->withErrors([
+                'form' => 'An error occurred while creating the question.',
+            ])->withInput();
         }
-
-        $validated['user_id'] = auth()->id();
-
-        CommunityQuestion::create($validated);
-
-        return redirect()->route('admin.community-questions.index')->with('success', 'Question created successfully.');
     }
 
     public function edit(CommunityQuestion $communityQuestion)
@@ -66,16 +80,28 @@ class CommunityQuestionController extends Controller
             'title' => 'required|string|max:255',
             'slug' => 'nullable|string|max:255|unique:community_questions,slug,' . $communityQuestion->id,
             'body' => 'required|string',
-            'is_published' => 'boolean',
+            'is_published' => 'nullable|boolean',
         ]);
 
-        if (empty($validated['slug'])) {
-            $validated['slug'] = Str::slug($validated['title']);
+        try {
+            DB::beginTransaction();
+
+            $validated['slug'] = $this->makeUniqueSlug($validated['slug'] ?? $validated['title'], $communityQuestion->id);
+            $validated['is_published'] = (bool) ($validated['is_published'] ?? false);
+
+            $communityQuestion->update($validated);
+
+            DB::commit();
+
+            return redirect()->route('admin.community-questions.index')->with('success', 'Question updated successfully.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            Log::error('Error updating community question: ' . $e->getMessage());
+
+            return back()->withErrors([
+                'form' => 'An error occurred while updating the question.',
+            ])->withInput();
         }
-
-        $communityQuestion->update($validated);
-
-        return redirect()->route('admin.community-questions.index')->with('success', 'Question updated successfully.');
     }
 
     public function destroy(CommunityQuestion $communityQuestion)
@@ -83,5 +109,23 @@ class CommunityQuestionController extends Controller
         $communityQuestion->delete();
 
         return redirect()->route('admin.community-questions.index')->with('success', 'Question deleted successfully.');
+    }
+
+    private function makeUniqueSlug(string $value, ?int $ignoreId = null): string
+    {
+        $baseSlug = Str::slug($value) ?: Str::random(8);
+        $slug = $baseSlug;
+        $counter = 1;
+
+        while (
+            CommunityQuestion::query()
+                ->when($ignoreId, fn ($query) => $query->whereKeyNot($ignoreId))
+                ->where('slug', $slug)
+                ->exists()
+        ) {
+            $slug = $baseSlug . '-' . $counter++;
+        }
+
+        return $slug;
     }
 }
