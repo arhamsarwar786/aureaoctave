@@ -43,9 +43,11 @@ export default function BlogIndex({ posts }) {
                 <div className="mt-14 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                     {data.length > 0 ? (
                         data.map((post) => (
+                            <Link href={route("blog.show", post.slug)}>
                             <article
                                 key={post.id}
                                 className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm"
+                               
                             >
                                 {post.featured_image_url ? (
                                     <img
@@ -90,6 +92,7 @@ export default function BlogIndex({ posts }) {
                                     </Link>
                                 </div>
                             </article>
+                            </Link>
                         ))
                     ) : (
                         <div className="rounded-3xl border border-white/10 bg-white/5 p-8 text-white/70 md:col-span-2 xl:col-span-3">

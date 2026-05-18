@@ -369,7 +369,7 @@ const Header = () => {
                         Contact Us
                     </Link>
                     {auth?.user ? (
-                        <Link href="/dashboard" className="block hover:text-[#3BF5C4] transition-colors">Dashboard</Link>
+                        <Link href="/dashboard" className="block hover:text-[#3BF5C4] text-black transition-colors">Dashboard</Link>
                     ) : (
                         <>
                             <Link href="/register" className="block hover:text-[#3BF5C4] transition-colors">Sign Up</Link>

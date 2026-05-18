@@ -45,7 +45,7 @@ export default function BlogShow({ post, relatedPosts = [] }) {
                     <img
                         src={post.featured_image_url}
                         alt={post.title}
-                        className="mt-10 h-[24rem] w-full rounded-3xl object-cover"
+                        className="mt-10 h-full w-full rounded-3xl object-cover"
                     />
                 )}
 
